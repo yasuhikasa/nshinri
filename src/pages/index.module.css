@@ -4,6 +4,7 @@
   margin: 0 auto;
   padding: 20px;
   text-align: center;
+  word-wrap: break-word; /* 長いテキストが改行されるように */
 }
 
 /* トップ部分のスタイル */
@@ -11,13 +12,17 @@
   font-size: 2rem;
   color: #333;
   margin-bottom: 20px;
+  word-wrap: break-word; /* テキストが自然に改行されるように */
 }
 
 .subtext {
   font-size: 1.2rem;
   color: #666;
   margin: 10px 0 20px 0;
+  word-wrap: break-word; /* 改行の処理 */
+  text-align: center; /* テキストを両端揃えにして均等に配置 */
 }
+
 
 /* 画像とプロフィールのレスポンシブレイアウト */
 .profileContainer {
