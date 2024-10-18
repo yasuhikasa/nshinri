@@ -1,5 +1,5 @@
 :root {
-  --background: #ffffff;
+  --background: #fffafa; /* さらに淡いピンク系の背景色 */
   --foreground: #171717;
 }
 
@@ -18,7 +18,7 @@ body {
 
 body {
   color: var(--foreground);
-  background: var(--background);
+  background: var(--background); /* 背景をさらに淡いピンクに */
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

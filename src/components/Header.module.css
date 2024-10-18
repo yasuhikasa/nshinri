@@ -1,0 +1,65 @@
+.header {
+  background-color: #f7a8a8; /* ヘッダーの背景色 */
+  padding: 10px 0;
+  text-align: center;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+}
+
+.navList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 40px; /* 各リンクの間により広いスペースを追加 */
+}
+
+.navItem {
+  margin: 0;
+}
+
+.navLink {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+  position: relative; /* アイコンや装飾を追加するためにrelativeに設定 */
+  transition: color 0.3s;
+  padding-left: 25px; /* アイコン用のスペースを確保 */
+}
+
+/* リンク前にフラグアイコンを追加 */
+.navLink::before {
+  content: '🔗'; /* フラグまたはリンクを示すアイコン */
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem; /* アイコンのサイズ */
+  color: white; /* アイコンの色 */
+}
+
+.navLink:hover {
+  color: #fff3f3; /* ホバー時のリンク色を変更 */
+  text-decoration: underline; /* ホバー時に下線を追加 */
+}
+
+/* 小さな画面向けのレスポンシブ対応 */
+@media (max-width: 768px) {
+  .navList {
+    flex-direction: column;
+    gap: 15px; /* リンクの間に少しスペースを追加 */
+  }
+
+  .navLink {
+    font-size: 1rem; /* 小さい画面ではフォントサイズを少し小さく */
+    padding-left: 20px; /* アイコン用のスペースも小さく */
+  }
+
+  .navLink::before {
+    font-size: 1rem; /* 小さい画面ではアイコンサイズも小さく */
+  }
+}

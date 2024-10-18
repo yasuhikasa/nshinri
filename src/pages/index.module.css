@@ -1,0 +1,264 @@
+/* コンテナ全体のスタイル */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+/* トップ部分のスタイル */
+.heading {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.subtext {
+  font-size: 1.2rem;
+  color: #666;
+  margin: 10px 0 20px 0;
+}
+
+/* 画像とプロフィールのレスポンシブレイアウト */
+.profileContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 40px;
+  gap: 40px; /* 画像とテキストの間にスペース */
+}
+
+/* 小さな画面では縦並びに */
+@media (max-width: 768px) {
+  .profileContainer {
+    flex-direction: column; /* 縦並びに変更 */
+    align-items: center; /* 中央揃え */
+    margin-top: 20px;
+    gap: 20px; /* 画像とテキストの間にスペース */
+  }
+
+  .imageWrapper {
+    margin-bottom: 20px; /* 画像とテキストの間にスペース */
+  }
+
+  .profileText ul {
+    text-align: center; /* 小さい画面では中央揃え */
+    margin-left: 30px;
+  }
+}
+
+/* 画像のスタイル */
+.photo {
+  border-radius: 50%;
+  border: 2px solid #ddd;
+}
+
+/* プロフィールテキストのスタイル */
+.profileText ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+
+.profileText li {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.profileText a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.profileText a:hover {
+  text-decoration: underline;
+}
+
+/* SNSアイコンのスタイル */
+.sns {
+  margin-top: 20px;
+}
+
+.sns a {
+  margin-right: 10px;
+}
+
+
+/* バナーのスタイル */
+.banner {
+  background-color: #f7a8a8; /* 優しいピンク系の色で目立たせる */
+  padding: 15px;
+  margin: 30px 0;
+  text-align: center;
+  border-radius: 8px; /* 角を少し丸く */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 影をつけて浮き上がるように */
+}
+
+.bannerText {
+  font-size: 1.8rem;
+  color: white;
+  font-weight: bold;
+}
+
+/* 導入部分 */
+.introduction {
+  font-size: 1.1rem;
+  color: #444;
+  line-height: 1.8;
+  margin-top: 20px;
+  text-align: left;
+}
+
+/* 問題点とエピソードのコンテナ */
+.problemContainer {
+  margin-top: 40px;
+}
+
+/* 問題点の強調帯 */
+.problemBanner {
+  background-color: #f7a8a8;
+  padding: 15px;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.bannerText {
+  font-size: 1.8rem;
+  color: white;
+  font-weight: bold;
+}
+
+/* カード化されたリスト */
+.cardList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card {
+  background-color: #f9f9f9;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-size: 1.2rem;
+  color: #333;
+}
+
+/* 自分のエピソードのスタイル */
+.storyBlock {
+  margin-top: 30px;
+}
+
+.introduction {
+  font-size: 1.1rem;
+  color: #444;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+
+.solutionContainer {
+  margin-top: 40px;
+}
+
+/* 解決の強調帯 */
+.solutionBanner {
+  background-color: #f7a8a8;
+  padding: 15px;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+/* カウンセリング対象のコンテナ */
+.targetContainer {
+  margin-top: 40px;
+}
+
+/* カウンセリング対象の帯デザイン */
+.targetBanner {
+  background-color: #d1a8f7; /* 柔らかい紫の帯 */
+  padding: 15px;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+/* パラグラフのスタイル */
+.targetBlock p {
+  font-size: 1.2rem;
+  color: #444;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+/* 行動の促しのコンテナ */
+.actionContainer {
+  margin-top: 40px;
+  text-align: center;
+}
+
+/* 行動の促しの帯デザイン */
+.actionBanner {
+  background-color: #f5a623; /* 明るいオレンジ色の帯 */
+  padding: 15px;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.bannerText {
+  font-size: 1.8rem;
+  color: white;
+  font-weight: bold;
+}
+
+/* 行動を促すボタンのスタイル */
+.counselingButton {
+  background-color: #5cb85c;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-top: 40px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ボタンホバー時のスタイル */
+.counselingButton:hover {
+  background-color: #4cae4c;
+}
+
+/* 小さな画面向けのレスポンシブ文字サイズ調整 */
+@media (max-width: 768px) {
+  .heading {
+    font-size: 1.6rem; /* トップ部分の見出しを小さく調整 */
+  }
+
+  .subtext,
+  .introduction,
+  .profileText li,
+  .targetBlock p,
+  .bannerText,
+  .card {
+    font-size: 1rem; /* 全体的に小さな文字サイズに調整 */
+  }
+
+  .bannerText {
+    font-size: 1.5rem; /* バナーのテキストを少し小さく */
+  }
+
+  .counselingButton {
+    font-size: 1rem; /* ボタンの文字サイズを小さく調整 */
+  }
+}

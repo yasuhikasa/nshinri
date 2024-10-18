@@ -1,0 +1,83 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+/* タイトルのスタイル変更 */
+.title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+  padding: 0; /* 帯を外すためにpaddingをなくす */
+  text-align: center; /* 左揃えにしてシンプルに */
+  border-bottom: 2px solid #f7a8a8; /* 下線をつけてアクセント */
+}
+
+.date {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 20px;
+  text-align: right;
+}
+
+.content {
+  line-height: 1.8;
+  font-size: 1.1rem;
+  color: #444;
+}
+
+/* セクションタイトルのスタイル */
+.content h2 {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  color: #333;
+  background-color: #f0f4f8; /* セクションの見出しに淡い背景色 */
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.content p {
+  margin-bottom: 20px;
+}
+
+.content ul {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+.content img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+
+  .title {
+    font-size: 1.6rem; /* タイトルを少し小さく調整 */
+  }
+
+  .content h2 {
+    font-size: 1.5rem;
+    margin-top: 20px;
+    margin-bottom: 15px;
+  }
+
+  .content p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    margin-top: 8px;
+  }
+}
