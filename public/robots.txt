@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://nshinri.net
+
+# Sitemaps
+Sitemap: https://nshinri.net/sitemap.xml
