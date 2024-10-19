@@ -14,11 +14,13 @@ const Home = () => {
         <meta property="og:title" content="心理カウンセリングとライフコーチング - Nくん" />
         <meta property="og:description" content="生きにくさに寄り添い、社会復帰や自己肯定感の回復をサポートします。" />
         <meta property="og:image" content="/me.png" />
-        <meta property="og:url" content="https://yourwebsite.com" />
+        <meta property="og:url" content="https://nshinri.net" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="心理カウンセリングとライフコーチング - Nくん" />
         <meta name="twitter:description" content="生きにくさに寄り添い、自己肯定感を回復するライフコーチング。" />
-        <meta name="twitter:image" content="/path-to-your-image.jpg" />
+        <meta name="twitter:image" content="/x.png" />
+        <meta name="google-site-verification" content="qhPi1I958aMX4JB4OO-vT4w_m1ls0YdUOTaq-GmhxdE" />
+
       </Head>
 
       <Header /> {/* ヘッダーを表示 */}
@@ -57,13 +59,14 @@ const Home = () => {
         </div>
 
         <div className={styles.sns}>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+          <a href="https://x.com/N6209316426525" target="_blank" rel="noopener noreferrer">
             <Image
-              src="/twitter.png"
-              alt="Twitter"
-              width={30}
-              height={30}
+              src="/x.png"
+              alt="x"
+              width={40}
+              height={40}
             />
+            　⇦Xはこちらから
           </a>
         </div>
 
