@@ -49,6 +49,7 @@
   .profileText ul {
     text-align: center; /* 小さい画面では中央揃え */
     margin-left: 30px;
+    font-size: 1rem;
   }
 }
 
@@ -66,6 +67,12 @@
 }
 
 .profileText li {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.profileText div {
   margin-bottom: 10px;
   font-size: 1.2rem;
   color: #333;
@@ -156,6 +163,10 @@
 /* 自分のエピソードのスタイル */
 .storyBlock {
   margin-top: 30px;
+  font-size: 1.1rem;
+  color: #444;
+  line-height: 1.8;
+  text-align: left;
 }
 
 .introduction {
@@ -252,7 +263,6 @@
 
   .subtext,
   .introduction,
-  .profileText li,
   .targetBlock p,
   .bannerText,
   .card {
@@ -266,4 +276,24 @@
   .counselingButton {
     font-size: 1rem; /* ボタンの文字サイズを小さく調整 */
   }
+
+  .photo {
+    width: 200px; /* レスポンシブ用に小さく調整 */
+    height: 200px; /* レスポンシブ用に小さく調整 */
+  }
+
+  .profileContainer {
+    gap: 0px; /* 画像とテキストの間にスペース */
+  }
+
+  .profileText li,
+  .profileText div,
+  .profileText strong {
+    font-size: 1rem; /* レスポンシブ用に小さく調整 */
+  }
+
+  .storyBlock p {
+    font-size: 1rem; /* レスポンシブ用に小さく調整 */
+  }
+
 }
