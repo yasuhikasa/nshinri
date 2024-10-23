@@ -9,7 +9,7 @@ const Home = () => {
       {/* SEOとメタ情報のためのHeadタグ */}
       <Head>
         <title>心理カウンセリングとライフコーチング - Nくん</title>
-        <meta name="description" content="Nくんの心理カウンセリングとライフコーチングサービス。うつ病や生きにくさ、社会復帰のサポートを提供します。" />
+        <meta name="description" content="Nくんの心理カウンセリングとライフコーチングサービス。うつ病や生きにくさ、社会復帰、介護の悩みに寄り添い、具体的なサポートを提供します。" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta property="og:title" content="心理カウンセリングとライフコーチング - Nくん" />
         <meta property="og:description" content="生きにくさに寄り添い、社会復帰や自己肯定感の回復をサポートします。" />
@@ -20,7 +20,6 @@ const Home = () => {
         <meta name="twitter:description" content="生きにくさに寄り添い、自己肯定感を回復するライフコーチング。" />
         <meta name="twitter:image" content="/x.png" />
         <meta name="google-site-verification" content="qhPi1I958aMX4JB4OO-vT4w_m1ls0YdUOTaq-GmhxdE" />
-
       </Head>
 
       <Header /> {/* ヘッダーを表示 */}
@@ -28,12 +27,13 @@ const Home = () => {
       <div className={styles.container}>
         {/* トップ部分 */}
         <h1 className={styles.heading}>人生を変える一歩、あなたも踏み出しませんか？</h1>
-        <p className={styles.subtext}>
-          仕事や人間関係に悩み、孤独や社会復帰への不安を抱えているあなたへ。<br />
-          長い間、苦しんできた「生きにくさ」から、今こそ抜け出す時です。<br />
-          私と一緒に、その壁を一つずつ乗り越え、<strong>新しい自分</strong>を見つけてみませんか？<br />
-          どんなに小さな一歩でも、その一歩が大きな変化に繋がります。
-        </p>
+          <p className={styles.subtext}>
+            仕事や人間関係、介護によるストレスやメンタルの悩みで立ち止まっている方へ。<br />
+            長く抱えてきた「生きにくさ」や心の負担から抜け出し、新しい自分を見つける時です。<br />
+            あなたの一歩が、確かな変化に繋がります。<br />
+            私と一緒に、その一歩を踏み出しましょう！
+          </p>
+
 
         {/* 画像とプロフィールを横並びに配置 */}
         <div className={styles.profileContainer}>
@@ -49,11 +49,14 @@ const Home = () => {
           <div className={styles.profileText}>
             <ul>
               <li>・Nくん|心理カウンセラー</li><br />
-              <li>・43才 男</li>
-              <li>・独身 東京在住</li>
-              <li>・大学院卒（法学）</li>
+              <li>・40代 男</li>
               <li>・好きなこと・・・音楽、グルメ、温泉、バスケ</li>
-              <li>・過去、うつ病に苦しみながらも社会復帰を果たす</li>
+            </ul>
+            <br />
+            <strong>（強み）</strong>
+            <ul>
+              <li>・うつ病経験を活かした心のケア、社会復帰支援</li>
+              <li>・介護現場での経験を基に、介護に苦しむ人の心のケアとサポート</li>
             </ul>
           </div>
         </div>
@@ -78,7 +81,7 @@ const Home = () => {
 
         {/* コピーライティングとカウンセリングに関する内容 */}
         <div className={styles.content}>
-          
+
           {/* 「もう一人で抱え込まないでください」セクション */}
           <div className={styles.banner}>
             <h2 className={styles.bannerText}>自分ひとりで悩まないでください</h2>
@@ -87,9 +90,8 @@ const Home = () => {
           {/* 導入部分 */}
           <div className={styles.introduction}>
             <p>
-              「どうせ自分なんて」と感じたり、失敗の恐怖に押しつぶされそうになっていませんか？毎朝起きるたびに、「どうして自分はこんなに苦しいんだろう」と思い悩んでいる方へ。<br /><br />
-              カウンセリングやライフコーチングは、そんなあなたの心に寄り添い、少しずつ前に進むためのサポートを提供します。<br />
-              小さな一歩を踏み出すことで、大きな変化が生まれるかもしれません。
+              「どうせ自分なんて」と感じたり、失敗の恐怖に押しつぶされそうになっていませんか？介護や人間関係のストレス、うつ状態に悩む方に寄り添い、少しずつ前に進むお手伝いをします。<br /><br />
+              カウンセリングやライフコーチングを通じて、小さな一歩を踏み出すことで、大きな変化を感じられるはずです。
             </p>
           </div>
 
@@ -110,6 +112,9 @@ const Home = () => {
                 うつや抑うつ状態で、気力が湧かない、何をすればいいのかわからない
               </li>
               <li className={styles.card}>
+                介護のストレスが大きく、心のケアが必要だと感じている
+              </li>
+              <li className={styles.card}>
                 仕事や新しい挑戦に自信が持てず、一歩を踏み出せない
               </li>
               <li className={styles.card}>
@@ -127,56 +132,59 @@ const Home = () => {
 
             {/* 自分のエピソード */}
             <div className={styles.storyBlock}>
-              <p className={styles.introduction}>
-                私も同じように感じていました。<u>29歳から36歳まで、うつ病と戦い</u>、社会復帰に悩みました。病気を抱えながら仕事を探したり、働けど失敗の連続、
-                人間関係の再構築がうまくできず、何度も挫折を経験しました。自己肯定感ゼロの状態で24時間365日を過ごしていました。<br /><br />
-                それでも少しずつ前に進む方法を見つけ、今では他の方のサポートをすることができています。あなたも同じように、一歩ずつ進んでいけるはずです。
-              </p>
+            <p className={styles.introduction}>
+              　私自身、<u>過去、うつ病と戦いました</u>。<br />
+              社会復帰は決して簡単ではなく、むしろ厳しいものでした。何度も壁にぶつかり、挫折や失敗を経験し、進むことすら辛いと感じる日々もありました。<br />
+              それでも、一歩ずつ前に進む努力を続け、少しずつ壁を乗り越えてきました。<br />
+              　過去には介護の仕事にも従事し、心身ともに厳しい環境の中で、介護の大変さや心の負担を強く実感しました。<br />
+              　何かしら特別な救いがあったわけではありませんが、挑戦を続ける中で少しずつ自分自身の問題を解決していきました。<br />
+              　あなたも同じように、少しずつ前に進むことができます。一緒に歩んでいきましょう。
+            </p>
+
             </div>
           </div>
 
           {/* カウンセリングで何が解決できる？ */}
           <div className={styles.solutionContainer}>
             <div className={styles.solutionBanner}>
-              <h2 className={styles.bannerText}>カウンセリングで何が解決できる？</h2>
+              <h2 className={styles.bannerText}>私がサポートできること</h2>
             </div>
-            <div className={styles.solutionBlock}>
+
+            {/* サポートのリスト */}
+            <div className={styles.problemBlock}>
               <ul className={styles.cardList}>
                 <li className={styles.card}>
-                  <strong>孤独感からの解放</strong>: 誰にも話せない悩みを、安心して話せる場所を提供します。
+                <strong>心の健康と自己肯定感の回復支援</strong>: 自分を大切にしながら、一歩ずつ前に進むための方法を提案します。自己肯定感を高め、新たな人生のスタートを支援します。
                 </li>
                 <li className={styles.card}>
-                  <strong>感情の整理</strong>: 心の中で絡み合っている感情を整理し、心を軽くするサポートをします。
+                  <strong>介護に苦しむ人へのサポート</strong>: 介護のストレスや家族との関係に悩む方へ、現実的なアドバイスと心のケアを提供します。特に介護者の心の負担に寄り添います。
                 </li>
                 <li className={styles.card}>
-                  <strong>自己肯定感の回復</strong>: 自己否定から解放され、自己肯定感を少しずつ取り戻すお手伝いをします。
+                <strong>年代や性別を問わない支援</strong>: 若者をから、さまざまな年代の方に対応した支援を提供します。生きにくさを感じる方々に対して、無理なく前向きに進むための具体的なサポートを行います。
                 </li>
                 <li className={styles.card}>
-                  <strong>新しいステップへのサポート</strong>: 新しい一歩を踏み出し、充実した生活や人間関係の再構築を目指します。
-                </li>
-                <li className={styles.card}>
-                  <strong>人間関係の改善</strong>: 対人関係の悩みを整理し、コミュニケーションのスキル向上を目指します。
-                </li>
-                <li className={styles.card}>
-                  <strong>未来に向けたビジョンづくり</strong>: 自分の人生に対する新しい視点や可能性を見つけ、将来のビジョンを明確にします。
+                <strong>新しいステップへのサポート</strong>: 新しい一歩を踏み出し、社会や人間関係の中で充実した生活を再構築する手助けをします。
                 </li>
               </ul>
             </div>
-          </div>
 
+          </div>
 
           {/* カウンセリング対象 */}
           <div className={styles.targetContainer}>
             <div className={styles.targetBanner}>
-              <h2 className={styles.bannerText}>どんな方でも大丈夫です</h2>
+              <h2 className={styles.bannerText}>年代、性別問わずどんな方でも大丈夫です</h2>
             </div>
             <div className={styles.targetBlock}>
               <p>
-                うつ病や生きにくさに悩む方だけでなく、社会復帰や人間関係の構築に困難を感じている方も対象です。悩みの大きさに関わらず、まずは話してみませんか？
+                うつ病や生きにくさに悩む方だけでなく、介護の悩みや社会復帰、人間関係の構築に困難を感じている方も対象です。悩みの大きさに関わらず、まずは話してみませんか？
               </p>
               <ul className={styles.cardList}>
               <li className={styles.card}>
                 うつ病や抑うつ感から抜け出そうとしても、次の一歩が踏み出せない方
+              </li>
+              <li className={styles.card}>
+                介護に関する悩みを抱え、心の負担が大きくなっている方
               </li>
               <li className={styles.card}>
                 新しい人間関係を築くことに不安を感じ、どう行動していいかわからない方
