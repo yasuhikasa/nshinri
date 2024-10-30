@@ -21,6 +21,11 @@ const Header = () => {
               カウンセリングの重要さ
             </Link>
           </li>
+          <li className={styles.navItem}>
+            <Link href="/contact" className={styles.navLink}>
+              お問い合わせ
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>

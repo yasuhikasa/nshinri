@@ -1,0 +1,111 @@
+/* Contact.module.css */
+
+/* 全体のコンテナスタイル */
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+/* 見出しのスタイル */
+.heading {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* 説明テキストのスタイル */
+.intro {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+/* フォーム全体のスタイル */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* フォームグループ（各フィールドのラベルと入力要素） */
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* ラベルのスタイル */
+.label {
+  font-weight: bold;
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+/* 入力フィールドのスタイル */
+.input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* テキストエリアのスタイル */
+.textarea {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  resize: vertical;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 150px;
+}
+
+/* 送信ボタンのスタイル */
+.submitButton {
+  padding: 12px 0;
+  background-color: #5cb85c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.submitButton:hover {
+  background-color: #4cae4c;
+}
+
+/* 送信成功メッセージ */
+.successMessage {
+  color: #5cb85c;
+  font-size: 1rem;
+  margin-top: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .heading {
+    font-size: 1.6rem;
+  }
+
+  .intro,
+  .label,
+  .input,
+  .textarea,
+  .submitButton {
+    font-size: 1rem;
+  }
+}
