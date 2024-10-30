@@ -31,6 +31,9 @@ const Post = ({ content, title, date, description, slug }: PostProps) => {
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content="/x.png" />
+         {/* 必要に応じたその他のSEO設定 */}
+        <meta name="keywords" content="うつ病, 介護, メンタル, カウンセリング, 心理, サポート" />
+        <link rel="canonical" href={`https://nshinri.net/posts/${slug}`} />
       </Head>
 
       <Header />
