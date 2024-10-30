@@ -12,9 +12,10 @@ interface PostProps {
   title: string;
   date: string;
   description: string;
+  slug: string;
 }
 
-const Post = ({ content, title, date, description }: PostProps) => {
+const Post = ({ content, title, date, description, slug }: PostProps) => {
   return (
     <>
       {/* SEOやOGPのためのHeadタグ */}
@@ -22,10 +23,10 @@ const Post = ({ content, title, date, description }: PostProps) => {
         <title>{title} - 心理カウンセリングコラム</title>
         <meta name="description" content={description} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="og:title" content={title} />
+        <meta property="og:title" content={slug} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content="/me.png" />
-        <meta property="og:url" content={`https://nshinri.net/posts/${title}`} />
+        <meta property="og:url" content={`https://nshinri.net/posts/${slug}`} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
