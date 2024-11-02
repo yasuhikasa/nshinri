@@ -33,6 +33,8 @@ const Contact: React.FC = () => {
 
     if (!isConfirmed) {
       return; // ユーザーが「キャンセル」を選んだ場合、送信を中止
+    } else {
+      window.alert('送信しました！');
     }
 
     const response = await fetch('/api/sendContact', {
