@@ -17,14 +17,6 @@ const config = {
         priority: 1.0,
       };
     }
-    // コラムページ（/posts/ で始まるURL）の優先度を 0.9 に設定
-    if (url.startsWith('/posts/')) {
-      return {
-        loc: url,
-        changefreq: 'daily',
-        priority: 0.9,
-      };
-    }
     // それ以外のページはデフォルトの priority: 0.7 を使用
     return {
       loc: url,
@@ -39,6 +31,8 @@ const config = {
     return filenames.map((filename) => ({
       loc: `/posts/${filename.replace('.md', '')}`,
       lastmod: new Date().toISOString(),
+      changefreq: 'daily', // コラムページの更新頻度
+      priority: 0.9,       // コラムページの優先度
     }));
   },
 };
