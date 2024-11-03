@@ -4,6 +4,7 @@ import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
 import Header from '../../components/Header';
+import { NextSeo } from 'next-seo';
 import Head from 'next/head';
 import styles from './Post.module.css';
 
@@ -31,37 +32,42 @@ const Post = ({ content, title, date, description, slug, author }: PostProps) =>
     "dateModified": date,
     "author": {
       "@type": "Person",
-      "name": author // 著者名を追加
+      "name": author
     },
     "publisher": {
       "@type": "Organization",
       "name": "心理カウンセリングとライフコーチング-Nくん",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://nshinri.net/me.png" // ロゴ画像のURL
+        "url": "https://nshinri.net/me.png"
       }
     },
-    "image": "https://nshinri.net/me.png" // コラムのメイン画像のURL
+    "image": "https://nshinri.net/me.png"
   };
 
   return (
     <>
-      <Head>
-        <title>{title} - 心理カウンセリングコラム</title>
-        <meta name="description" content={description} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:image" content="/me.png" />
-        <meta property="og:url" content={`https://nshinri.net/posts/${slug}`} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content="/x.png" />
-        <meta name="keywords" content="うつ病, 介護, メンタル, カウンセリング, 心理, サポート" />
-        <link rel="canonical" href={`https://nshinri.net/posts/${slug}`} />
+      {/* NextSeo によるページごとの SEO 設定 */}
+      <NextSeo
+        title={`${title} - 心理カウンセリングコラム`}
+        description={description}
+        openGraph={{
+          title: `${title} - 心理カウンセリングコラム`,
+          description: description,
+          url: `https://nshinri.net/posts/${slug}`,
+          images: [
+            {
+              url: 'https://nshinri.net/me.png',
+              width: 1200,
+              height: 630,
+              alt: 'カウンセリングコラムのプレビュー画像',
+            },
+          ],
+        }}
+      />
 
-        {/* JSON-LD構造化データをスクリプトとして挿入 */}
+      {/* JSON-LD 構造化データをスクリプトとして挿入 */}
+      <Head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

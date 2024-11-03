@@ -14,6 +14,7 @@
   "dependencies": {
     "gray-matter": "^4.0.3",
     "next": "14.2.15",
+    "next-seo": "^6.6.0",
     "next-sitemap": "^4.2.3",
     "nodemailer": "^6.9.16",
     "react": "^18",
@@ -22,6 +23,7 @@
     "remark-html": "^16.0.1"
   },
   "devDependencies": {
+    "@types/next-seo": "^2.1.2",
     "@types/node": "^20",
     "@types/nodemailer": "^6.4.16",
     "@types/react": "^18",
