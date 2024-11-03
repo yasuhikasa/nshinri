@@ -4,7 +4,7 @@ import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
 import Header from '../../components/Header';
-import Head from 'next/head'; // Headをインポート
+import Head from 'next/head';
 import styles from './Post.module.css';
 
 interface PostProps {
@@ -16,9 +16,35 @@ interface PostProps {
 }
 
 const Post = ({ content, title, date, description, slug }: PostProps) => {
+  // JSON-LD 形式の構造化データを定義
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://nshinri.net/posts/${slug}`
+    },
+    "headline": title,
+    "description": description,
+    "datePublished": date,
+    "dateModified": date,
+    "author": {
+      "@type": "Person",
+      "name": "author" // 著者名を追加
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Your Site Name",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://nshinri.net/me.png" // ロゴ画像のURL
+      }
+    },
+    "image": "https://nshinri.net/me.png" // コラムのメイン画像のURL
+  };
+
   return (
     <>
-      {/* SEOやOGPのためのHeadタグ */}
       <Head>
         <title>{title} - 心理カウンセリングコラム</title>
         <meta name="description" content={description} />
@@ -31,9 +57,14 @@ const Post = ({ content, title, date, description, slug }: PostProps) => {
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content="/x.png" />
-         {/* 必要に応じたその他のSEO設定 */}
         <meta name="keywords" content="うつ病, 介護, メンタル, カウンセリング, 心理, サポート" />
         <link rel="canonical" href={`https://nshinri.net/posts/${slug}`} />
+
+        {/* JSON-LD構造化データをスクリプトとして挿入 */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </Head>
 
       <Header />
@@ -79,7 +110,9 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
       content: contentHtml,
       title: data.title,
       date: data.date,
-      description: data.description, // descriptionを追加
+      description: data.description,
+      author: data.author,
+      slug: params.slug,
     },
   };
 }
