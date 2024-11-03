@@ -13,9 +13,10 @@ interface PostProps {
   date: string;
   description: string;
   slug: string;
+  author: string;
 }
 
-const Post = ({ content, title, date, description, slug }: PostProps) => {
+const Post = ({ content, title, date, description, slug, author }: PostProps) => {
   // JSON-LD 形式の構造化データを定義
   const jsonLd = {
     "@context": "https://schema.org",
@@ -30,11 +31,11 @@ const Post = ({ content, title, date, description, slug }: PostProps) => {
     "dateModified": date,
     "author": {
       "@type": "Person",
-      "name": "author" // 著者名を追加
+      "name": author // 著者名を追加
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Your Site Name",
+      "name": "心理カウンセリングとライフコーチング-Nくん",
       "logo": {
         "@type": "ImageObject",
         "url": "https://nshinri.net/me.png" // ロゴ画像のURL
