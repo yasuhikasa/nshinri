@@ -95,10 +95,66 @@
   text-align: center;
 }
 
+.error {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 10px;
+  text-align: left; /* デフォルトは左揃え */
+}
+
+.breadcrumb {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.breadcrumb ol {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb li {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 8px;
+}
+
+.breadcrumb li::after {
+  content: "›";
+  margin-left: 8px;
+  color: #999;
+}
+
+.breadcrumb li:last-child::after {
+  content: ""; /* 最後の要素には区切りを表示しない */
+}
+
+.breadcrumb a {
+  text-decoration: none;
+  color: #666;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+  color: #333;
+}
+
+
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
   .heading {
     font-size: 1.6rem;
+  }
+
+  .breadcrumb {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 5px;
+    display: flex;
+    gap: 0.3em;
   }
 
   .intro,
@@ -107,5 +163,10 @@
   .textarea,
   .submitButton {
     font-size: 1rem;
+  }
+  .error {
+    font-size: 0.8rem; /* 小さな画面では少し小さく */
+    text-align: center; /* モバイルで中央揃え */
+    margin-top: 5px; /* 上の余白を少し小さく */
   }
 }

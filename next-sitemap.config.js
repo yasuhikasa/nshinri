@@ -7,9 +7,8 @@ const config = {
   generateRobotsTxt: true,
   sitemapSize: 7000,
   changefreq: 'daily',
-  priority: 0.7, // デフォルトの優先度
+  priority: 0.7,
   transform: async (config, url) => {
-    // トップページの優先度を 1.0 に設定
     if (url === '/') {
       return {
         loc: url,
@@ -17,7 +16,13 @@ const config = {
         priority: 1.0,
       };
     }
-    // それ以外のページはデフォルトの priority: 0.7 を使用
+    if (url.startsWith('/posts/')) {
+      return {
+        loc: url,
+        changefreq: 'daily',
+        priority: 0.9,
+      };
+    }
     return {
       loc: url,
       changefreq: 'daily',
@@ -28,12 +33,33 @@ const config = {
     const postsDirectory = path.join(process.cwd(), 'public', 'posts');
     const filenames = fs.readdirSync(postsDirectory);
 
-    return filenames.map((filename) => ({
+    const postPaths = filenames.map((filename) => ({
       loc: `/posts/${filename.replace('.md', '')}`,
       lastmod: new Date().toISOString(),
-      changefreq: 'daily', // コラムページの更新頻度
-      priority: 0.9,       // コラムページの優先度
+      changefreq: 'daily',
+      priority: 0.9,
     }));
+
+    const staticPages = fs
+      .readdirSync(path.join(process.cwd(), 'src', 'pages'))
+      .filter((staticPage) => {
+        return ![
+          '_app.tsx',
+          '_document.tsx',
+          '404.tsx',
+          'api',
+          'posts',
+          'fonts',  // fonts ディレクトリを除外
+        ].includes(staticPage) && !staticPage.endsWith('.css');
+      })
+      .map((staticPage) => ({
+        loc: `/${staticPage.replace('.tsx', '')}`,
+        lastmod: new Date().toISOString(),
+        changefreq: 'weekly',
+        priority: 0.8,
+      }));
+
+    return [...postPaths, ...staticPages];
   },
 };
 

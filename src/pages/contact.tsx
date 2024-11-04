@@ -1,35 +1,45 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
+import { NextSeo } from 'next-seo';
 import styles from './contact.module.css';
 import Header from '../components/Header';
+import Link from 'next/link';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    confirmEmail: '',
     subject: '',
     message: '',
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
+    setError(''); // エラーをリセット
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    // 件名とメッセージの文字数チェック
     if (formData.subject.length > 50 || formData.message.length > 1000) {
       alert('件名は50文字以内、内容は1000文字以内にしてください。');
       return;
     }
 
+    // メールアドレスの一致確認
+    if (formData.email !== formData.confirmEmail) {
+      setError('メールアドレスが一致しません。');
+      return;
+    }
+
     // 確認ダイアログの表示
-    const isConfirmed = window.confirm(
-      '送信してもよろしいですか？'
-    );
+    const isConfirmed = window.confirm('送信してもよろしいですか？');
 
     if (!isConfirmed) {
       return; // ユーザーが「キャンセル」を選んだ場合、送信を中止
@@ -45,23 +55,77 @@ const Contact: React.FC = () => {
 
     if (response.ok) {
       setIsSubmitted(true);
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      setFormData({ name: '', email: '', confirmEmail: '', subject: '', message: '' });
     } else {
       alert('送信に失敗しました。再度お試しください。');
     }
   };
 
+  const breadcrumbItems = [
+    { name: 'ホーム', href: '/' },
+    { name: 'お問い合わせ', href: '/contact' },
+  ];
+
   return (
     <>
+      {/* NextSeo による SEO 設定 */}
+      <NextSeo
+        title="お問い合わせ - Nくん"
+        description="Nくんの心理カウンセリングとライフコーチングに関するお問い合わせページです。"
+        canonical="https://nshinri.net/contact"
+        openGraph={{
+          url: "https://nshinri.net/contact",
+          title: "お問い合わせ - Nくん",
+          description: "Nくんの心理カウンセリングとライフコーチングに関するお問い合わせページです。",
+          images: [
+            {
+              url: "https://nshinri.net/me.png",
+              width: 1200,
+              height: 630,
+              alt: "心理カウンセリングとライフコーチング - Nくん",
+            },
+          ],
+          site_name: "心理カウンセリングとライフコーチング - Nくん",
+        }}
+        twitter={{
+          handle: '@6209316426525',
+          site: '@6209316426525',
+          cardType: 'summary_large_image',
+        }}
+      />
+
+      {/* JSON-LD 構造化データの挿入 */}
       <Head>
-        <title>お問い合わせ - Nくん</title>
-        <meta name="description" content="Nくんの心理カウンセリングとライフコーチングに関するお問い合わせページ。" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": breadcrumbItems.map((item, index) => ({
+                "@type": "ListItem",
+                "position": index + 1,
+                "name": item.name,
+                "item": `https://nshinri.net${item.href}`,
+              })),
+            }),
+          }}
+        />
       </Head>
 
       <Header />
 
       <div className={styles.container}>
+        {/* パンクズリストの表示 */}
+        <nav aria-label="パンくずリスト" className={styles.breadcrumb}>
+          <ol>
+            <li>
+              <Link href="/">トップページ</Link>
+            </li>
+            <li aria-current="page">お問い合わせ</li>
+          </ol>
+        </nav>
+
         <h1 className={styles.heading}>お問い合わせ</h1>
         <p className={styles.intro}>
           カウンセリング申し込み前にご質問やご相談がある場合は、以下のフォームからお気軽にお問い合わせください。
@@ -93,6 +157,21 @@ const Contact: React.FC = () => {
               required
             />
           </div>
+
+          <div className={styles.formGroup}>
+            <label htmlFor="confirmEmail" className={styles.label}>メールアドレス（確認用）</label>
+            <input
+              type="email"
+              id="confirmEmail"
+              name="confirmEmail"
+              value={formData.confirmEmail}
+              onChange={handleChange}
+              className={styles.input}
+              required
+            />
+          </div>
+
+          {error && <p className={styles.error}>{error}</p>} {/* エラーメッセージの表示 */}
 
           <div className={styles.formGroup}>
             <label htmlFor="subject" className={styles.label}>お問い合わせ件名（50文字以内）</label>

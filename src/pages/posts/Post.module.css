@@ -109,6 +109,14 @@
     padding: 15px;
   }
 
+  .breadcrumb {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 5px;
+    display: flex;
+    gap: 0.3em;
+  }
+
   .title {
     font-size: 1.6rem;
   }
