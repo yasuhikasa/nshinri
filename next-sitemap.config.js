@@ -60,16 +60,16 @@ const config = {
         priority: 0.8,
       }));
 
-    return [
-      ...postPaths,
-      ...staticPages,
-      {
-        loc: '/', // トップページを明示的に追加
-        lastmod: new Date().toISOString(),
-        changefreq: 'daily',
-        priority: 1.0,
-      }
-    ];
+      return [
+        {
+          loc: '/', // トップページを先頭に追加
+          lastmod: new Date().toISOString(),
+          changefreq: 'daily',
+          priority: 1.0,
+        },
+        ...postPaths,
+        ...staticPages,
+      ];
   },
 };
 
