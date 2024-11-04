@@ -13,6 +13,38 @@
   color: #333;
 }
 
+/* パンくずリストのスタイル */
+.breadcrumb {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 0px;
+  display: flex;
+  gap: 0.3em;
+}
+
+.breadcrumb a {
+  color: #333;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb li {
+  display: inline;
+}
+
+.breadcrumb li::after {
+  content: "›";
+  color: #888;
+  margin: 0 5px;
+}
+
+.breadcrumb li:last-child::after {
+  content: ""; /* 最後の要素には矢印を表示しない */
+}
+
 .list {
   list-style: none;
   padding: 0;
@@ -27,6 +59,10 @@
 .link {
   text-decoration: none;
   color: #0070f3;
+}
+
+.link:hover {
+  text-decoration: underline;
 }
 
 .title {
@@ -48,7 +84,7 @@
   }
 
   .heading {
-    font-size: 2rem; /* 小さい画面で少し小さくする */
+    font-size: 2rem;
   }
 
   .listItem {
@@ -57,10 +93,10 @@
   }
 
   .title {
-    font-size: 1.5rem; /* タイトルを少し小さく */
+    font-size: 1.5rem;
   }
 
   .date {
-    font-size: 0.8rem; /* 日付のフォントサイズを小さく */
+    font-size: 0.8rem;
   }
 }

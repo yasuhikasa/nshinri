@@ -8,15 +8,15 @@
   border-radius: 8px;
 }
 
-/* タイトルのスタイル変更 */
+/* タイトルのスタイル */
 .title {
   font-size: 1.8rem;
   font-weight: bold;
   color: #333;
   margin-bottom: 10px;
-  padding: 0; /* 帯を外すためにpaddingをなくす */
-  text-align: center; /* 左揃えにしてシンプルに */
-  border-bottom: 2px solid #f7a8a8; /* 下線をつけてアクセント */
+  padding: 0;
+  text-align: center;
+  border-bottom: 2px solid #f7a8a8;
 }
 
 .date {
@@ -26,20 +26,53 @@
   text-align: right;
 }
 
+/* パンクズリストのスタイル */
+.breadcrumb {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 20px;
+  display: flex;
+  gap: 0.3em;
+}
+
+.breadcrumb a {
+  color: #333;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb li {
+  display: inline;
+}
+
+.breadcrumb li::after {
+  content: "›";
+  color: #888;
+  margin: 0 5px;
+}
+
+.breadcrumb li:last-child::after {
+  content: ""; /* 最後の要素には矢印を表示しない */
+}
+
+/* コンテンツのスタイル */
 .content {
   line-height: 1.8;
   font-size: 1.1rem;
   color: #444;
 }
 
-/* セクションタイトルのスタイル */
 .content h2 {
   margin-top: 30px;
   margin-bottom: 20px;
   font-size: 1.8rem;
   color: #333;
-  background-color: #f0f4f8; /* セクションの見出しに淡い背景色 */
+  background-color: #f3f6fa;
   padding: 10px;
+  border-left: 4px solid #f7a8a8;
   border-radius: 5px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -59,6 +92,17 @@
   margin-top: 20px;
 }
 
+/* リンクスタイル */
+.content a {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.content a:hover {
+  text-decoration: underline;
+}
+
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
   .container {
@@ -66,7 +110,7 @@
   }
 
   .title {
-    font-size: 1.6rem; /* タイトルを少し小さく調整 */
+    font-size: 1.6rem;
   }
 
   .content h2 {

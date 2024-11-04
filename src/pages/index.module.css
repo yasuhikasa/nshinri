@@ -20,9 +20,8 @@
   color: #666;
   margin: 10px 0 20px 0;
   word-wrap: break-word; /* 改行の処理 */
-  text-align: center; /* テキストを両端揃えにして均等に配置 */
+  text-align: center; /* テキストを中央揃えに */
 }
-
 
 /* 画像とプロフィールのレスポンシブレイアウト */
 .profileContainer {
@@ -87,15 +86,34 @@
   text-decoration: underline;
 }
 
-/* SNSアイコンのスタイル */
+/* SNSアイコンとリンクリストのスタイル */
 .sns {
-  margin-top: 20px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .sns a {
-  margin-right: 10px;
+  margin: 10px 0; /* アイコンとリンクの間に余白を追加 */
+  color: #4b0082; /* 少し目立つ色に設定 */
+  text-decoration: none;
+  font-size: 1.1rem;
 }
 
+.sns a:hover {
+  text-decoration: underline;
+}
+
+/* 行動ブロックのスタイル */
+.actionBlock {
+  margin-top: 5px;
+}
+
+/* カウンセリングボタンの余白調整 */
+.counselingButton {
+  margin-top: 20px; /* SNSアイコンとボタンの間に余白を追加 */
+}
 
 /* バナーのスタイル */
 .banner {
@@ -137,12 +155,6 @@
   margin-bottom: 20px;
 }
 
-.bannerText {
-  font-size: 1.8rem;
-  color: white;
-  font-weight: bold;
-}
-
 /* カード化されたリスト */
 .cardList {
   list-style: none;
@@ -168,14 +180,6 @@
   line-height: 1.8;
   text-align: left;
 }
-
-.introduction {
-  font-size: 1.1rem;
-  color: #444;
-  line-height: 1.8;
-  margin-bottom: 20px;
-}
-
 
 .solutionContainer {
   margin-top: 40px;
@@ -230,12 +234,6 @@
   margin-bottom: 20px;
 }
 
-.bannerText {
-  font-size: 1.8rem;
-  color: white;
-  font-weight: bold;
-}
-
 /* 行動を促すボタンのスタイル */
 .counselingButton {
   background-color: #5cb85c;
@@ -258,7 +256,7 @@
 /* 小さな画面向けのレスポンシブ文字サイズ調整 */
 @media (max-width: 768px) {
   .heading {
-    font-size: 1.6rem; /* トップ部分の見出しを小さく調整 */
+    font-size: 1.6rem;
   }
 
   .subtext,
@@ -266,34 +264,33 @@
   .targetBlock p,
   .bannerText,
   .card {
-    font-size: 1rem; /* 全体的に小さな文字サイズに調整 */
+    font-size: 1rem;
   }
 
   .bannerText {
-    font-size: 1.5rem; /* バナーのテキストを少し小さく */
+    font-size: 1.5rem;
   }
 
   .counselingButton {
-    font-size: 1rem; /* ボタンの文字サイズを小さく調整 */
+    font-size: 1rem;
   }
 
   .photo {
-    width: 200px; /* レスポンシブ用に小さく調整 */
-    height: 200px; /* レスポンシブ用に小さく調整 */
+    width: 200px;
+    height: 200px;
   }
 
   .profileContainer {
-    gap: 0px; /* 画像とテキストの間にスペース */
+    gap: 0px;
   }
 
   .profileText li,
   .profileText div,
   .profileText strong {
-    font-size: 1rem; /* レスポンシブ用に小さく調整 */
+    font-size: 1rem;
   }
 
   .storyBlock p {
-    font-size: 1rem; /* レスポンシブ用に小さく調整 */
+    font-size: 1rem;
   }
-
 }

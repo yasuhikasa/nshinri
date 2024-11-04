@@ -2,24 +2,63 @@ import Image from 'next/image';
 import Head from 'next/head';
 import styles from './index.module.css'; // CSSモジュールをインポート
 import Header from '../components/Header';
+import { NextSeo } from 'next-seo';
+import Link from 'next/link';
+
+
+// 構造化データのJSON-LD形式
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "心理カウンセリングとライフコーチング - Nくん",
+  "url": "https://nshinri.net",
+  "publisher": {
+    "@type": "Organization",
+    "name": "心理カウンセリングとライフコーチング - Nくん",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://nshinri.net/me.png",
+      "width": 300,
+      "height": 300
+    }
+  }
+};
 
 const Home = () => {
   return (
     <>
-      {/* SEOとメタ情報のためのHeadタグ */}
+      {/* NextSeoを使ったSEO設定 */}
+      <NextSeo
+        title="心理カウンセリングとライフコーチング - Nくん"
+        description="うつ病や生きにくさ、社会復帰、介護の悩みに寄り添い、具体的なサポートを提供します。"
+        canonical="https://nshinri.net"
+        openGraph={{
+          title: "心理カウンセリングとライフコーチング - Nくん",
+          description: "生きにくさに寄り添い、社会復帰や自己肯定感の回復をサポートします。",
+          url: "https://nshinri.net",
+          images: [
+            {
+              url: "https://nshinri.net/me.png",
+              width: 1200,
+              height: 630,
+              alt: "心理カウンセリングとライフコーチングのOGP画像"
+            },
+          ],
+          site_name: "心理カウンセリングとライフコーチング - Nくん",
+        }}
+        twitter={{
+          handle: '@6209316426525',
+          site: '@6209316426525',
+          cardType: 'summary_large_image',
+        }}
+      />
+
+      {/* 構造化データをスクリプトとして挿入 */}
       <Head>
-        <title>心理カウンセリングとライフコーチング - Nくん</title>
-        <meta name="description" content="Nくんの心理カウンセリングとライフコーチングサービス。うつ病や生きにくさ、社会復帰、介護の悩みに寄り添い、具体的なサポートを提供します。" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="og:title" content="心理カウンセリングとライフコーチング - Nくん" />
-        <meta property="og:description" content="生きにくさに寄り添い、社会復帰や自己肯定感の回復をサポートします。" />
-        <meta property="og:image" content="/me.png" />
-        <meta property="og:url" content="https://nshinri.net" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="心理カウンセリングとライフコーチング - Nくん" />
-        <meta name="twitter:description" content="生きにくさに寄り添い、自己肯定感を回復するライフコーチング。" />
-        <meta name="twitter:image" content="/x.png" />
-        <meta name="google-site-verification" content="qhPi1I958aMX4JB4OO-vT4w_m1ls0YdUOTaq-GmhxdE" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </Head>
 
       <Header /> {/* ヘッダーを表示 */}
@@ -65,21 +104,25 @@ const Home = () => {
           </div>
         </div>
 
+        {/* SNSリンク */}
         <div className={styles.sns}>
           <a href="https://x.com/N6209316426525" target="_blank" rel="noopener noreferrer">
-            <Image
-              src="/x.png"
-              alt="x"
-              width={40}
-              height={40}
-            />
+            <Image src="/x.png" alt="x" width={40} height={40} />
             　⇦Xはこちらから
           </a>
         </div>
 
+        {/* 内部リンクへの改善 */}
+        <div className={styles.linkSection}>
+          <Link href="/posts"  legacyBehavior>
+            <a className={styles.link}>・コラム一覧を見る</a>
+          </Link>
+        </div>
+
+        {/* 行動の促し */}
         <div className={styles.actionBlock}>
           <button className={styles.counselingButton} onClick={() => alert('カウンセリング予約ページへ移動')}>
-            カウンセリングの説明（※準備中）
+                カウンセリングの説明（※準備中）
           </button>
         </div>
 

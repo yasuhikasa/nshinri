@@ -6,6 +6,7 @@ import html from 'remark-html';
 import Header from '../../components/Header';
 import { NextSeo } from 'next-seo';
 import Head from 'next/head';
+import Link from 'next/link';
 import styles from './Post.module.css';
 
 interface PostProps {
@@ -18,7 +19,7 @@ interface PostProps {
 }
 
 const Post = ({ content, title, date, description, slug, author }: PostProps) => {
-  // JSON-LD 形式の構造化データを定義
+  // JSON-LD 形式の構造化データ（記事情報）
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -43,6 +44,32 @@ const Post = ({ content, title, date, description, slug, author }: PostProps) =>
       }
     },
     "image": "https://nshinri.net/me.png"
+  };
+
+  // JSON-LD パンクズリスト構造化データ
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "トップページ",
+        "item": "https://nshinri.net/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "コラム一覧",
+        "item": "https://nshinri.net/posts"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": title,
+        "item": `https://nshinri.net/posts/${slug}`
+      }
+    ]
   };
 
   return (
@@ -72,9 +99,27 @@ const Post = ({ content, title, date, description, slug, author }: PostProps) =>
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        />
       </Head>
 
       <Header />
+
+      {/* パンクズリストの表示 */}
+      <nav aria-label="パンくずリスト" className={styles.breadcrumb}>
+        <ol>
+          <li>
+            <Link href="/">トップページ</Link>
+          </li>
+          <li>
+            <Link href="/posts">コラム一覧</Link>
+          </li>
+          <li aria-current="page">{title}</li>
+        </ol>
+      </nav>
+
       <div className={styles.container}>
         <h1 className={styles.title}>{title}</h1>
         <p className={styles.date}>{date}</p>
