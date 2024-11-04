@@ -50,6 +50,7 @@ const config = {
           'api',
           'posts',
           'fonts',  // fonts ディレクトリを除外
+          'index.tsx'
         ].includes(staticPage) && !staticPage.endsWith('.css');
       })
       .map((staticPage) => ({
@@ -59,7 +60,16 @@ const config = {
         priority: 0.8,
       }));
 
-    return [...postPaths, ...staticPages];
+    return [
+      ...postPaths,
+      ...staticPages,
+      {
+        loc: '/', // トップページを明示的に追加
+        lastmod: new Date().toISOString(),
+        changefreq: 'daily',
+        priority: 1.0,
+      }
+    ];
   },
 };
 
