@@ -8,6 +8,8 @@ import { NextSeo } from 'next-seo';
 import Head from 'next/head';
 import Link from 'next/link';
 import styles from './Post.module.css';
+import { getRelatedPosts } from '../../utils/getRelatedPosts'; // 関連記事取得関数を追加
+
 
 interface PostProps {
   content: string;
@@ -16,9 +18,10 @@ interface PostProps {
   description: string;
   slug: string;
   author: string;
+  relatedPosts: PostProps[];
 }
 
-const Post = ({ content, title, date, description, slug, author }: PostProps) => {
+const Post = ({ content, title, date, description, slug, author, relatedPosts }: PostProps & { relatedPosts: PostProps[] }) => {
   // JSON-LD 形式の構造化データ（記事情報）
   const jsonLd = {
     "@context": "https://schema.org",
@@ -125,6 +128,21 @@ const Post = ({ content, title, date, description, slug, author }: PostProps) =>
         <p className={styles.date}>{date}</p>
         <div className={styles.content} dangerouslySetInnerHTML={{ __html: content }} />
       </div>
+
+      {/* 関連記事セクション */}
+      <div className={styles.relatedPosts}>
+        <h2>関連記事</h2>
+        <ul>
+          {relatedPosts.map((post) => (
+            <li key={post.slug}>
+              <Link href={`/posts/${post.slug}`} legacyBehavior>
+                <a>{post.title}</a>
+              </Link>
+              <p>{post.date}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
     </>
   );
 };
@@ -157,6 +175,9 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
     .process(content);
   const contentHtml = processedContent.toString();
 
+  // 関連記事を取得
+  const relatedPosts = getRelatedPosts(params.slug);
+
   return {
     props: {
       content: contentHtml,
@@ -165,8 +186,10 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
       description: data.description,
       author: data.author,
       slug: params.slug,
+      relatedPosts,
     },
   };
 }
+
 
 export default Post;

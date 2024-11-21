@@ -253,6 +253,81 @@
   background-color: #4cae4c;
 }
 
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.notifications {
+  margin: 20px 0;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.notificationsHeading {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #0056b3;
+  padding-bottom: 5px;
+}
+
+.notificationList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notificationItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.notificationItem:last-child {
+  border-bottom: none;
+}
+
+.notificationDate {
+  font-size: 0.9rem;
+  color: #757575;
+  flex-basis: 30%;
+  text-align: left;
+}
+
+.notificationTitle {
+  font-size: 1rem;
+  color: #0056b3;
+  text-decoration: none;
+  flex-basis: 70%;
+  text-align: left;
+}
+
+.notificationTitle:hover {
+  text-decoration: underline;
+}
+
+.notificationMore {
+  margin-top: 10px;
+  text-align: right;
+}
+
+.notificationMore a {
+  font-size: 0.9rem;
+  color: #0056b3;
+  text-decoration: none;
+}
+
+.notificationMore a:hover {
+  text-decoration: underline;
+}
+
+
 /* 小さな画面向けのレスポンシブ文字サイズ調整 */
 @media (max-width: 768px) {
   .heading {
@@ -293,4 +368,17 @@
   .storyBlock p {
     font-size: 1rem;
   }
-}
+
+    .notificationItem {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .notificationDate {
+      margin-bottom: 5px;
+    }
+
+    .notificationTitle {
+      text-align: left;
+    }
+  }

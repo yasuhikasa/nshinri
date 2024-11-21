@@ -4,6 +4,65 @@ import styles from './index.module.css'; // CSSモジュールをインポート
 import Header from '../components/Header';
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+
+
+export async function getStaticProps() {
+  const postsDirectory = path.join(process.cwd(), "contents", "posts");
+  console.log("postsDirectory:", postsDirectory); // ディレクトリパスを確認
+
+  if (!fs.existsSync(postsDirectory)) {
+    console.error("ディレクトリが存在しません:", postsDirectory);
+    return {
+      props: {
+        notifications: [],
+      },
+    };
+  }
+
+  const filenames = fs.readdirSync(postsDirectory);
+  console.log("filenames:", filenames); // ファイル名一覧を確認
+
+  if (filenames.length === 0) {
+    console.warn("通知ファイルが見つかりません");
+    return {
+      props: {
+        notifications: [],
+      },
+    };
+  }
+
+  const notifications = filenames.map((filename) => {
+    const filePath = path.join(postsDirectory, filename);
+    console.log("filePath:", filePath); // 各ファイルのパスを確認
+
+    const fileContents = fs.readFileSync(filePath, "utf8");
+    console.log("fileContents:", fileContents); // ファイル内容を確認
+
+    const { data } = matter(fileContents);
+    console.log("data:", data); // 解析したデータを確認
+
+    return {
+      slug: filename.replace(".md", ""),
+      title: data.title,
+      date: data.date,
+      description: data.description,
+    };
+  });
+
+  notifications.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  console.log("notifications:", notifications); // 最終的な通知データを確認
+
+  return {
+    props: {
+      notifications,
+    },
+  };
+}
+
+
 
 
 // 構造化データのJSON-LD形式
@@ -24,7 +83,9 @@ const jsonLd = {
   }
 };
 
-const Home = () => {
+const Home = ({ notifications }: { notifications?: { slug: string; title: string; date: string; description: string }[] }) => {
+  const safeNotifications = notifications || [];
+
   return (
     <>
       {/* NextSeoを使ったSEO設定 */}
@@ -105,19 +166,46 @@ const Home = () => {
         </div>
 
         {/* SNSリンク */}
-        <div className={styles.sns}>
+        {/* <div className={styles.sns}>
           <a href="https://x.com/N6209316426525" target="_blank" rel="noopener noreferrer">
             <Image src="/x.png" alt="x" width={40} height={40} />
             　⇦Xはこちらから
           </a>
-        </div>
+        </div> */}
 
         {/* 内部リンクへの改善 */}
-        <div className={styles.linkSection}>
+        {/* <div className={styles.linkSection}>
           <Link href="/posts"  legacyBehavior>
             <a className={styles.link}>・コラム一覧を見る</a>
           </Link>
-        </div>
+        </div> */}
+    <div className={styles.container}>
+      {/* お知らせセクション */}
+      <div className={styles.notifications}>
+        <h2 className={styles.notificationsHeading}>記事更新</h2>
+        <ul className={styles.notificationList}>
+        {safeNotifications.length > 0 ? (
+              safeNotifications.map((note, index) => (
+              <li key={index} className={styles.notificationItem}>
+                <span className={styles.notificationDate}>{note.date}</span>
+                <Link href={`/posts/${note.slug}`} legacyBehavior>
+                  <a className={styles.notificationTitle}>{note.title}</a>
+                </Link>
+              </li>
+            ))
+          ) : (
+            <p>現在お知らせはありません。</p>
+          )}
+        </ul>
+        {safeNotifications.length > 0 && (
+          <div className={styles.notificationMore}>
+            <Link href="/posts" legacyBehavior>
+              <a>過去の記事一覧はこちら &raquo;</a>
+            </Link>
+          </div>
+        )}
+      </div>
+    </div>
 
         {/* 行動の促し */}
         <div className={styles.actionBlock}>
