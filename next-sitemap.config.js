@@ -30,7 +30,7 @@ const config = {
     };
   },
   additionalPaths: async () => {
-    const postsDirectory = path.join(process.cwd(), 'public', 'posts');
+    const postsDirectory = path.join(process.cwd(), 'contents', 'posts');
     const filenames = fs.readdirSync(postsDirectory);
 
     const postPaths = filenames.map((filename) => ({
