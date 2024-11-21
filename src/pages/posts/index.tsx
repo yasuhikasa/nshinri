@@ -77,7 +77,7 @@ const PostList = ({ posts }: PostListProps) => {
 };
 
 export async function getStaticProps() {
-  const postsDirectory = path.join(process.cwd(), 'public', 'posts');
+  const postsDirectory = path.join(process.cwd(), 'contents', 'posts');
   const filenames = fs.readdirSync(postsDirectory);
 
   const posts = filenames.map((filename) => {
