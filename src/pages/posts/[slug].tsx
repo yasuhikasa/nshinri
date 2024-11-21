@@ -130,7 +130,7 @@ const Post = ({ content, title, date, description, slug, author }: PostProps) =>
 };
 
 export async function getStaticPaths() {
-  const postsDirectory = path.join(process.cwd(), 'public', 'posts');
+  const postsDirectory = path.join(process.cwd(), 'contents', 'posts');
   const filenames = fs.readdirSync(postsDirectory);
 
   const paths = filenames.map((filename) => ({
@@ -141,12 +141,12 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: 'blocking'
+    fallback: false
   };
 }
 
 export async function getStaticProps({ params }: { params: { slug: string } }) {
-  const postsDirectory = path.join(process.cwd(), 'public', 'posts');
+  const postsDirectory = path.join(process.cwd(), 'contents', 'posts');
   const filePath = path.join(postsDirectory, `${params.slug}.md`);
   const fileContents = fs.readFileSync(filePath, 'utf8');
 
