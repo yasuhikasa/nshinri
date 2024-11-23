@@ -186,7 +186,7 @@ const Home = ({
 
         {/* 在宅介護アプリ */}
         <h2 className={styles.heading}>N&apos;s WorkRoomの活動</h2>
-        <h3 className={styles.subheading}>WEB、スマホアプリの個人開発</h3>
+        <h3 className={styles.subheading}>WEB・スマホアプリの個人開発</h3>
         <div className={styles.section}>
           <div className={styles.introduction}>
             <Link href="/kaigokiroku" legacyBehavior>
@@ -235,7 +235,7 @@ const Home = ({
           <ul className={styles.list}>
             <li>・介護のお悩み相談</li>
             <li>・心の病や社会を離脱してからのリスタートのお悩み相談</li>
-            <li>・未経験IT転職相談</li>
+            <li>・未経験からのIT転職相談</li>
           </ul>
         </div>
 
