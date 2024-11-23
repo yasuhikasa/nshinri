@@ -1,6 +1,7 @@
 const config = {
-  title: "心理カウンセリングとライフコーチング-Nくん",
-  description: "心のサポートやカウンセリングを通じて、生活の質を向上させるためのアドバイスや支援を行います。",
+  title: '心理カウンセリングとライフコーチング-Nくん',
+  description:
+    '心のサポートやカウンセリングを通じて、生活の質を向上させるためのアドバイスや支援を行います。',
   openGraph: {
     type: 'website',
     locale: 'ja_JP',
@@ -17,7 +18,7 @@ const config = {
   },
   twitter: {
     handle: '@N6209316426525', // Twitterハンドルをここに入力
-    site: '@N6209316426525',   // サイト用のTwitterアカウント
+    site: '@N6209316426525', // サイト用のTwitterアカウント
     cardType: 'summary_large_image',
   },
 };

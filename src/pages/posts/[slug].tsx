@@ -10,7 +10,6 @@ import Link from 'next/link';
 import styles from './Post.module.css';
 import { getRelatedPosts } from '../../utils/getRelatedPosts'; // 関連記事取得関数を追加
 
-
 interface PostProps {
   content: string;
   title: string;
@@ -21,58 +20,66 @@ interface PostProps {
   relatedPosts: PostProps[];
 }
 
-const Post = ({ content, title, date, description, slug, author, relatedPosts }: PostProps & { relatedPosts: PostProps[] }) => {
+const Post = ({
+  content,
+  title,
+  date,
+  description,
+  slug,
+  author,
+  relatedPosts,
+}: PostProps & { relatedPosts: PostProps[] }) => {
   // JSON-LD 形式の構造化データ（記事情報）
   const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": `https://nshinri.net/posts/${slug}`
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://nshinri.net/posts/${slug}`,
     },
-    "headline": title,
-    "description": description,
-    "datePublished": date,
-    "dateModified": date,
-    "author": {
-      "@type": "Person",
-      "name": author
+    headline: title,
+    description: description,
+    datePublished: date,
+    dateModified: date,
+    author: {
+      '@type': 'Person',
+      name: author,
     },
-    "publisher": {
-      "@type": "Organization",
-      "name": "心理カウンセリングとライフコーチング-Nくん",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://nshinri.net/me.png"
-      }
+    publisher: {
+      '@type': 'Organization',
+      name: '心理カウンセリングとライフコーチング-Nくん',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://nshinri.net/me.png',
+      },
     },
-    "image": "https://nshinri.net/me.png"
+    image: 'https://nshinri.net/me.png',
   };
 
   // JSON-LD パンクズリスト構造化データ
   const breadcrumbJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
       {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "トップページ",
-        "item": "https://nshinri.net/"
+        '@type': 'ListItem',
+        position: 1,
+        name: 'トップページ',
+        item: 'https://nshinri.net/',
       },
       {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "コラム一覧",
-        "item": "https://nshinri.net/posts"
+        '@type': 'ListItem',
+        position: 2,
+        name: 'コラム一覧',
+        item: 'https://nshinri.net/posts',
       },
       {
-        "@type": "ListItem",
-        "position": 3,
-        "name": title,
-        "item": `https://nshinri.net/posts/${slug}`
-      }
-    ]
+        '@type': 'ListItem',
+        position: 3,
+        name: title,
+        item: `https://nshinri.net/posts/${slug}`,
+      },
+    ],
   };
 
   return (
@@ -126,7 +133,10 @@ const Post = ({ content, title, date, description, slug, author, relatedPosts }:
       <div className={styles.container}>
         <h1 className={styles.title}>{title}</h1>
         <p className={styles.date}>{date}</p>
-        <div className={styles.content} dangerouslySetInnerHTML={{ __html: content }} />
+        <div
+          className={styles.content}
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
       </div>
 
       {/* 関連記事セクション */}
@@ -159,7 +169,7 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: false
+    fallback: false,
   };
 }
 
@@ -170,9 +180,7 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
 
   const { content, data } = matter(fileContents);
 
-  const processedContent = await remark()
-    .use(html)
-    .process(content);
+  const processedContent = await remark().use(html).process(content);
   const contentHtml = processedContent.toString();
 
   // 関連記事を取得
@@ -190,6 +198,5 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
     },
   };
 }
-
 
 export default Post;

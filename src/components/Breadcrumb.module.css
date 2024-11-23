@@ -1,32 +1,24 @@
-/* components/Breadcrumb.module.css */
-
 .breadcrumb {
-  font-size: 0.9rem;
-  margin-bottom: 20px;
+  margin: 10px 0;
+  font-size: 14px;
 }
 
-.list {
-  list-style: none;
+.breadcrumb ol {
   display: flex;
-  gap: 5px;
+  list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.listItem {
-  display: flex;
-  align-items: center;
+.breadcrumb li {
+  margin-right: 5px;
 }
 
-.link {
-  color: #0070f3;
-  text-decoration: none;
+.breadcrumb li::after {
+  content: '>';
+  margin-left: 5px;
 }
 
-.link:hover {
-  text-decoration: underline;
-}
-
-.current {
-  color: #333;
+.breadcrumb li:last-child::after {
+  content: '';
 }

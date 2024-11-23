@@ -19,22 +19,22 @@ interface PostListProps {
 const PostList = ({ posts }: PostListProps) => {
   // JSON-LD パンくずリストの構造化データ
   const breadcrumbJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
       {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "トップページ",
-        "item": "https://nshinri.net/"
+        '@type': 'ListItem',
+        position: 1,
+        name: 'トップページ',
+        item: 'https://nshinri.net/',
       },
       {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "コラム一覧",
-        "item": "https://nshinri.net/posts"
-      }
-    ]
+        '@type': 'ListItem',
+        position: 2,
+        name: 'コラム一覧',
+        item: 'https://nshinri.net/posts',
+      },
+    ],
   };
 
   return (

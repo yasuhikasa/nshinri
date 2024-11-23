@@ -49,13 +49,13 @@
 }
 
 .breadcrumb li::after {
-  content: "›";
+  content: '›';
   color: #888;
   margin: 0 5px;
 }
 
 .breadcrumb li:last-child::after {
-  content: ""; /* 最後の要素には矢印を表示しない */
+  content: ''; /* 最後の要素には矢印を表示しない */
 }
 
 /* コンテンツのスタイル */
@@ -132,7 +132,6 @@
 .relatedPosts li a:hover {
   text-decoration: underline;
 }
-
 
 /* レスポンシブ対応 */
 @media (max-width: 768px) {

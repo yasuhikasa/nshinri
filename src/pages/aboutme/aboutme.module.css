@@ -1,0 +1,126 @@
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.heading {
+  font-size: 2rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profileContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  margin-top: 30px;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.profileRight {
+  flex: 1;
+}
+
+/* 画像エリア */
+.imageWrapper {
+  flex: 0 0 300px;
+  text-align: center;
+}
+
+.photo {
+  border-radius: 50%;
+  border: 3px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profileText {
+  flex: 1;
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+.profileText ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.profileText ul li {
+  margin-bottom: 10px;
+}
+
+.profileText strong {
+  font-size: 1.2rem;
+  color: #444;
+  margin-top: 15px;
+  display: block;
+}
+
+.sns {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.sns a {
+  color: #1da1f2;
+  text-decoration: none;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.sns a:hover {
+  text-decoration: underline;
+}
+
+.actionBlock {
+  margin-top: 30px;
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.8;
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .profileContainer {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .profileText {
+    font-size: 0.9rem;
+  }
+
+  .sns a {
+    font-size: 1rem;
+  }
+
+  .photo {
+    width: 200px;
+    height: auto;
+  }
+
+  .heading {
+    font-size: 1.6rem;
+  }
+
+  .actionBlock {
+    font-size: 0.9rem;
+  }
+}

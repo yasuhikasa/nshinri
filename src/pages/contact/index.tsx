@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import { NextSeo } from 'next-seo';
 import styles from './contact.module.css';
-import Header from '../components/Header';
+import Header from '../../components/Header';
 import Link from 'next/link';
 
 const Contact: React.FC = () => {
@@ -17,7 +17,9 @@ const Contact: React.FC = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState('');
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
     setError(''); // エラーをリセット
@@ -55,7 +57,13 @@ const Contact: React.FC = () => {
 
     if (response.ok) {
       setIsSubmitted(true);
-      setFormData({ name: '', email: '', confirmEmail: '', subject: '', message: '' });
+      setFormData({
+        name: '',
+        email: '',
+        confirmEmail: '',
+        subject: '',
+        message: '',
+      });
     } else {
       alert('送信に失敗しました。再度お試しください。');
     }
@@ -74,18 +82,19 @@ const Contact: React.FC = () => {
         description="Nくんの心理カウンセリングとライフコーチングに関するお問い合わせページです。"
         canonical="https://nshinri.net/contact"
         openGraph={{
-          url: "https://nshinri.net/contact",
-          title: "お問い合わせ - Nくん",
-          description: "Nくんの心理カウンセリングとライフコーチングに関するお問い合わせページです。",
+          url: 'https://nshinri.net/contact',
+          title: 'お問い合わせ - Nくん',
+          description:
+            'Nくんの心理カウンセリングとライフコーチングに関するお問い合わせページです。',
           images: [
             {
-              url: "https://nshinri.net/me.png",
+              url: 'https://nshinri.net/me.png',
               width: 1200,
               height: 630,
-              alt: "心理カウンセリングとライフコーチング - Nくん",
+              alt: '心理カウンセリングとライフコーチング - Nくん',
             },
           ],
-          site_name: "心理カウンセリングとライフコーチング - Nくん",
+          site_name: '心理カウンセリングとライフコーチング - Nくん',
         }}
         twitter={{
           handle: '@6209316426525',
@@ -100,13 +109,13 @@ const Contact: React.FC = () => {
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              "itemListElement": breadcrumbItems.map((item, index) => ({
-                "@type": "ListItem",
-                "position": index + 1,
-                "name": item.name,
-                "item": `https://nshinri.net${item.href}`,
+              '@context': 'https://schema.org',
+              '@type': 'BreadcrumbList',
+              itemListElement: breadcrumbItems.map((item, index) => ({
+                '@type': 'ListItem',
+                position: index + 1,
+                name: item.name,
+                item: `https://nshinri.net${item.href}`,
               })),
             }),
           }}
@@ -128,12 +137,14 @@ const Contact: React.FC = () => {
 
         <h1 className={styles.heading}>お問い合わせ</h1>
         <p className={styles.intro}>
-          カウンセリング申し込み前にご質問やご相談がある場合は、以下のフォームからお気軽にお問い合わせください。
+          ご質問やご相談がある場合は、以下のフォームからお気軽にお問い合わせください。
         </p>
 
         <form onSubmit={handleSubmit} className={styles.form}>
           <div className={styles.formGroup}>
-            <label htmlFor="name" className={styles.label}>お名前（仮名で可）</label>
+            <label htmlFor="name" className={styles.label}>
+              お名前（仮名で可）
+            </label>
             <input
               type="text"
               id="name"
@@ -144,9 +155,10 @@ const Contact: React.FC = () => {
               required
             />
           </div>
-
           <div className={styles.formGroup}>
-            <label htmlFor="email" className={styles.label}>メールアドレス</label>
+            <label htmlFor="email" className={styles.label}>
+              メールアドレス
+            </label>
             <input
               type="email"
               id="email"
@@ -157,9 +169,10 @@ const Contact: React.FC = () => {
               required
             />
           </div>
-
           <div className={styles.formGroup}>
-            <label htmlFor="confirmEmail" className={styles.label}>メールアドレス（確認用）</label>
+            <label htmlFor="confirmEmail" className={styles.label}>
+              メールアドレス（確認用）
+            </label>
             <input
               type="email"
               id="confirmEmail"
@@ -170,11 +183,12 @@ const Contact: React.FC = () => {
               required
             />
           </div>
-
-          {error && <p className={styles.error}>{error}</p>} {/* エラーメッセージの表示 */}
-
+          {error && <p className={styles.error}>{error}</p>}{' '}
+          {/* エラーメッセージの表示 */}
           <div className={styles.formGroup}>
-            <label htmlFor="subject" className={styles.label}>お問い合わせ件名（50文字以内）</label>
+            <label htmlFor="subject" className={styles.label}>
+              お問い合わせ件名（50文字以内）
+            </label>
             <input
               type="text"
               id="subject"
@@ -186,9 +200,10 @@ const Contact: React.FC = () => {
               required
             />
           </div>
-
           <div className={styles.formGroup}>
-            <label htmlFor="message" className={styles.label}>お問い合わせ内容（1000文字以内）</label>
+            <label htmlFor="message" className={styles.label}>
+              お問い合わせ内容（1000文字以内）
+            </label>
             <textarea
               id="message"
               name="message"
@@ -200,11 +215,16 @@ const Contact: React.FC = () => {
               required
             ></textarea>
           </div>
-
-          <button type="submit" className={styles.submitButton}>送信</button>
+          <button type="submit" className={styles.submitButton}>
+            送信
+          </button>
         </form>
 
-        {isSubmitted && <p className={styles.successMessage}>お問い合わせ内容が送信されました。ありがとうございます！</p>}
+        {isSubmitted && (
+          <p className={styles.successMessage}>
+            お問い合わせ内容が送信されました。ありがとうございます！
+          </p>
+        )}
       </div>
     </>
   );

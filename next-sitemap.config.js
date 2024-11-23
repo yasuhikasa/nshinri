@@ -43,33 +43,35 @@ const config = {
     const staticPages = fs
       .readdirSync(path.join(process.cwd(), 'src', 'pages'))
       .filter((staticPage) => {
-        return ![
-          '_app.tsx',
-          '_document.tsx',
-          '404.tsx',
-          'api',
-          'posts',
-          'fonts',  // fonts ディレクトリを除外
-          'index.tsx'
-        ].includes(staticPage) && !staticPage.endsWith('.css');
+        return (
+          ![
+            '_app.tsx',
+            '_document.tsx',
+            '404.tsx',
+            'api',
+            'posts',
+            'fonts', // fonts ディレクトリを除外
+            'index.tsx',
+          ].includes(staticPage) && !staticPage.endsWith('.css')
+        );
       })
       .map((staticPage) => ({
         loc: `/${staticPage.replace('.tsx', '')}`,
         lastmod: new Date().toISOString(),
         changefreq: 'weekly',
-        priority: 0.8,
+        priority: 0.9,
       }));
 
-      return [
-        {
-          loc: '/', // トップページを先頭に追加
-          lastmod: new Date().toISOString(),
-          changefreq: 'daily',
-          priority: 1.0,
-        },
-        ...postPaths,
-        ...staticPages,
-      ];
+    return [
+      {
+        loc: '/', // トップページを先頭に追加
+        lastmod: new Date().toISOString(),
+        changefreq: 'daily',
+        priority: 1.0,
+      },
+      ...postPaths,
+      ...staticPages,
+    ];
   },
 };
 

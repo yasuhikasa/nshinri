@@ -12,18 +12,13 @@ const Header = () => {
             </Link>
           </li>
           <li className={styles.navItem}>
-            <Link href="/posts" className={styles.navLink}>
-              記事一覧
-            </Link>
-          </li>
-          <li className={styles.navItem}>
-            <Link href="/aboutme" className={styles.navLink}>
-              「Nくん」について
+            <Link href="/posts/counseling-column" className={styles.navLink}>
+              カウンセリングの重要さ
             </Link>
           </li>
           <li className={styles.navItem}>
             <Link href="/contact" className={styles.navLink}>
-              お問い合わせ
+              カウンセリングのお問い合わせ
             </Link>
           </li>
         </ul>

@@ -1,10 +1,10 @@
 /* コンテナ全体のスタイル */
 .container {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
   text-align: center;
-  word-wrap: break-word; /* 長いテキストが改行されるように */
+  word-wrap: break-word;
 }
 
 /* トップ部分のスタイル */
@@ -12,254 +12,16 @@
   font-size: 2rem;
   color: #333;
   margin-bottom: 20px;
-  word-wrap: break-word; /* テキストが自然に改行されるように */
 }
 
 .subtext {
   font-size: 1.2rem;
   color: #666;
   margin: 10px 0 20px 0;
-  word-wrap: break-word; /* 改行の処理 */
-  text-align: center; /* テキストを中央揃えに */
-}
-
-/* 画像とプロフィールのレスポンシブレイアウト */
-.profileContainer {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  margin-top: 40px;
-  gap: 40px; /* 画像とテキストの間にスペース */
-}
-
-/* 小さな画面では縦並びに */
-@media (max-width: 768px) {
-  .profileContainer {
-    flex-direction: column; /* 縦並びに変更 */
-    align-items: center; /* 中央揃え */
-    margin-top: 20px;
-    gap: 20px; /* 画像とテキストの間にスペース */
-  }
-
-  .imageWrapper {
-    margin-bottom: 20px; /* 画像とテキストの間にスペース */
-  }
-
-  .profileText ul {
-    text-align: center; /* 小さい画面では中央揃え */
-    margin-left: 30px;
-    font-size: 1rem;
-  }
-}
-
-/* 画像のスタイル */
-.photo {
-  border-radius: 50%;
-  border: 2px solid #ddd;
-}
-
-/* プロフィールテキストのスタイル */
-.profileText ul {
-  list-style: none;
-  padding: 0;
-  text-align: left;
-}
-
-.profileText li {
-  margin-bottom: 10px;
-  font-size: 1.2rem;
-  color: #333;
-}
-
-.profileText div {
-  margin-bottom: 10px;
-  font-size: 1.2rem;
-  color: #333;
-}
-
-.profileText a {
-  color: #007bff;
-  text-decoration: none;
-}
-
-.profileText a:hover {
-  text-decoration: underline;
-}
-
-/* SNSアイコンとリンクリストのスタイル */
-.sns {
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.sns a {
-  margin: 10px 0; /* アイコンとリンクの間に余白を追加 */
-  color: #4b0082; /* 少し目立つ色に設定 */
-  text-decoration: none;
-  font-size: 1.1rem;
-}
-
-.sns a:hover {
-  text-decoration: underline;
-}
-
-/* 行動ブロックのスタイル */
-.actionBlock {
-  margin-top: 5px;
-}
-
-/* カウンセリングボタンの余白調整 */
-.counselingButton {
-  margin-top: 20px; /* SNSアイコンとボタンの間に余白を追加 */
-}
-
-/* バナーのスタイル */
-.banner {
-  background-color: #f7a8a8; /* 優しいピンク系の色で目立たせる */
-  padding: 15px;
-  margin: 30px 0;
-  text-align: center;
-  border-radius: 8px; /* 角を少し丸く */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 影をつけて浮き上がるように */
-}
-
-.bannerText {
-  font-size: 1.8rem;
-  color: white;
-  font-weight: bold;
-}
-
-/* 導入部分 */
-.introduction {
-  font-size: 1.1rem;
-  color: #444;
-  line-height: 1.8;
-  margin-top: 20px;
-  text-align: left;
-}
-
-/* 問題点とエピソードのコンテナ */
-.problemContainer {
-  margin-top: 40px;
-}
-
-/* 問題点の強調帯 */
-.problemBanner {
-  background-color: #f7a8a8;
-  padding: 15px;
-  text-align: center;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-}
-
-/* カード化されたリスト */
-.cardList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.card {
-  background-color: #f9f9f9;
-  padding: 15px;
-  margin-bottom: 10px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  font-size: 1.2rem;
-  color: #333;
-}
-
-/* 自分のエピソードのスタイル */
-.storyBlock {
-  margin-top: 30px;
-  font-size: 1.1rem;
-  color: #444;
-  line-height: 1.8;
-  text-align: left;
-}
-
-.solutionContainer {
-  margin-top: 40px;
-}
-
-/* 解決の強調帯 */
-.solutionBanner {
-  background-color: #f7a8a8;
-  padding: 15px;
-  text-align: center;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-}
-
-/* カウンセリング対象のコンテナ */
-.targetContainer {
-  margin-top: 40px;
-}
-
-/* カウンセリング対象の帯デザイン */
-.targetBanner {
-  background-color: #d1a8f7; /* 柔らかい紫の帯 */
-  padding: 15px;
-  text-align: center;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-}
-
-/* パラグラフのスタイル */
-.targetBlock p {
-  font-size: 1.2rem;
-  color: #444;
-  line-height: 1.8;
-  margin-bottom: 20px;
-}
-
-/* 行動の促しのコンテナ */
-.actionContainer {
-  margin-top: 40px;
-  margin-bottom: 120px;
   text-align: center;
 }
 
-/* 行動の促しの帯デザイン */
-.actionBanner {
-  background-color: #f5a623; /* 明るいオレンジ色の帯 */
-  padding: 15px;
-  text-align: center;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-}
-
-/* 行動を促すボタンのスタイル */
-.counselingButton {
-  background-color: #5cb85c;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  font-size: 2rem;
-  cursor: pointer;
-  margin-top: 40px;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* ボタンホバー時のスタイル */
-.counselingButton:hover {
-  background-color: #4cae4c;
-}
-
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
+/* 記事更新セクション */
 .notifications {
   margin: 20px 0;
   padding: 20px;
@@ -328,58 +90,119 @@
   text-decoration: underline;
 }
 
+/* h3を帯状にするデザイン */
+.subheading {
+  background-color: #4caf50; /* 緑色の背景 */
+  color: white;
+  padding: 10px 15px;
+  font-size: 1.8rem;
+  border-radius: 8px;
+  margin: 20px 0;
+  text-align: center;
+}
 
-/* 小さな画面向けのレスポンシブ文字サイズ調整 */
+/* セクション全体のスタイル */
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  gap: 20px;
+}
+
+/* 左側: 画像とリンク */
+.introduction {
+  flex: 1;
+  text-align: center;
+}
+
+/* リスト部分: 右側 */
+.list {
+  flex: 2;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.list li {
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  font-size: 1.1rem;
+  color: #333;
+}
+/* SNSアイコンとリンク */
+.sns {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.link {
+  color: #1da1f2;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.sns a {
+  color: #1da1f2;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.sns a:hover {
+  text-decoration: underline;
+}
+
+/* レスポンシブ対応 */
 @media (max-width: 768px) {
   .heading {
     font-size: 1.6rem;
   }
 
   .subtext,
-  .introduction,
-  .targetBlock p,
-  .bannerText,
-  .card {
+  .list li,
+  .notificationTitle,
+  .notificationDate {
+    font-size: 0.9rem;
+  }
+
+  .notificationItem {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .notificationDate {
+    margin-bottom: 5px;
+  }
+
+  .link {
     font-size: 1rem;
   }
 
-  .bannerText {
-    font-size: 1.5rem;
-  }
-
-  .counselingButton {
-    font-size: 1.4rem;
-  }
-
-  .photo {
-    width: 200px;
-    height: 200px;
-  }
-
-  .profileContainer {
-    gap: 0px;
-  }
-
-  .profileText li,
-  .profileText div,
-  .profileText strong {
+  .sns a {
     font-size: 1rem;
   }
+}
 
-  .storyBlock p {
-    font-size: 1rem;
+@media (min-width: 1024px) {
+  .section {
+    flex-direction: row;
+    align-items: center;
   }
 
-    .notificationItem {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .notificationDate {
-      margin-bottom: 5px;
-    }
-
-    .notificationTitle {
-      text-align: left;
-    }
+  .introduction {
+    flex-basis: 40%;
   }
+
+  .list {
+    flex-basis: 60%;
+  }
+}

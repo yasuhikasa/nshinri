@@ -2,7 +2,7 @@
 
 /* 全体のコンテナスタイル */
 .container {
-  max-width: 600px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
   text-align: center;
@@ -123,13 +123,13 @@
 }
 
 .breadcrumb li::after {
-  content: "›";
+  content: '›';
   margin-left: 8px;
   color: #999;
 }
 
 .breadcrumb li:last-child::after {
-  content: ""; /* 最後の要素には区切りを表示しない */
+  content: ''; /* 最後の要素には区切りを表示しない */
 }
 
 .breadcrumb a {
@@ -141,7 +141,6 @@
   text-decoration: underline;
   color: #333;
 }
-
 
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
