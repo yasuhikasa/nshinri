@@ -257,8 +257,8 @@ const Home = ({
           </div>
           <ul className={styles.list}>
             <li>・未経験からのキャリア構築ノウハウ</li>
-            <li>・ITエンジニアへの転職体験談</li>
-            <li>・仕事選びのコツや面接対策</li>
+            <li>・40歳未経験からのITエンジニアへの転職体験談</li>
+            <li>・転職活動のコツや面接対策</li>
           </ul>
         </div>
       </div>
