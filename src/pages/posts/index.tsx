@@ -55,12 +55,12 @@ const PostList = ({ posts }: PostListProps) => {
           <li>
             <Link href="/">トップページ</Link>
           </li>
-          <li aria-current="page">コラム一覧</li>
+          <li aria-current="page">記事一覧</li>
         </ol>
       </nav>
 
       <div className={styles.container}>
-        <h1 className={styles.heading}>コラム一覧</h1>
+        <h1 className={styles.heading}>記事一覧</h1>
         <ul className={styles.list}>
           {posts.map((post) => (
             <li key={post.slug} className={styles.listItem}>

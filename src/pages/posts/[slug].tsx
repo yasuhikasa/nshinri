@@ -124,7 +124,7 @@ const Post = ({
             <Link href="/">トップページ</Link>
           </li>
           <li>
-            <Link href="/posts">コラム一覧</Link>
+            <Link href="/posts">記事一覧</Link>
           </li>
           <li aria-current="page">{title}</li>
         </ol>
