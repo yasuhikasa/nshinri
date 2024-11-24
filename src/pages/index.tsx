@@ -243,7 +243,7 @@ const Home = ({
         <h3 className={styles.subheading}>電子書籍出版</h3>
         <div className={styles.section}>
           <div className={styles.introduction}>
-            <Link href="/kindle" legacyBehavior>
+            <Link href="https://x.gd/igk0F" legacyBehavior>
               <a>
                 <Image
                   src="/5.jpeg"
