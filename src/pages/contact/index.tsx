@@ -79,13 +79,13 @@ const Contact: React.FC = () => {
       {/* NextSeo による SEO 設定 */}
       <NextSeo
         title="お問い合わせ - Nくん"
-        description="Nくんの心理カウンセリングとライフコーチングに関するお問い合わせページです。"
+        description="Nくんのスマホアプリや開発、心理カウンセリングとライフコーチングに関するお問い合わせページです。"
         canonical="https://nshinri.net/contact"
         openGraph={{
           url: 'https://nshinri.net/contact',
           title: 'お問い合わせ - Nくん',
           description:
-            'Nくんの心理カウンセリングとライフコーチングに関するお問い合わせページです。',
+            'Nくんのスマホアプリや開発、心理カウンセリングとライフコーチングに関するお問い合わせページです。',
           images: [
             {
               url: 'https://nshinri.net/me.png',
@@ -105,6 +105,7 @@ const Contact: React.FC = () => {
 
       {/* JSON-LD 構造化データの挿入 */}
       <Head>
+        {/* パンクズリスト構造化データ */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -117,6 +118,25 @@ const Contact: React.FC = () => {
                 name: item.name,
                 item: `https://nshinri.net${item.href}`,
               })),
+            }),
+          }}
+        />
+        {/* ContactPage構造化データ */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'ContactPage',
+              name: 'お問い合わせ - Nくん',
+              description:
+                'Nくんの心理カウンセリングや開発に関するお問い合わせページ',
+              url: 'https://nshinri.net/contact',
+              contactOption: {
+                '@type': 'ContactPoint',
+                contactType: 'カスタマーサービス',
+                email: 'support@nshinri.net',
+              },
             }),
           }}
         />

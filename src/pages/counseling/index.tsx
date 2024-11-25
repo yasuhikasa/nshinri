@@ -6,32 +6,45 @@ import { NextSeo } from 'next-seo';
 import Breadcrumb from '../../components/Breadcrumb';
 
 // 構造化データのJSON-LD形式
-const jsonLd = {
+const jsonLdWebSite = {
   '@context': 'https://schema.org',
-  '@type': 'WebSite',
+  '@type': 'WebPage',
   name: '心理カウンセリングとライフコーチング - Nくん',
-  url: 'https://nshinri.net',
+  url: 'https://nshinri.net/counseling',
+  about: {
+    '@type': 'Thing',
+    name: '心理カウンセリングサービス',
+  },
   publisher: {
-    '@type': 'Organization',
-    name: '心理カウンセリングとライフコーチング - Nくん',
-    logo: {
-      '@type': 'ImageObject',
-      url: 'https://nshinri.net/me.png',
-      width: 300,
-      height: 300,
+    '@type': 'Person',
+    name: 'Nくん',
+  },
+  mainEntity: {
+    '@type': 'Service',
+    name: '心理カウンセリング',
+    description:
+      '生きにくさ、社会復帰、介護の悩みに具体的なサポートを提供します。',
+    provider: {
+      '@type': 'Person',
+      name: 'Nくん',
     },
   },
 };
 
-const serviceJsonLd = {
+const jsonLdService = {
   '@context': 'https://schema.org',
   '@type': 'Service',
   name: '心理カウンセリング',
+  description:
+    '生きにくさや社会復帰、介護の悩みに寄り添い、具体的なサポートを提供するオンライン心理カウンセリングサービス。',
   provider: {
     '@type': 'Person',
     name: 'Nくん',
   },
-  areaServed: 'Japan',
+  areaServed: {
+    '@type': 'AdministrativeArea',
+    name: '日本',
+  },
   availableChannel: {
     '@type': 'ServiceChannel',
     serviceLocation: {
@@ -39,11 +52,17 @@ const serviceJsonLd = {
       name: 'オンライン',
     },
   },
-  category: 'カウンセリング',
+  category: 'カウンセリングサービス',
   url: 'https://nshinri.net/counseling',
+  offers: {
+    '@type': 'Offer',
+    price: '5000',
+    priceCurrency: 'JPY',
+    availability: 'https://schema.org/InStock',
+  },
 };
 
-const breadcrumbJsonLd = {
+const jsonLdBreadcrumb = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
@@ -95,17 +114,17 @@ const Counseling = () => {
       <Head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebSite) }}
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdService) }}
         />
         <Head>
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
-              __html: JSON.stringify(breadcrumbJsonLd),
+              __html: JSON.stringify(jsonLdBreadcrumb),
             }}
           />
         </Head>

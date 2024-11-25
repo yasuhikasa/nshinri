@@ -17,7 +17,7 @@ export default function Kaigokiroku() {
     <>
       {/* SEO 設定 */}
       <NextSeo
-        title="在宅介護を支援するスマホアプリ | 家族や施設関係者と情報共有が可能"
+        title="在宅介護を支援するスマホアプリ"
         description="在宅介護の記録管理を簡単にできるスマホアプリ。家族や施設関係者とスムーズに情報共有が可能です。介護現場と同レベルの詳細な記録と多機能サポートを提供します。"
         canonical="https://nshinri.net/kaigokiroku"
         openGraph={{
@@ -72,8 +72,9 @@ export default function Kaigokiroku() {
               },
               offers: {
                 '@type': 'Offer',
-                price: '0',
+                price: '0', // アプリが無料であれば "0" と設定
                 priceCurrency: 'JPY',
+                availability: 'https://schema.org/InStock', // 利用可能な状態を示す
               },
             }),
           }}
@@ -99,9 +100,9 @@ export default function Kaigokiroku() {
               },
               offers: {
                 '@type': 'Offer',
-                price: '0',
+                price: '300', // 無料の場合は "0"
                 priceCurrency: 'JPY',
-                url: 'https://nshinri.net/kaigokiroku',
+                availability: 'https://schema.org/InStock', // 在庫ありと設定
               },
             }),
           }}

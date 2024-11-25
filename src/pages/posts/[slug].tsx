@@ -38,12 +38,13 @@ const Post = ({
       '@id': `https://nshinri.net/posts/${slug}`,
     },
     headline: title,
-    description: description,
+    description: description.slice(0, 160), // 120〜160文字に調整
     datePublished: date,
     dateModified: date,
     author: {
       '@type': 'Person',
       name: author,
+      url: 'https://nshinri.net/aboutme', // プロフィールページのURLを追加
     },
     publisher: {
       '@type': 'Organization',
@@ -51,9 +52,16 @@ const Post = ({
       logo: {
         '@type': 'ImageObject',
         url: 'https://nshinri.net/me.png',
+        width: 300,
+        height: 300,
       },
     },
-    image: 'https://nshinri.net/me.png',
+    image: {
+      '@type': 'ImageObject',
+      url: 'https://nshinri.net/me.png',
+      width: 1200,
+      height: 630,
+    },
   };
 
   // JSON-LD パンクズリスト構造化データ
