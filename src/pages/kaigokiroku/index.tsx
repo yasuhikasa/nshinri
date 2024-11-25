@@ -44,15 +44,6 @@ export default function Kaigokiroku() {
       />
 
       <Head>
-        {/* メタデータの追加 */}
-        <meta
-          name="keywords"
-          content="在宅介護アプリ, 介護記録アプリ, 情報共有アプリ, 介護支援, 家族向け介護アプリ, ケアマネージャー向けアプリ"
-        />
-        <meta name="author" content="Nくん" />
-        <meta name="robots" content="index,follow" />
-
-        {/* 構造化データ */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -72,9 +63,32 @@ export default function Kaigokiroku() {
               },
               offers: {
                 '@type': 'Offer',
-                price: '0', // アプリが無料であれば "0" と設定
+                price: '300', // 月額料金
                 priceCurrency: 'JPY',
-                availability: 'https://schema.org/InStock', // 利用可能な状態を示す
+                availability: 'https://schema.org/InStock',
+                hasMerchantReturnPolicy: {
+                  '@type': 'MerchantReturnPolicy',
+                  name: '返品ポリシーなし',
+                  applicableCountry: 'JP',
+                },
+                shippingDetails: {
+                  '@type': 'OfferShippingDetails',
+                  shippingRate: {
+                    '@type': 'MonetaryAmount',
+                    value: '0', // 配送料は0円
+                    currency: 'JPY',
+                  },
+                  shippingDestination: {
+                    '@type': 'DefinedRegion',
+                    addressCountry: 'JP',
+                  },
+                },
+                eligibleDuration: 'P1M', // 1か月ごとのサブスクリプションを表す
+                eligibleRegion: {
+                  '@type': 'Country',
+                  name: '日本',
+                },
+                priceValidUntil: '2024-12-31', // 現在の料金が有効な期間（適宜設定）
               },
             }),
           }}
@@ -100,9 +114,32 @@ export default function Kaigokiroku() {
               },
               offers: {
                 '@type': 'Offer',
-                price: '300', // 無料の場合は "0"
+                price: '300', // 月額料金
                 priceCurrency: 'JPY',
-                availability: 'https://schema.org/InStock', // 在庫ありと設定
+                availability: 'https://schema.org/InStock',
+                hasMerchantReturnPolicy: {
+                  '@type': 'MerchantReturnPolicy',
+                  name: '返品ポリシーなし',
+                  applicableCountry: 'JP',
+                },
+                shippingDetails: {
+                  '@type': 'OfferShippingDetails',
+                  shippingRate: {
+                    '@type': 'MonetaryAmount',
+                    value: '0', // 配送料は0円
+                    currency: 'JPY',
+                  },
+                  shippingDestination: {
+                    '@type': 'DefinedRegion',
+                    addressCountry: 'JP',
+                  },
+                },
+                eligibleDuration: 'P1M', // 1か月ごとのサブスクリプション
+                eligibleRegion: {
+                  '@type': 'Country',
+                  name: '日本',
+                },
+                priceValidUntil: '2024-12-31',
               },
             }),
           }}
