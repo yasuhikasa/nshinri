@@ -173,14 +173,21 @@ const Home = ({
             <h2 className={styles.notificationsHeading}>記事更新</h2>
             <ul className={styles.notificationList}>
               {safeNotifications.length > 0 ? (
-                safeNotifications.map((note, index) => (
-                  <li key={index} className={styles.notificationItem}>
-                    <span className={styles.notificationDate}>{note.date}</span>
-                    <Link href={`/posts/${note.slug}`} legacyBehavior>
-                      <a className={styles.notificationTitle}>{note.title}</a>
-                    </Link>
-                  </li>
-                ))
+                safeNotifications.slice(0, 5).map(
+                  (
+                    note,
+                    index // 5件に限定
+                  ) => (
+                    <li key={index} className={styles.notificationItem}>
+                      <span className={styles.notificationDate}>
+                        {note.date}
+                      </span>
+                      <Link href={`/posts/${note.slug}`} legacyBehavior>
+                        <a className={styles.notificationTitle}>{note.title}</a>
+                      </Link>
+                    </li>
+                  )
+                )
               ) : (
                 <p>現在お知らせはありません。</p>
               )}
