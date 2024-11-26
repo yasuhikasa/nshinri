@@ -18,7 +18,7 @@ const Header = () => {
           </li>
           <li className={styles.navItem}>
             <Link href="/contact" className={styles.navLink}>
-              カウンセリングのお問い合わせ
+              お問い合わせ
             </Link>
           </li>
         </ul>
