@@ -158,7 +158,7 @@ const Counseling = () => {
               className={styles.photo}
             />
             <div className={styles.profileText}>
-              <div>Nくん|心理カウンセラー</div>
+              <div>Nくん|ＪＡＤＰ認定メンタル心理カウンセラー</div>
             </div>
           </div>
           <div className={styles.profileText}>
@@ -169,7 +169,7 @@ const Counseling = () => {
             <br />
             <strong>（強み）</strong>
             <ul>
-              <li>・うつ病経験を活かした心のケア、社会復帰支援</li>
+              <li>・自身の心の病の経験を活かした心のケア、社会復帰支援</li>
               <li>
                 ・介護現場での経験を基に、介護に苦しむ人の心のケアとサポート
               </li>
