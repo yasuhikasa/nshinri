@@ -131,6 +131,17 @@ const Home = ({
       <Header /> {/* ヘッダーを表示 */}
       <div className={styles.container}>
         {/* トップ部分 */}
+        <div className={styles.bannerWrapper}>
+          <Image
+            src="/top.jpg" // 画像のパス
+            alt="N's WorkRoomバナー"
+            width={800} // 最大幅
+            height={300} // 適切なアスペクト比（例: 1000px:300px）
+            layout="intrinsic" // アスペクト比を維持
+            className={styles.bannerImage} // カスタムスタイル（必要に応じて）
+            priority={true} // 初回読み込み時に優先する場合
+          />
+        </div>
         <h1 className={styles.heading}>N&apos;s WorkRoomとは</h1>
         <p className={styles.subtext}>
           普段はITエンジニアとして会社員として働くかたわら、

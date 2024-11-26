@@ -21,6 +21,19 @@
   text-align: center;
 }
 
+.bannerWrapper {
+  max-width: 70%; /* 親コンテナの幅に応じて調整 */
+  margin: 0 auto; /* 中央寄せ */
+  overflow: hidden; /* レイアウトを整える */
+}
+
+.bannerImage {
+  width: 100%;
+  height: auto; /* アスペクト比を維持 */
+  max-width: 800px; /* 横幅を最大1000pxに制限 */
+  margin: 0 auto;
+}
+
 /* 記事更新セクション */
 .notifications {
   margin: 20px 0;
