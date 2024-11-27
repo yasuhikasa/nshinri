@@ -18,10 +18,7 @@ const Breadcrumb: React.FC = () => {
   // パンくずリストを生成
   const breadcrumbItems = pathArray.map((path, index) => {
     const href = '/' + pathArray.slice(0, index + 1).join('/');
-    // 部分一致を考慮してラベルを取得
-    const label =
-      Object.keys(breadcrumbMap).find((key) => href.startsWith(key)) ||
-      decodeURIComponent(path);
+    const label = breadcrumbMap[href] || decodeURIComponent(path);
     const isLast = index === pathArray.length - 1;
 
     return (
