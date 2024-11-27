@@ -18,7 +18,13 @@ const Breadcrumb: React.FC = () => {
   // パンくずリストを生成
   const breadcrumbItems = pathArray.map((path, index) => {
     const href = '/' + pathArray.slice(0, index + 1).join('/');
-    const label = breadcrumbMap[href] || decodeURIComponent(path);
+    // 特別処理: kaigokiroku を含む場合は固定ラベル
+    let label = decodeURIComponent(path);
+    if (href.includes('/kaigokiroku')) {
+      label = '介護記録アプリ';
+    } else if (breadcrumbMap[href]) {
+      label = breadcrumbMap[href];
+    }
     const isLast = index === pathArray.length - 1;
 
     return (
