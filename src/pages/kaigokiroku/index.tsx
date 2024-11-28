@@ -17,7 +17,7 @@ export default function Kaigokiroku() {
     <>
       {/* SEO 設定 */}
       <NextSeo
-        title="在宅介護を支援するスマホアプリ"
+        title="自宅で簡単！在宅介護を支援する介護記録スマホアプリ"
         description="在宅介護の記録管理を簡単にできるスマホアプリ。家族や施設関係者とスムーズに情報共有が可能です。介護現場と同レベルの詳細な記録と多機能サポートを提供します。"
         canonical="https://nshinri.net/kaigokiroku"
         openGraph={{
