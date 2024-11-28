@@ -94,10 +94,10 @@ const Post = ({
     <>
       {/* NextSeo によるページごとの SEO 設定 */}
       <NextSeo
-        title={`${title} - 心理カウンセリングコラム`}
+        title={`${title} - N's WorkRoom`}
         description={description}
         openGraph={{
-          title: `${title} - 心理カウンセリングコラム`,
+          title: `${title} - N's WorkRoom`,
           description: description,
           url: `https://nshinri.net/posts/${slug}`,
           images: [
@@ -105,7 +105,7 @@ const Post = ({
               url: 'https://nshinri.net/me.png',
               width: 1200,
               height: 630,
-              alt: 'カウンセリングコラムのプレビュー画像',
+              alt: 'Nくんのロゴ',
             },
           ],
         }}
