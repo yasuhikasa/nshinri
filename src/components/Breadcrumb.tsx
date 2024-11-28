@@ -8,6 +8,8 @@ const breadcrumbMap: { [key: string]: string } = {
   '/aboutme': '私について',
   '/counseling': 'カウンセリング',
   '/kaigokiroku': '介護記録アプリ',
+  '/posts': '記事一覧',
+  '/privacy-policy': 'プライバシーポリシー',
   '/kindle': 'Kindle出版',
 };
 

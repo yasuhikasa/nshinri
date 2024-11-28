@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { DefaultSeo } from 'next-seo';
 import SEO from '../../next-seo.config';
 import Script from 'next/script';
+import Layout from '../components/Layout';
 
 const GA_TRACKING_ID = 'G-2DNVVNRZXP';
 
@@ -43,7 +44,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         }}
       />
       <DefaultSeo {...SEO} />
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </>
   );
 }
