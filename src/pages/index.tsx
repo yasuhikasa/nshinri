@@ -6,54 +6,67 @@ import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import fs from 'fs';
 import path from 'path';
-import matter from 'gray-matter';
+
+interface Notification {
+  slug: string;
+  title: string;
+  date: string;
+  description: string;
+}
 
 export async function getStaticProps() {
-  const postsDirectory = path.join(process.cwd(), 'contents', 'posts');
-  console.log('postsDirectory:', postsDirectory); // ディレクトリパスを確認
+  const postsDirectory = path.join(process.cwd(), 'src', 'pages', 'posts');
+  console.log('postsDirectory:', postsDirectory); // ディレクトリパス確認
 
-  if (!fs.existsSync(postsDirectory)) {
-    console.error('ディレクトリが存在しません:', postsDirectory);
-    return {
-      props: {
-        notifications: [],
-      },
-    };
-  }
+  const subdirectories = fs
+    .readdirSync(postsDirectory, { withFileTypes: true })
+    .filter((dirent) => dirent.isDirectory())
+    .map((dirent) => dirent.name);
 
-  const filenames = fs.readdirSync(postsDirectory);
-  console.log('filenames:', filenames); // ファイル名一覧を確認
+  console.log('subdirectories:', subdirectories); // サブディレクトリ一覧を確認
 
-  if (filenames.length === 0) {
-    console.warn('通知ファイルが見つかりません');
-    return {
-      props: {
-        notifications: [],
-      },
-    };
-  }
+  const notifications: Notification[] = (
+    await Promise.all(
+      subdirectories.map(async (subdir) => {
+        const postPath = path.join(postsDirectory, subdir, 'index.tsx');
 
-  const notifications = filenames.map((filename) => {
-    const filePath = path.join(postsDirectory, filename);
-    console.log('filePath:', filePath); // 各ファイルのパスを確認
+        if (!fs.existsSync(postPath)) {
+          console.warn(`index.tsx ファイルが見つかりません: ${postPath}`);
+          return null;
+        }
 
-    const fileContents = fs.readFileSync(filePath, 'utf8');
-    console.log('fileContents:', fileContents); // ファイル内容を確認
+        try {
+          // `import` を使って動的に読み込む
+          const { title, date, description } = await import(
+            `../pages/posts/${subdir}/index`
+          );
 
-    const { data } = matter(fileContents);
-    console.log('data:', data); // 解析したデータを確認
+          if (!title || !date || !description) {
+            console.warn(`記事データが不完全です: ${subdir}`);
+            return null;
+          }
 
-    return {
-      slug: filename.replace('.md', ''),
-      title: data.title,
-      date: data.date,
-      description: data.description,
-    };
-  });
+          return {
+            slug: subdir,
+            title,
+            date,
+            description,
+          };
+        } catch (error) {
+          console.error(`記事データの取得に失敗しました: ${subdir}`, error);
+          return null;
+        }
+      })
+    )
+  ).filter(
+    (notification): notification is Notification => notification !== null
+  );
 
+  // 日付順でソート
   notifications.sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
+
   console.log('notifications:', notifications); // 最終的な通知データを確認
 
   return {
@@ -62,7 +75,6 @@ export async function getStaticProps() {
     },
   };
 }
-
 // 構造化データのJSON-LD形式
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -81,16 +93,7 @@ const jsonLd = {
   },
 };
 
-const Home = ({
-  notifications,
-}: {
-  notifications?: {
-    slug: string;
-    title: string;
-    date: string;
-    description: string;
-  }[];
-}) => {
+const Home = ({ notifications }: { notifications: Notification[] }) => {
   const safeNotifications = notifications || [];
 
   return (
@@ -169,25 +172,19 @@ const Home = ({
 
         <div className={styles.container}>
           {/* お知らせセクション */}
+          {/* お知らせセクション */}
           <div className={styles.notifications}>
             <h2 className={styles.notificationsHeading}>記事更新</h2>
             <ul className={styles.notificationList}>
               {safeNotifications.length > 0 ? (
-                safeNotifications.slice(0, 5).map(
-                  (
-                    note,
-                    index // 5件に限定
-                  ) => (
-                    <li key={index} className={styles.notificationItem}>
-                      <span className={styles.notificationDate}>
-                        {note.date}
-                      </span>
-                      <Link href={`/posts/${note.slug}`} legacyBehavior>
-                        <a className={styles.notificationTitle}>{note.title}</a>
-                      </Link>
-                    </li>
-                  )
-                )
+                safeNotifications.slice(0, 5).map((note, index) => (
+                  <li key={index} className={styles.notificationItem}>
+                    <span className={styles.notificationDate}>{note.date}</span>
+                    <Link href={`/posts/${note.slug}`} legacyBehavior>
+                      <a className={styles.notificationTitle}>{note.title}</a>
+                    </Link>
+                  </li>
+                ))
               ) : (
                 <p>現在お知らせはありません。</p>
               )}
