@@ -98,12 +98,12 @@ const Home = ({
       {/* NextSeoを使ったSEO設定 */}
       <NextSeo
         title="N's WorkRoom"
-        description="Nくんの個人活動ページです。心理カウンセリング、ライフコーチング、Kindle出版などの情報を発信しています。"
+        description="Nくんの個人活動ページです。アプリの個人開発、心理カウンセリング、ライフコーチング、Kindle出版などの情報を発信しています。"
         canonical="https://nshinri.net"
         openGraph={{
           title: "N's WorkRoom",
           description:
-            'Nくんの個人活動ページです。心理カウンセリング、ライフコーチング、Kindle出版などの情報を発信しています。',
+            'Nくんの個人活動ページです。アプリの個人開発、心理カウンセリング、ライフコーチング、Kindle出版などの情報を発信しています。',
           url: 'https://nshinri.net',
           images: [
             {
