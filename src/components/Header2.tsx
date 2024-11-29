@@ -17,7 +17,7 @@ const Header = () => {
             </Link>
           </li>
           <li className={styles.navItem}>
-            <Link href="/plivacy-policy" className={styles.navLink}>
+            <Link href="/privacy-policy" className={styles.navLink}>
               プライバシーポリシー
             </Link>
           </li>
