@@ -10,6 +10,7 @@ const breadcrumbMap: { [key: string]: string } = {
   '/kaigokiroku': '介護記録アプリ',
   '/posts': '記事一覧',
   '/privacy-policy': 'プライバシーポリシー',
+  '/privacy-policy2': 'プライバシーポリシー',
   '/kindle': 'Kindle出版',
 };
 
