@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import Header from '../../components/Header';
+import Header from '../../components/Header2';
 import { NextSeo } from 'next-seo';
 import {
   FaAccessibleIcon,
