@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../../components/Header'; // 共通ヘッダーがあれば使用
+import Header from '../../components/Header2'; // 共通ヘッダーがあれば使用
 import { NextSeo } from 'next-seo';
 import Head from 'next/head';
 import Breadcrumb from '../../components/Breadcrumb';
