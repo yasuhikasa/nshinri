@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Header from '../../components/Header2';
 import { NextSeo } from 'next-seo';
-import styles from './NewRecipe.module.css';
+import styles from './newrecipe.module.css';
 import Breadcrumb from '../../components/Breadcrumb';
 
 export default function NewRecipe() {
