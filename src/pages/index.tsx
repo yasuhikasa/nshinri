@@ -228,6 +228,33 @@ const Home = ({ notifications }: { notifications: Notification[] }) => {
             </li>
           </ul>
         </div>
+        <hr />
+        <div className={styles.section}>
+          <div className={styles.introduction}>
+            <Link href="/newrecipe" legacyBehavior>
+              <a>
+                <Image
+                  src="/8.png"
+                  alt="こだわりレシピ作成アプリ"
+                  width={200}
+                  height={200}
+                />
+                <p>→こだわりの創作料理レシピの詳細</p>
+              </a>
+            </Link>
+          </div>
+          <ul className={styles.list}>
+            <li>・あなたのいろんなこだわりを簡単にレシピ化します</li>
+            <li>・その時の気分やニーズに合わせて自動でレシピを作成</li>
+            <li>
+              ・AIによる提案で、いつもの料理に新しいアイデアを取り入れることができます
+            </li>
+            <li>・こだわりをそのまま毎日の料理に！</li>
+            <li>
+              ・時間がないときにも、簡単にこだわりのある料理を楽しむことができます
+            </li>
+          </ul>
+        </div>
 
         {/* カウンセリング */}
         <h3 className={styles.subheading}>
