@@ -10,7 +10,7 @@ export default function NewRecipe() {
     <>
       {/* SEO 設定 */}
       <NextSeo
-        title="こだわりレシピを簡単に！AIを使ったレシピ作成アプリ"
+        title="こだわり料理レシピを簡単に！AIを使ったレシピ作成アプリ"
         description="材料や調理時間を指定すると、AIがあなたにぴったりのレシピを提案！簡単にレシピが見つかり、毎日の料理が楽しくなります。ポイントを消費してレシピを生成できます！"
         canonical="https://nshinri.net/newrecipe"
         openGraph={{
