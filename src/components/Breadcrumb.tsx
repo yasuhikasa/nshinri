@@ -13,6 +13,7 @@ const breadcrumbMap: { [key: string]: string } = {
   '/privacy-policy2': 'プライバシーポリシー',
   '/kindle': 'Kindle出版',
   '/newrecipe': 'こだわりレシピ作成アプリ',
+  '/booking': 'カウンセリングの予約のご案内',
 };
 
 const Breadcrumb: React.FC = () => {
