@@ -1,0 +1,131 @@
+/* コンテナ全体のスタイル */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+/* トップ部分のスタイル */
+.heading {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.subtext {
+  font-size: 1.2rem;
+  color: #666;
+  margin: 10px 0 20px 0;
+  line-height: 1.6;
+}
+
+/* セクション全体のスタイル */
+.section {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.sectionHeading {
+  font-size: 1.6rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list li {
+  font-size: 1.2rem;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+/* 番号付きリストのスタイル */
+.list ol {
+  margin-left: 20px;
+}
+
+.list strong {
+  color: #000;
+  font-weight: bold;
+}
+
+/* ボタンのスタイル */
+.lineButton {
+  background-color: #00c300;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.lineButton:hover {
+  background-color: #009e00;
+}
+
+/* 注意事項のスタイル */
+.note {
+  font-size: 1rem;
+  color: #777;
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+/* 行動促進バナーのスタイル */
+.actionBlock {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.bannerText {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .heading {
+    font-size: 1.6rem;
+  }
+
+  .subtext {
+    font-size: 1rem;
+  }
+
+  .section {
+    padding: 15px;
+  }
+
+  .sectionHeading {
+    font-size: 1.4rem;
+  }
+
+  .list li {
+    font-size: 1rem;
+  }
+
+  .lineButton {
+    font-size: 1rem;
+    padding: 8px 15px;
+  }
+
+  .bannerText {
+    font-size: 1.5rem;
+  }
+}
