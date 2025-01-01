@@ -186,7 +186,7 @@ const Counseling = () => {
             className={styles.counselingButton}
             onClick={() => router.push('/booking')}
           >
-            カウンセリングの説明（※準備中）
+            カウンセリングの説明
           </button>
         </div>
 
@@ -306,7 +306,7 @@ const Counseling = () => {
                 className={styles.counselingButton}
                 onClick={() => router.push('/booking')}
               >
-                カウンセリングの説明（※準備中）
+                カウンセリングの説明
               </button>
             </div>
           </div>
