@@ -79,6 +79,8 @@ const Booking = () => {
               <strong>LINE公式アカウントを友達追加</strong>
               <br />
               下のボタンからLINEのビジネスアカウントを友達追加してください。
+              <br />
+              LINE内にて予約の案内がございますのでそれに従って予約をお願いいたします。
             </li>
             <li>
               <strong>希望日時をLINEで送信</strong>
