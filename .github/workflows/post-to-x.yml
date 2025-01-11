@@ -1,0 +1,14 @@
+name: Post to X automatically
+
+# 定期実行のスケジュール
+on:
+  schedule:
+    - cron: '0 9 */2 * *' # 2日おき午前9時（UTC基準）
+
+jobs:
+  post-to-x:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Call Vercel API
+        run: curl -X POST https://nshinri.net/api/post-to-x
