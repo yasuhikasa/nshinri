@@ -5,7 +5,7 @@ import { DefaultSeo } from 'next-seo';
 import SEO from '../../next-seo.config';
 import Script from 'next/script';
 import Layout from '../components/Layout';
-import '../styles/global.css';
+import './styles/global.css';
 
 const GA_TRACKING_ID = 'G-2DNVVNRZXP';
 
