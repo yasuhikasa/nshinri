@@ -4,6 +4,7 @@ name: Post to X automatically
 on:
   schedule:
     - cron: '0 9 */2 * *' # 2日おき午前9時（UTC基準）
+  workflow_dispatch: # 手動トリガーを追加
 
 jobs:
   post-to-x:
