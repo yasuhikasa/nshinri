@@ -39,6 +39,11 @@ function getPosts(): Post[] {
   }
 }
 
+// インターバルを挿入するための sleep 関数
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -68,6 +73,10 @@ export default async function handler(
       } catch (twitterError) {
         console.error('ツイート中にエラーが発生しました:', twitterError);
       }
+
+      // 5秒間のインターバル
+      console.log('次の投稿まで5秒待機します...');
+      await sleep(5000); // 5秒待機
     }
 
     return res
