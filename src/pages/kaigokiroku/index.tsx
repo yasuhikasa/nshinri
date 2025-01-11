@@ -13,6 +13,12 @@ import styles from './Kaigokiroku.module.css';
 import Breadcrumb from '../../components/Breadcrumb';
 
 export default function Kaigokiroku() {
+  const handleApple = () => {
+    window.open(
+      'https://apps.apple.com/jp/app/%E8%87%AA%E5%AE%85%E3%81%A7%E7%B0%A1%E5%8D%98-%E5%9C%A8%E5%AE%85%E4%BB%8B%E8%AD%B7%E3%83%BC%E4%BB%8B%E8%AD%B7%E8%A8%98%E9%8C%B2%E3%82%A2%E3%83%97%E3%83%AA/id6738299675',
+      '_blank'
+    );
+  };
   return (
     <>
       {/* SEO 設定 */}
@@ -50,7 +56,7 @@ export default function Kaigokiroku() {
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'SoftwareApplication',
-              name: '在宅介護アプリ',
+              name: '自宅で簡単！！在宅介護ー介護記録アプリ',
               url: 'https://nshinri.net/kaigokiroku',
               description:
                 '在宅介護の記録管理を簡単にできるスマホアプリ。家族や施設関係者とスムーズに情報共有が可能です。',
@@ -63,7 +69,7 @@ export default function Kaigokiroku() {
               },
               offers: {
                 '@type': 'Offer',
-                price: '300', // 月額料金
+                price: '500', // 月額料金
                 priceCurrency: 'JPY',
                 availability: 'https://schema.org/InStock',
                 hasMerchantReturnPolicy: {
@@ -99,7 +105,7 @@ export default function Kaigokiroku() {
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'Product',
-              name: '在宅介護アプリ',
+              name: '自宅で簡単！！在宅介護ー介護記録アプリ',
               image: ['https://nshinri.net/1.png', 'https://nshinri.net/2.png'],
               description:
                 '在宅介護の記録管理を簡単にできるスマホアプリ。家族や施設関係者とスムーズに情報共有が可能です。',
@@ -114,7 +120,7 @@ export default function Kaigokiroku() {
               },
               offers: {
                 '@type': 'Offer',
-                price: '300', // 月額料金
+                price: '500', // 月額料金
                 priceCurrency: 'JPY',
                 availability: 'https://schema.org/InStock',
                 hasMerchantReturnPolicy: {
@@ -151,7 +157,7 @@ export default function Kaigokiroku() {
         <Header />
         <Breadcrumb />
         <section className={styles.heroSection}>
-          <h1>在宅介護をプロ目線で支援するスマホアプリ</h1>
+          <h1>自宅で簡単！！在宅介護ー介護記録アプリ</h1>
 
           <div className={styles.highlightBox}>
             在宅介護で何をどのように介護記録を残したらいいか、何をどのようにケアマネージャーや介護施設側へ情報連携すればいいか、悩んだことはございませんか？
@@ -177,7 +183,9 @@ export default function Kaigokiroku() {
             />
           </div>
 
-          <button className={styles.ctaButton}>→準備中</button>
+          <button className={styles.ctaButton} onClick={handleApple}>
+            APP STOREからダウンロードする
+          </button>
         </section>
 
         <section className={styles.featureSection}>
@@ -203,7 +211,7 @@ export default function Kaigokiroku() {
             <div className={styles.iconWrapper}>
               <FaUserNurse />
             </div>
-            <h2>介護福祉士で現役ITエンジニアが開発</h2>
+            <h2>介護福祉士としての経験がある現役ITエンジニアが開発</h2>
             <p>
               シンプルなアプリながら、介護記録の内容は本場介護施設での介護記録と同水準の内容を記録できるように開発いたしました。
             </p>
@@ -230,14 +238,16 @@ export default function Kaigokiroku() {
             <div className={styles.iconWrapper}>
               <FaConciergeBell />
             </div>
-            <h2>無料トライアル</h2>
+            <h2>無料機能でお試しください</h2>
             <p>
-              ３日間の無料トライアルを実施中です。まずはお試しいただき、介護記録の管理を体験してみてください。
+              一部機能を無料でお使いいただけます。まずはお試しいただき、介護記録の管理を体験してみてください。
             </p>
           </div>
         </section>
 
-        <button className={styles.footerCta}>→準備中</button>
+        <button className={styles.footerCta} onClick={handleApple}>
+          APP STOREからダウンロードする
+        </button>
       </div>
     </>
   );
