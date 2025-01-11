@@ -9,14 +9,16 @@
 
 /* トップ部分のスタイル */
 .heading {
-  font-size: 2rem;
-  color: #333;
+  font-size: 2rem; /* PC用サイズ */
+  font-weight: 600; /* 太めに調整 */
+  color: #333; /* 濃い色で視認性を向上 */
   margin-bottom: 20px;
 }
 
 .subtext {
-  font-size: 1.2rem;
-  color: #666;
+  font-size: 1.2rem; /* PC用サイズ */
+  font-weight: 500; /* 少し太めに設定 */
+  color: #444; /* 濃いグレーでコントラストを強化 */
   margin: 10px 0 20px 0;
   text-align: center;
 }
@@ -30,7 +32,7 @@
 .bannerImage {
   width: 100%;
   height: auto; /* アスペクト比を維持 */
-  max-width: 800px; /* 横幅を最大1000pxに制限 */
+  max-width: 800px; /* 横幅を最大800pxに制限 */
   margin: 0 auto;
 }
 
@@ -44,8 +46,9 @@
 }
 
 .notificationsHeading {
-  font-size: 1.5rem;
+  font-size: 1.5rem; /* 見出しサイズ */
   font-weight: bold;
+  color: #0056b3; /* 視認性の高い青色 */
   margin-bottom: 15px;
   border-bottom: 2px solid #0056b3;
   padding-bottom: 5px;
@@ -70,15 +73,17 @@
 }
 
 .notificationDate {
-  font-size: 0.9rem;
-  color: #757575;
+  font-size: 1rem; /* サイズを1remに増加 */
+  font-weight: 500; /* 太さを追加 */
+  color: #555; /* 色を濃く変更 */
   flex-basis: 30%;
   text-align: left;
 }
 
 .notificationTitle {
-  font-size: 1rem;
-  color: #0056b3;
+  font-size: 1.1rem; /* サイズを微増 */
+  font-weight: 500; /* 太めに設定 */
+  color: #0056b3; /* 青色で統一 */
   text-decoration: none;
   flex-basis: 70%;
   text-align: left;
@@ -94,7 +99,8 @@
 }
 
 .notificationMore a {
-  font-size: 0.9rem;
+  font-size: 1rem; /* サイズを統一 */
+  font-weight: 500; /* 太さを追加 */
   color: #0056b3;
   text-decoration: none;
 }
@@ -107,6 +113,7 @@
 .subheading {
   background-color: #4caf50; /* 緑色の背景 */
   color: white;
+  font-weight: 600; /* 太めに変更 */
   padding: 10px 15px;
   font-size: 1.8rem;
   border-radius: 8px;
@@ -143,13 +150,15 @@
 
 .list li {
   background-color: #f9f9f9;
-  padding: 10px;
+  padding: 15px; /* 余白を増加 */
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: left;
   font-size: 1.1rem;
-  color: #333;
+  font-weight: 500; /* 太めに設定 */
+  color: #333; /* 濃い色を指定 */
 }
+
 /* SNSアイコンとリンク */
 .sns {
   margin-top: 10px;
@@ -162,12 +171,14 @@
   color: #1da1f2;
   text-decoration: none;
   font-size: 1.2rem;
+  font-weight: 500; /* 太さを追加 */
 }
 
 .sns a {
   color: #1da1f2;
   text-decoration: none;
   font-size: 1.2rem;
+  font-weight: 500; /* 太さを追加 */
 }
 
 .sns a:hover {
@@ -177,14 +188,17 @@
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
   .heading {
-    font-size: 1.6rem;
+    font-size: 1.8rem; /* スマホでも大きめに設定 */
+    font-weight: 600; /* 太めに調整 */
   }
 
   .subtext,
   .list li,
   .notificationTitle,
   .notificationDate {
-    font-size: 0.9rem;
+    font-size: 1rem; /* スマホでも読みやすいサイズに */
+    font-weight: 500; /* 太さを追加 */
+    color: #333; /* 濃い色を指定 */
   }
 
   .notificationItem {
