@@ -20,13 +20,23 @@ interface Post {
   link: string;
   hashtags: string;
 }
+
 // JSONデータを読み込む関数
 function getPosts(): Post[] {
-  if (fs.existsSync(postsFilePath)) {
+  if (!fs.existsSync(postsFilePath)) {
+    console.error(`JSONファイルが見つかりません: ${postsFilePath}`);
+    return [];
+  }
+
+  try {
     const data = fs.readFileSync(postsFilePath, 'utf-8');
     return JSON.parse(data);
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(`JSONファイルの読み込みに失敗しました: ${error.message}`);
+    }
+    return [];
   }
-  return [];
 }
 
 export default async function handler(
@@ -38,26 +48,37 @@ export default async function handler(
   }
 
   try {
+    console.log('APIリクエストを受信しました。');
     const posts = getPosts();
 
     if (posts.length === 0) {
+      console.error('投稿データが空です。投稿を終了します。');
       return res.status(400).json({ error: '投稿する記事がありません' });
     }
 
     // 全ての記事を順番に投稿
     for (const post of posts) {
       const message = `${post.content}\n\n${post.link}\n${post.hashtags}`;
+      console.log(`投稿メッセージを準備中: ${message}`);
 
-      // ツイートを投稿
-      const tweet = await twitterClient.v2.tweet(message);
-      console.log('ツイートしました:', tweet);
+      try {
+        // ツイートを投稿
+        const tweet = await twitterClient.v2.tweet(message);
+        console.log('ツイート成功:', tweet);
+      } catch (twitterError) {
+        console.error('ツイート中にエラーが発生しました:', twitterError);
+      }
     }
 
     return res
       .status(200)
       .json({ success: true, message: '全ての記事を投稿しました。' });
   } catch (error) {
-    console.error('エラーが発生しました:', error);
-    return res.status(500).json({ error: '投稿に失敗しました' });
+    if (error instanceof Error) {
+      console.error('API全体でエラーが発生しました:', error.message);
+      return res
+        .status(500)
+        .json({ error: '投稿に失敗しました', details: error.message });
+    }
   }
 }
