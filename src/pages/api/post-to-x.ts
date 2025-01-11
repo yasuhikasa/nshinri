@@ -76,7 +76,7 @@ export default async function handler(
 
       // 5秒間のインターバル
       console.log('次の投稿まで5秒待機します...');
-      await sleep(5000); // 5秒待機
+      await sleep(1000); // 1秒待機
     }
 
     return res
