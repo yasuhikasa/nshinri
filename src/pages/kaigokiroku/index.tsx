@@ -35,7 +35,7 @@ export default function Kaigokiroku() {
             '在宅介護の記録管理を簡単にできるスマホアプリ。家族や施設関係者とスムーズに情報共有が可能です。',
           images: [
             {
-              url: 'https://nshinri.net/me.png',
+              url: 'https://nshinri.net/caregiving_app_icon.png',
               width: 1200,
               height: 630,
               alt: '在宅介護アプリのOGP画像',
