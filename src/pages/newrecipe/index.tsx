@@ -6,6 +6,12 @@ import styles from './newrecipe.module.css';
 import Breadcrumb from '../../components/Breadcrumb';
 
 export default function NewRecipe() {
+  const handleApple = () => {
+    window.open(
+      'https://apps.apple.com/us/app/%E3%81%93%E3%81%A0%E3%82%8F%E3%82%8A%E3%81%AE%E5%89%B5%E4%BD%9C%E6%96%99%E7%90%86%E3%83%AC%E3%82%B7%E3%83%94-%E7%B0%A1%E5%8D%98%E3%81%AB%E3%81%93%E3%81%A0%E3%82%8F%E3%82%8A%E3%81%8C%E6%AF%8E%E6%97%A5%E3%81%AE%E9%A3%9F%E5%8D%93%E3%81%AB/id6739532255',
+      '_blank'
+    );
+  };
   return (
     <>
       {/* SEO 設定 */}
@@ -113,37 +119,41 @@ export default function NewRecipe() {
               className={styles.captureImage}
             />
           </div>
-          <button className={styles.ctaButton}>→無料で試す</button>
+          <button className={styles.footerCta} onClick={handleApple}>
+            App Storeでダウンロードする
+          </button>
         </section>
 
         <section className={styles.featureSection}>
           <div className={styles.featureCard}>
-            <h2>シンプルで使いやすい</h2>
+            <h2>豊富なこだわりテンプレート</h2>
             <p>
-              操作が簡単で、スマホを使い慣れていない方でも簡単に使えます。誰でもすぐにレシピ作成を楽しめます。
+              １５種類以上のこだわりテンプレートが用意されており、自分のこだわりに合ったレシピを作成できます。（今後も追加予定）
             </p>
           </div>
           <div className={styles.featureCard}>
             <h2>直感的なUI</h2>
             <p>
-              画面を見ればすぐに何をすれば良いかが分かり、ストレスフリーでレシピを作成できます。
+              各料理ジャンルテンプレートでこだわりを選択してボタンを押すだけ。ストレスフリーでレシピを作成できます。
             </p>
           </div>
           <div className={styles.featureCard}>
-            <h2>多機能サポート</h2>
+            <h2>最先端AIによるレシピ作成</h2>
             <p>
-              材料、調理時間、人数など、細かい条件に合わせてレシピを提案。毎日の食事作りがもっと楽しくなります。
+              材料、調理時間、人数など、細かい条件に合わせてAIがレシピを提案。毎日の食事作りがもっと楽しくなります。
             </p>
           </div>
           <div className={styles.featureCard}>
-            <h2>情報共有</h2>
+            <h2>詳細なレシピ</h2>
             <p>
-              作成したレシピを家族や友達とシェアすることができ、みんなで楽しむことができます。
+              必要な食材や調理手順、レシピに合うサイドメニューなど、レシピに関する情報が詳細に記載されています。
             </p>
           </div>
         </section>
 
-        <button className={styles.footerCta}>→無料で試す</button>
+        <button className={styles.footerCta} onClick={handleApple}>
+          App Storeでダウンロードする
+        </button>
       </div>
     </>
   );
