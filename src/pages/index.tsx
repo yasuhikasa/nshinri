@@ -244,7 +244,7 @@ const Home = ({ notifications }: { notifications: Notification[] }) => {
             </Link>
           </div>
           <ul className={styles.list}>
-            <li>・あなたのいろんなこだわりを簡単にレシピ化します</li>
+            <li>・最先端AIがあなたのいろんなこだわりを簡単にレシピ化します</li>
             <li>・その時の気分やニーズに合わせて自動でレシピを作成</li>
             <li>
               ・AIによる提案で、いつもの料理に新しいアイデアを取り入れることができます
