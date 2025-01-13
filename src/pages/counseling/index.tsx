@@ -167,7 +167,7 @@ const Counseling = () => {
               <li>・好きなこと・・・音楽、グルメ、温泉、バスケ</li>
             </ul>
             <br />
-            <strong>（強み）</strong>
+            <strong>（強み：実体験に基づきサポートいたします）</strong>
             <ul>
               <li>・自身の心の病の経験を活かした心のケア、社会復帰支援</li>
               <li>
