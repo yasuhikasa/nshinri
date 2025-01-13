@@ -57,17 +57,24 @@ const Booking = () => {
         <p className={styles.subtext}>
           Nくんの心理カウンセリングをご希望の方は、以下の手順で簡単に予約を進めていただけます。
         </p>
+        <p className={styles.subtext}>
+          ※注意事項まで必ずお読みいただいた上で、予約をお願いいたします。
+        </p>
 
         {/* カウンセリング方法の説明 */}
         <div className={styles.section}>
           <h2 className={styles.sectionHeading}>ご利用方法</h2>
           <ul className={styles.list}>
-            <li>カウンセリングはすべてオンラインで行います。</li>
+            <li>・営業時間は平日19:30〜22:00、土日祝10:00〜17:00です。</li>
+            <li>・カウンセリングはすべてオンラインで行います。</li>
             <li>
-              使用ツールはGoogle Meetです。予約確定後、Google
+              ・使用ツールはGoogle Meetです。予約確定後、Google
               MeetリンクをLINEでお送りします。
             </li>
-            <li>営業時間は平日19時〜22時です。</li>
+            <li>
+              ・事前に気になることは問い合わせフォームやLINEでのやり取りも可能です。
+            </li>
+            <li>・匿名OK、カウンセリング時はビデオOFFでも大丈夫です。</li>
           </ul>
         </div>
 
@@ -78,7 +85,7 @@ const Booking = () => {
             <li>
               <strong>LINE公式アカウントを友達追加</strong>
               <br />
-              下のボタンからLINEのビジネスアカウントを友達追加してください。
+              下のボタンからLINEのアカウントを友達追加してください。
               <br />
               LINE内にて予約の案内がございますのでそれに従って予約をお願いいたします。
             </li>
@@ -90,17 +97,22 @@ const Booking = () => {
             <li>
               <strong>予約確定</strong>
               <br />
-              予約確定後、Google Meetのリンクをお送りします。
+              日時の調整後、PayPayの支払いリンクをLINEにてお送りします。支払いにより予約確定となります。
+              <br />
+              予約確定後、Google MeetのリンクをLINEにてお送りします。
             </li>
           </ol>
-          <button
-            className={styles.lineButton}
-            onClick={() =>
-              window.open('https://line.me/R/ti/p/LINE_ID', '_blank')
-            }
+          <a
+            href="https://lin.ee/8rIfjx1"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            LINE公式アカウントを友達追加
-          </button>
+            <img
+              src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png"
+              alt="友だち追加"
+              className={styles.lineaddbutton}
+            />
+          </a>
         </div>
 
         {/* 料金案内 */}
@@ -125,14 +137,16 @@ const Booking = () => {
         <div className={styles.section}>
           <h2 className={styles.sectionHeading}>注意事項</h2>
           <ul className={styles.list}>
-            <li>予約のキャンセルは24時間前までにご連絡ください。</li>
-            <li>開始時間に遅れる場合は事前にご連絡をお願いいたします。</li>
-            <li>予約は希望日時の2日前までにお願いいたします。</li>
+            <li>・予約のキャンセルは24時間前までにご連絡ください。</li>
             <li>
-              予約後、無断でキャンセルされたり、予定時間を過ぎた場合、返金はいたしかねますことご了承ください。
+              ・開始時間に遅れる場合は事前にご連絡をお願いいたします。希望時間での時間の調整が難しい場合は改めて日程をご相談させていただきます。
+            </li>
+            <li>・予約は希望日時の2日前までにお願いいたします。</li>
+            <li>
+              ・予約確定後は返金はいたしかねますことご了承ください。なお、支払い後カウンセリングを受けられなかった場合、次回に持ち越すことは可能です。
             </li>
             <li>
-              深刻な精神疾患、医療的な判断については専門医をご利用ください。
+              ・深刻な精神疾患、医療的な判断については専門医をご利用ください。
             </li>
           </ul>
         </div>
@@ -140,14 +154,17 @@ const Booking = () => {
         {/* 行動を促すボタン */}
         <div className={styles.actionBlock}>
           <h2 className={styles.bannerText}>今すぐ予約を始めましょう！</h2>
-          <button
-            className={styles.lineButton}
-            onClick={() =>
-              window.open('https://line.me/R/ti/p/LINE_ID', '_blank')
-            }
+          <a
+            href="https://lin.ee/8rIfjx1"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            LINE公式アカウントを友達追加
-          </button>
+            <img
+              src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png"
+              alt="友だち追加"
+              className={styles.lineaddbutton}
+            />
+          </a>
         </div>
       </div>
     </>

@@ -98,6 +98,27 @@
   margin-bottom: 20px;
 }
 
+.lineaddbutton {
+  width: 200px; /* デフォルトの幅 */
+  height: auto; /* アスペクト比を維持 */
+  border: 0; /* ボーダーを削除 */
+}
+
+/* レスポンシブ対応：スマホ用のサイズ調整 */
+@media (max-width: 768px) {
+  .lineaddbutton {
+    width: 150px; /* スマホ用に小さめ */
+  }
+}
+
+/* 大きな画面（PC用）では少し大きくする */
+@media (min-width: 1200px) {
+  .lineaddbutton {
+    width: 250px; /* PC用に少し大きめ */
+  }
+}
+
+
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
   .heading {
