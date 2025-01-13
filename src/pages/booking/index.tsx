@@ -55,7 +55,7 @@ const Booking = () => {
         <Breadcrumb />
         <h1 className={styles.heading}>カウンセリング予約のご案内</h1>
         <p className={styles.subtext}>
-          心理カウンセリングをご希望の方は、以下の手順で簡単に予約を進めていただけます。
+          カウンセリングをご希望の方は、以下の手順で簡単に予約を進めていただけます。
         </p>
         <p className={styles.subtext}>
           ※注意事項まで必ずお読みいただいた上で、予約をお願いいたします。
