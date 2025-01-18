@@ -43,6 +43,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       accessSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET || '',
     });
 
+    console.log('Initializing Twitter API client with the following keys:');
+    console.log('APP_KEY:', process.env.TWITTER_APP_KEY);
+    console.log('APP_SECRET:', process.env.TWITTER_APP_SECRET);
+    console.log('ACCESS_TOKEN:', process.env.TWITTER_ACCESS_TOKEN);
+    console.log('ACCESS_SECRET:', process.env.TWITTER_ACCESS_SECRET);
+
+
     console.log('Uploading media...');
     const mediaId = await twitterClient.v1.uploadMedia(
       careerChangeContent.image
