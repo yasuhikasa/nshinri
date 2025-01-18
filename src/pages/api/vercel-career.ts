@@ -29,8 +29,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     console.log('Uploaded media ID:', mediaId);
 
     // ツイートを投稿
-    const tweet = await twitterClient.v1.tweet(tweetText, {
-      media_ids: [mediaId],
+    const tweet = await twitterClient.v2.tweet({
+      text: tweetText,
+      media: { media_ids: [mediaId] },
     });
     console.log('Successfully posted tweet:', tweet);
 
