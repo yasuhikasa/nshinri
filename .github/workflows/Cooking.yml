@@ -1,0 +1,12 @@
+name: Post Cooking to X
+
+on:
+  workflow_dispatch: # 手動トリガー
+
+jobs:
+  post-cooking:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Post Cooking Content to X
+        run: curl -X POST https://nshinri.net/api/post-cooking

@@ -1,0 +1,12 @@
+name: Post Career Change to X
+
+on:
+  workflow_dispatch: # 手動トリガー
+
+jobs:
+  post-career-change:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Post Career Change Content to X
+        run: curl -X POST https://nshinri.net/api/post-careerchange

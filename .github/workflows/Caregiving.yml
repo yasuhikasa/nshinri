@@ -1,0 +1,12 @@
+name: Post Caregiving to X
+
+on:
+  workflow_dispatch: # 手動トリガー
+
+jobs:
+  post-caregiving:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Post Caregiving Content to X
+        run: curl -X POST https://nshinri.net/api/post-caregiving

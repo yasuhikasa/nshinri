@@ -1,0 +1,12 @@
+name: Post Counseling to X
+
+on:
+  workflow_dispatch: # 手動トリガー
+
+jobs:
+  post-counseling:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Post Counseling Content to X
+        run: curl -X POST https://nshinri.net/api/post-counseling
