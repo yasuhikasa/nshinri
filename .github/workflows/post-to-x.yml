@@ -2,39 +2,29 @@ name: Post to X
 
 on:
   schedule:
-    - cron: "0 7 * * *" # JSTの16時（UTCの7時）
-    - cron: "0 8 * * *" # JSTの17時（UTCの8時）
-    - cron: "0 9 * * *" # JSTの18時（UTCの9時）
-    - cron: "0 10 * * *" # JSTの19時（UTCの10時）
-
-  workflow_dispatch: # 手動トリガーも可能
+    - cron: "0 7 * * *" # JST 16時
+    - cron: "0 8 * * *" # JST 17時
+    - cron: "0 9 * * *" # JST 18時
+    - cron: "0 10 * * *" # JST 19時
+  workflow_dispatch:
 
 jobs:
   post-to-x:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Post caregiving content
+        if: startsWith(github.event.schedule, '7')
+        run: curl -X POST https://nshinri.net/api/post-caregiving
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
+      - name: Post cooking content
+        if: startsWith(github.event.schedule, '8')
+        run: curl -X POST https://nshinri.net/api/post-cooking
 
-      - name: Install dependencies
-        run: npm install
+      - name: Post counseling content
+        if: startsWith(github.event.schedule, '9')
+        run: curl -X POST https://nshinri.net/api/post-counseling
 
-      - name: Post to X
-        id: post-to-x # IDを追加して出力を取得
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          X_API_KEY: ${{ secrets.X_API_KEY }}
-          X_API_SECRET: ${{ secrets.X_API_SECRET }}
-          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
-          X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
-          THEME_SELECTION: ${{ secrets.THEME_SELECTION }}
-        run: node post-to-x.ts
-
-      - name: Update theme selection
-        run: echo "THEME_SELECTION=${{ steps.post-to-x.outputs.theme_selection }}" >> $GITHUB_ENV
+      - name: Post career change content
+        if: startsWith(github.event.schedule, '10')
+        run: curl -X POST https://nshinri.net/api/post-careerchange

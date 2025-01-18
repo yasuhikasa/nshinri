@@ -1,5 +1,7 @@
+import { NextApiRequest, NextApiResponse } from 'next';
 import { OpenAI } from 'openai';
 import { TwitterApi } from 'twitter-api-v2';
+import fetch from 'node-fetch';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -7,20 +9,7 @@ dotenv.config();
 // 型定義
 type Theme = 'caregiving' | 'cooking' | 'counseling' | 'careerChange';
 
-interface Content {
-  text: string;
-  link: string;
-}
-
-interface ImageLibrary {
-  [key: string]: string;
-}
-
-interface PromptLibrary {
-  [key: string]: string;
-}
-
-// 初期化
+// 初期テーマ選択
 const initialThemeSelection: Record<Theme, number> = {
   caregiving: 0,
   cooking: 0,
@@ -28,30 +17,8 @@ const initialThemeSelection: Record<Theme, number> = {
   careerChange: 0,
 };
 
-// テーマ選択回数を環境変数から取得（なければ初期化）
-const themeSelection: Record<Theme, number> = JSON.parse(
-  process.env.THEME_SELECTION || JSON.stringify(initialThemeSelection)
-);
-
-// テーマ選択ロジック
-const getNextTheme = (selectionData: Record<Theme, number>): Theme => {
-  const minCount = Math.min(...Object.values(selectionData));
-  const leastSelectedThemes = (Object.keys(selectionData) as Theme[]).filter(
-    (theme) => selectionData[theme] === minCount
-  );
-  return leastSelectedThemes[
-    Math.floor(Math.random() * leastSelectedThemes.length)
-  ];
-};
-
-// テーマの選択
-const selectedTheme: Theme = getNextTheme(themeSelection);
-
-// 選択されたテーマのカウントを更新
-themeSelection[selectedTheme]++;
-
 // プロンプト（テーマ別、日本語）
-const prompts: PromptLibrary = {
+const prompts: Record<Theme, string> = {
   caregiving: `介護に関する短い共感的で心に響く投稿を作成してください。以下を含めてください：
 - 介護に関する共感を呼ぶエピソードや状況。
 - 大変な気持ちを抱えている人への励ましの言葉。
@@ -75,7 +42,7 @@ const prompts: PromptLibrary = {
 };
 
 // テーマごとの画像とリンク
-const contentLibrary: Record<Theme, Content> = {
+const contentLibrary: Record<Theme, { text: string; link: string }> = {
   caregiving: {
     text: '自宅で簡単、在宅介護記録スマホアプリ👇',
     link: 'https://nshinri.net/kaigokiroku',
@@ -94,58 +61,107 @@ const contentLibrary: Record<Theme, Content> = {
   },
 };
 
-const imageLibrary: ImageLibrary = {
+// 画像ライブラリ
+const imageLibrary: Record<Theme, string> = {
   caregiving: 'https://nshinri.net/10.png',
   cooking: 'https://nshinri.net/7.png',
   counseling: 'https://nshinri.net/4.jpg',
   careerChange: 'https://nshinri.net/5.jpeg',
 };
 
-// OpenAIで記事生成
-const generatePost = async (theme: Theme): Promise<string> => {
-  const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY || '',
-  });
-
-  const response = await openai.chat.completions.create({
-    model: 'gpt-4o-mini',
-    messages: [{ role: 'user', content: prompts[theme] }],
-  });
-
-  return response.choices[0]?.message?.content?.trim() || '';
+// テーマ選択ロジック
+const getNextTheme = (selectionData: Record<Theme, number>): Theme => {
+  const minCount = Math.min(...Object.values(selectionData));
+  const leastSelectedThemes = (Object.keys(selectionData) as Theme[]).filter(
+    (theme) => selectionData[theme] === minCount
+  );
+  return leastSelectedThemes[
+    Math.floor(Math.random() * leastSelectedThemes.length)
+  ];
 };
 
-// 投稿内容を生成してTwitterに送信
-(async () => {
-  try {
-    const articleText = await generatePost(selectedTheme);
+// GitHub Secrets APIのヘルパー関数
+const updateGitHubSecret = async (
+  updatedSelection: Record<Theme, number>
+): Promise<void> => {
+  const githubToken = process.env.GITHUB_TOKEN;
+  const repo = process.env.GITHUB_REPOSITORY;
+  if (!githubToken || !repo) {
+    throw new Error('Missing GitHub environment variables');
+  }
 
+  const [owner, repoName] = repo.split('/');
+  const secretName = 'THEME_SELECTION';
+  const url = `https://api.github.com/repos/${owner}/${repoName}/actions/secrets/${secretName}`;
+  const updatedData = Buffer.from(JSON.stringify(updatedSelection)).toString(
+    'base64'
+  );
+
+  const response = await fetch(url, {
+    method: 'PUT',
+    headers: {
+      Authorization: `Bearer ${githubToken}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      encrypted_value: updatedData,
+      key_id: process.env.GITHUB_KEY_ID,
+    }),
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`Failed to update GitHub secret: ${errorText}`);
+  }
+};
+
+// APIエンドポイント
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  try {
+    const themeSelection = JSON.parse(
+      process.env.THEME_SELECTION || JSON.stringify(initialThemeSelection)
+    );
+
+    const selectedTheme = getNextTheme(themeSelection);
+    themeSelection[selectedTheme]++;
+
+    const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY || '' });
+
+    const response = await openai.chat.completions.create({
+      model: 'gpt-4',
+      messages: [{ role: 'user', content: prompts[selectedTheme] }],
+    });
+
+    const articleText = response.choices[0]?.message?.content?.trim() || '';
+
+    const twitterClient = new TwitterApi({
+      appKey: process.env.TWITTER_API_KEY || '',
+      appSecret: process.env.TWITTER_API_SECRET || '',
+      accessToken: process.env.TWITTER_ACCESS_TOKEN || '',
+      accessSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET || '',
+    });
+
+    const mediaId = await twitterClient.v1.uploadMedia(
+      imageLibrary[selectedTheme]
+    );
     const tweetText = `
 ${articleText}\n\n
 ${contentLibrary[selectedTheme].text}\n
 ${contentLibrary[selectedTheme].link}
     `;
-
-    const twitterClient = new TwitterApi({
-      appKey: process.env.X_API_KEY || '',
-      appSecret: process.env.X_API_SECRET || '',
-      accessToken: process.env.X_ACCESS_TOKEN || '',
-      accessSecret: process.env.X_ACCESS_TOKEN_SECRET || '',
-    });
-
-    // 画像を含む投稿
-    const mediaId = await twitterClient.v1.uploadMedia(
-      imageLibrary[selectedTheme]
-    );
     await twitterClient.v1.tweet(tweetText, { media_ids: mediaId });
 
-    console.log('Successfully posted to X!');
+    await updateGitHubSecret(themeSelection);
 
-    // 環境変数に選択回数を保存（GitHub Actionsの環境変数を更新）
-    console.log(
-      '::set-output name=theme_selection::' + JSON.stringify(themeSelection)
-    );
+    res.status(200).json({ message: 'Successfully posted to X!' });
   } catch (error) {
-    console.error('Error posting to X:', error);
+    console.error('Error:', error);
+    res.status(500).json({ error: 'Internal Server Error', details: error });
   }
-})();
+};
+
+export default handler;
