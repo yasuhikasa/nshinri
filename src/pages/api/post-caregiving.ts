@@ -1,10 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { OpenAI } from 'openai';
-import { TwitterApi } from 'twitter-api-v2';
 import dotenv from 'dotenv';
-import axios from 'axios';
-import fs from 'fs';
-import path from 'path';
+import fetch from 'node-fetch';
 
 dotenv.config();
 

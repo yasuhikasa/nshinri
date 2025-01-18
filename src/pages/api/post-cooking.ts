@@ -1,13 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { OpenAI } from 'openai';
-import { TwitterApi } from 'twitter-api-v2';
 import dotenv from 'dotenv';
-import axios from 'axios';
-import fs from 'fs';
-import path from 'path';
+import fetch from 'node-fetch';
 
 dotenv.config();
-
 
 const cookingPrompt = `料理を楽しく感じさせる短い投稿を作成してください。以下を含めてください：
 - 夕食メニューに迷っている人への共感を呼ぶ一言。

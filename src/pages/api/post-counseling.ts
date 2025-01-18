@@ -1,10 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { OpenAI } from 'openai';
-import { TwitterApi } from 'twitter-api-v2';
 import dotenv from 'dotenv';
 import fetch from 'node-fetch';
-import fs from 'fs';
-import path from 'path';
 
 dotenv.config();
 
@@ -21,17 +18,6 @@ const counselingContent = {
   image: 'https://nshinri.net/4.jpg',
 };
 
-// 画像を一時保存する関数
-const downloadImage = async (url: string, filepath: string): Promise<void> => {
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(
-      `Failed to download image from ${url}: ${response.statusText}`
-    );
-  }
-  const buffer = await response.buffer();
-  fs.writeFileSync(filepath, buffer);
-};
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== 'POST') {
