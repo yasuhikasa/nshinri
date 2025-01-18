@@ -12,7 +12,7 @@ const cookingPrompt = `料理を楽しく感じさせる短い投稿を作成し
 - 必ず140文字以内で、明るく親しみやすいトーンにしてください。`;
 
 const cookingContent = {
-  text: 'AIで作るこだわりのレシピアプリ👇',
+  text: '👇AIで作るこだわりのレシピアプリ',
   link: 'https://nshinri.net/newrecipe',
   image: 'https://nshinri.net/7.png',
 };

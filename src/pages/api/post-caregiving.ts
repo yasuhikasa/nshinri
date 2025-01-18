@@ -13,7 +13,7 @@ const caregivingPrompt = `介護に関する短い共感的で心に響く投稿
 - 140文字以内に収めてください。`;
 
 const caregivingContent = {
-  text: '自宅で簡単、在宅介護記録スマホアプリ👇',
+  text: '👇自宅で簡単、在宅介護記録スマホアプリ',
   link: 'https://nshinri.net/kaigokiroku',
   image: 'https://nshinri.net/10.png',
 };
