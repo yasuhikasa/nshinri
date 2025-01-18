@@ -1,8 +1,19 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { TwitterApi } from 'twitter-api-v2';
 import dotenv from 'dotenv';
+import axios from 'axios';
+import fs from 'fs';
+import path from 'path';
 
 dotenv.config();
+
+// 一時的に画像を保存するディレクトリを指定
+const tempDir = '/tmp';
+
+const downloadImage = async (url: string, filepath: string) => {
+  const response = await axios.get(url, { responseType: 'arraybuffer' });
+  fs.writeFileSync(filepath, response.data);
+};
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== 'POST') {
@@ -24,16 +35,23 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       accessSecret: process.env.TWITTER_ACCESS_SECRET || '',
     });
 
+    console.log('Downloading media...');
+    const tempFilePath = path.join(tempDir, 'media-image.jpeg');
+    await downloadImage(mediaUrl, tempFilePath);
+
     console.log('Uploading media...');
-    const mediaId = await twitterClient.v1.uploadMedia(mediaUrl);
+    const mediaId = await twitterClient.v1.uploadMedia(tempFilePath);
     console.log('Uploaded media ID:', mediaId);
 
-    // ツイートを投稿
+    console.log('Posting tweet...');
     const tweet = await twitterClient.v2.tweet({
       text: tweetText,
       media: { media_ids: [mediaId] },
     });
     console.log('Successfully posted tweet:', tweet);
+
+    // 一時ファイルを削除
+    fs.unlinkSync(tempFilePath);
 
     res.status(200).json({ message: 'Successfully posted tweet!', tweet });
   } catch (error) {

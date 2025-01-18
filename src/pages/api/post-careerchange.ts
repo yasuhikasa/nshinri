@@ -8,7 +8,6 @@ dotenv.config();
 const careerChangePrompt = `40歳からの転職に関する短い励ましの投稿を作成してください。以下を考慮してください：
 - キャリアに行き詰まりを感じる状況。
 - 「遅すぎることはない」という勇気を与える言葉。
-- 40歳以降に成功した人の具体例。
 - トーンは明るく、希望を持たせる内容にしてください。
 - 140文字以内に収めてください。`;
 
@@ -30,14 +29,14 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const response = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
       messages: [{ role: 'user', content: careerChangePrompt }],
-      max_tokens: 140, // 必要に応じて調整（Xのツイート用なら280文字以内）
+      max_tokens: 140,
       temperature: 0.7,
     });
 
     const articleText = response.choices[0]?.message?.content?.trim() || '';
     console.log('Generated article text:', articleText);
 
-    // Vercelの投稿エンドポイントを呼び出す
+    // Vercelエンドポイントを呼び出す
     const vercelEndpoint = 'https://nshinri.net/api/vercel-career';
 
     const tweetText = `
