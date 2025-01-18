@@ -44,10 +44,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     });
 
     console.log('Uploading media...');
-    const mediaId = await twitterClient.v1.uploadMedia(
-      careerChangeContent.image
-    );
-    console.log('Uploaded media ID:', mediaId);
+    // const mediaId = await twitterClient.v1.uploadMedia(
+    //   careerChangeContent.image
+    // );
+    // console.log('Uploaded media ID:', mediaId);
 
     const tweetText = `
 ${articleText}\n\n
@@ -60,7 +60,7 @@ ${careerChangeContent.link}
     // `media` オブジェクトに `media_ids` を含めてツイート
     const tweet = await twitterClient.v2.tweet({
       text: tweetText,
-      media: { media_ids: [mediaId] },
+      // media: { media_ids: [mediaId] },
     });
     console.log('Successfully posted tweet:', tweet);
 
