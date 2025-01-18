@@ -15,16 +15,16 @@ jobs:
     steps:
       - name: Post caregiving content
         if: startsWith(github.event.schedule, '7')
-        run: curl -X POST https://nshinri.net/api/post-caregiving
+        run: curl -X POST https://nshinri-56d2c5892705.herokuapp.com/api/post-caregiving
 
       - name: Post cooking content
         if: startsWith(github.event.schedule, '8')
-        run: curl -X POST https://nshinri.net/api/post-cooking
+        run: curl -X POST https://nshinri-56d2c5892705.herokuapp.com/api/post-cooking
 
       - name: Post counseling content
         if: startsWith(github.event.schedule, '9')
-        run: curl -X POST https://nshinri.net/api/post-counseling
+        run: curl -X POST https://nshinri-56d2c5892705.herokuapp.com/api/post-counseling
 
       - name: Post career change content
         if: startsWith(github.event.schedule, '10')
-        run: curl -X POST https://nshinri.net/api/post-careerchange
+        run: curl -X POST https://nshinri-56d2c5892705.herokuapp.com/api/post-careerchange

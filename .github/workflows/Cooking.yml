@@ -9,4 +9,4 @@ jobs:
 
     steps:
       - name: Post Cooking Content to X
-        run: curl -X POST https://nshinri.net/api/post-cooking
+        run: curl -X POST https://nshinri-56d2c5892705.herokuapp.com/api/post-cooking

@@ -9,4 +9,4 @@ jobs:
 
     steps:
       - name: Post Caregiving Content to X
-        run: curl -X POST https://nshinri.net/api/post-caregiving
+        run: curl -X POST https://nshinri-56d2c5892705.herokuapp.com/api/post-caregiving
