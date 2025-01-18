@@ -18,10 +18,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     console.log('Initializing Twitter API client...');
     const twitterClient = new TwitterApi({
-      appKey: process.env.TWITTER_API_KEY || '',
-      appSecret: process.env.TWITTER_API_SECRET || '',
+      appKey: process.env.TWITTER_APP_KEY || '',
+      appSecret: process.env.TWITTER_APP_SECRET || '',
       accessToken: process.env.TWITTER_ACCESS_TOKEN || '',
-      accessSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET || '',
+      accessSecret: process.env.TWITTER_ACCESS_SECRET || '',
     });
 
     console.log('Uploading media...');

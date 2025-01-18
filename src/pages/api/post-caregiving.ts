@@ -9,7 +9,8 @@ const caregivingPrompt = `介護に関する短い共感的で心に響く投稿
 - 介護に関する共感を呼ぶエピソードや状況。
 - 大変な気持ちを抱えている人への励ましの言葉。
 - 負担を軽減するための実用的なアドバイス。
-- トーンは温かく、サポートする内容にしてください。`;
+- トーンは温かく、サポートする内容にしてください。
+- 140文字以内に収めてください。`;
 
 const caregivingContent = {
   text: '自宅で簡単、在宅介護記録スマホアプリ👇',
@@ -28,15 +29,17 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const response = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
       messages: [{ role: 'user', content: caregivingPrompt }],
+      max_tokens: 140, // 必要に応じて調整（Xのツイート用なら280文字以内）
+      temperature: 0.7,
     });
 
     const articleText = response.choices[0]?.message?.content?.trim() || '';
 
     const twitterClient = new TwitterApi({
-      appKey: process.env.TWITTER_API_KEY || '',
-      appSecret: process.env.TWITTER_API_SECRET || '',
+      appKey: process.env.TWITTER_APP_KEY || '',
+      appSecret: process.env.TWITTER_APP_SECRET || '',
       accessToken: process.env.TWITTER_ACCESS_TOKEN || '',
-      accessSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET || '',
+      accessSecret: process.env.TWITTER_ACCESS_SECRET || '',
     });
 
     const mediaId = await twitterClient.v1.uploadMedia(caregivingContent.image);
