@@ -2,6 +2,9 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { OpenAI } from 'openai';
 import { TwitterApi } from 'twitter-api-v2';
 import dotenv from 'dotenv';
+import fetch from 'node-fetch';
+import fs from 'fs';
+import path from 'path';
 
 dotenv.config();
 
@@ -13,9 +16,19 @@ const counselingPrompt = `心の健康に関する短い感動的で励ましの
 - 140文字以内に収めてください。`;
 
 const counselingContent = {
-  text: 'カウンセリングはこちら👇',
+  text: '介護の悩み、心理カウンセリング、IT・未経験転職の相談はこちら👇',
   link: 'https://nshinri.net/counseling',
   image: 'https://nshinri.net/4.jpg',
+};
+
+// 画像を一時保存する関数
+const downloadImage = async (url: string, filepath: string): Promise<void> => {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Failed to download image from ${url}: ${response.statusText}`);
+  }
+  const buffer = await response.buffer();
+  fs.writeFileSync(filepath, buffer);
 };
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -29,7 +42,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const response = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
       messages: [{ role: 'user', content: counselingPrompt }],
-      max_tokens: 140, // 必要に応じて調整（Xのツイート用なら280文字以内）
+      max_tokens: 140,
       temperature: 0.7,
     });
 
@@ -42,14 +55,23 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       accessSecret: process.env.TWITTER_ACCESS_SECRET || '',
     });
 
-    const mediaId = await twitterClient.v1.uploadMedia(counselingContent.image);
+    // 画像を一時保存
+    const tempImagePath = path.join('/tmp', 'counseling-image.jpg');
+    await downloadImage(counselingContent.image, tempImagePath);
+
+    // 画像をアップロード
+    const mediaId = await twitterClient.v1.uploadMedia(tempImagePath);
     const tweetText = `
 ${articleText}\n\n
 ${counselingContent.text}\n
 ${counselingContent.link}
-    `;
+    `.trim();
 
+    // ツイートを投稿
     await twitterClient.v1.tweet(tweetText, { media_ids: mediaId });
+
+    // 一時ファイルを削除
+    fs.unlinkSync(tempImagePath);
 
     res
       .status(200)
