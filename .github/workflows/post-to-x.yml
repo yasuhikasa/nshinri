@@ -34,7 +34,7 @@ jobs:
           X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
           X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
           THEME_SELECTION: ${{ secrets.THEME_SELECTION }}
-        run: node post-to-x.js
+        run: node post-to-x.ts
 
       - name: Update theme selection
         run: echo "THEME_SELECTION=${{ steps.post-to-x.outputs.theme_selection }}" >> $GITHUB_ENV
