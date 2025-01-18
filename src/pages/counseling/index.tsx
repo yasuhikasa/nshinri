@@ -98,7 +98,7 @@ const Counseling = () => {
           url: 'https://nshinri.net/counseling',
           images: [
             {
-              url: 'https://nshinri.net/me.png',
+              url: 'https://nshinri.net/4.jpg',
               width: 1200,
               height: 630,
               alt: '心理カウンセリングとライフコーチングのOGP画像',

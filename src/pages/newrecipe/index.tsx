@@ -28,7 +28,7 @@ export default function NewRecipe() {
             'AIを使ってあなたのこだわりにぴったりなレシピを提案するアプリ。材料、調理時間を指定して、簡単にレシピを見つけよう。ポイントを消費してレシピを生成！',
           images: [
             {
-              url: 'https://nshinri.net/me.png',
+              url: 'https://nshinri.net/8.png',
               width: 1200,
               height: 630,
               alt: 'レシピ作成アプリのOGP画像',
