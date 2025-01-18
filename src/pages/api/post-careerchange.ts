@@ -43,13 +43,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       accessSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET || '',
     });
 
-    console.log('Initializing Twitter API client with the following keys:');
-    console.log('APP_KEY:', process.env.TWITTER_APP_KEY);
-    console.log('APP_SECRET:', process.env.TWITTER_APP_SECRET);
-    console.log('ACCESS_TOKEN:', process.env.TWITTER_ACCESS_TOKEN);
-    console.log('ACCESS_SECRET:', process.env.TWITTER_ACCESS_SECRET);
-
-
     console.log('Uploading media...');
     const mediaId = await twitterClient.v1.uploadMedia(
       careerChangeContent.image
@@ -64,8 +57,12 @@ ${careerChangeContent.link}
     console.log('Prepared tweet text:', tweetText);
     console.log('Tweet text length:', tweetText.length);
 
-    await twitterClient.v1.tweet(tweetText, { media_ids: mediaId });
-    console.log('Successfully posted tweet!');
+    // `media` オブジェクトに `media_ids` を含めてツイート
+    const tweet = await twitterClient.v2.tweet({
+      text: tweetText,
+      media: { media_ids: [mediaId] },
+    });
+    console.log('Successfully posted tweet:', tweet);
 
     res
       .status(200)
