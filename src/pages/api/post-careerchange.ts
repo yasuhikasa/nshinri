@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { OpenAI } from 'openai';
-import { TwitterApi } from 'twitter-api-v2';
 import dotenv from 'dotenv';
+import fetch from 'node-fetch';
 
 dotenv.config();
 
@@ -19,7 +19,6 @@ const careerChangeContent = {
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== 'POST') {
-    console.log('Invalid request method:', req.method);
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
@@ -35,44 +34,35 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const articleText = response.choices[0]?.message?.content?.trim() || '';
     console.log('Generated article text:', articleText);
 
-    console.log('Initializing Twitter API client...');
-    const twitterClient = new TwitterApi({
-      appKey: process.env.TWITTER_API_KEY || '',
-      appSecret: process.env.TWITTER_API_SECRET || '',
-      accessToken: process.env.TWITTER_ACCESS_TOKEN || '',
-      accessSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET || '',
-    });
+    // Vercelの投稿エンドポイントを呼び出す
+    const vercelEndpoint = 'https://nshinri.net//api/vercel-career';
 
-    console.log('Uploading media...');
-    const mediaId = await twitterClient.v1.uploadMedia(
-      careerChangeContent.image
-    );
-    console.log('Uploaded media ID:', mediaId);
-
-    // ツイートテキストを準備
     const tweetText = `
 ${articleText}\n\n
 ${careerChangeContent.text}\n
 ${careerChangeContent.link}
     `.trim();
 
-    console.log('Prepared tweet text:', tweetText);
-    console.log('Tweet text length:', tweetText.length);
+    const responseVercel = await fetch(vercelEndpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        tweetText,
+        mediaUrl: careerChangeContent.image,
+      }),
+    });
 
-    // 文字数制限チェック
-    if (tweetText.length > 280) {
-      throw new Error('ツイートの文字数が280文字を超えています。');
+    if (!responseVercel.ok) {
+      const errorResponse = await responseVercel.json();
+      throw new Error(`Vercel API error: ${errorResponse.error}`);
     }
 
-    // ツイートを投稿 (v1.1)
-    const tweet = await twitterClient.v1.tweet(tweetText, {
-      media_ids: [mediaId],
-    });
-    console.log('Successfully posted tweet:', tweet);
+    const result = await responseVercel.json();
+    console.log('Successfully posted via Vercel:', result);
 
     res
       .status(200)
-      .json({ message: 'Successfully posted career change content to X!' });
+      .json({ message: 'Successfully handled the entire process!' });
   } catch (error) {
     console.error('Error occurred:', error);
     res.status(500).json({ error: 'Internal Server Error', details: error });
