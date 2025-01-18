@@ -73,7 +73,10 @@ ${cookingContent.link}
     `.trim();
 
     console.log('Posting tweet...');
-    await twitterClient.v1.tweet(tweetText, { media_ids: [mediaId] });
+    await twitterClient.v2.tweet({
+      text: tweetText,
+      media: { media_ids: [mediaId] },
+    });
     console.log('Successfully posted tweet!');
 
     // 一時ファイルを削除

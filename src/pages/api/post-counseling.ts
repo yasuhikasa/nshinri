@@ -70,7 +70,10 @@ ${counselingContent.link}
     `.trim();
 
     // ツイートを投稿
-    await twitterClient.v1.tweet(tweetText, { media_ids: mediaId });
+    await twitterClient.v2.tweet({
+      text: tweetText,
+      media: { media_ids: [mediaId] },
+    });
 
     // 一時ファイルを削除
     fs.unlinkSync(tempImagePath);
