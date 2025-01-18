@@ -5,7 +5,7 @@ import fetch from 'node-fetch';
 
 dotenv.config();
 
-const careerChangePrompt = `40歳からの転職に関する短い励ましの投稿を作成してください。以下を含めてください：
+const careerChangePrompt = `40歳からの転職に関する短い励ましの投稿を作成してください。以下を考慮してください：
 - キャリアに行き詰まりを感じる状況。
 - 「遅すぎることはない」という勇気を与える言葉。
 - 40歳以降に成功した人の具体例。
@@ -29,6 +29,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const response = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
       messages: [{ role: 'user', content: careerChangePrompt }],
+      max_tokens: 140, // 必要に応じて調整（Xのツイート用なら280文字以内）
+      temperature: 0.7,
     });
 
     const articleText = response.choices[0]?.message?.content?.trim() || '';
