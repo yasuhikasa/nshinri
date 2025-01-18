@@ -35,7 +35,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     console.log('Generated article text:', articleText);
 
     // Vercelの投稿エンドポイントを呼び出す
-    const vercelEndpoint = 'https://nshinri.net//api/vercel-career';
+    const vercelEndpoint = 'https://nshinri.net/api/vercel-career';
 
     const tweetText = `
 ${articleText}\n\n
