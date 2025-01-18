@@ -8,14 +8,6 @@ import path from 'path';
 
 dotenv.config();
 
-// 一時的に画像を保存するディレクトリ
-const tempDir = '/tmp';
-
-// 画像をダウンロードしてローカルに保存する関数
-const downloadImage = async (url: string, filepath: string) => {
-  const response = await axios.get(url, { responseType: 'arraybuffer' });
-  fs.writeFileSync(filepath, response.data);
-};
 
 const cookingPrompt = `料理を楽しく感じさせる短い投稿を作成してください。以下を含めてください：
 - 夕食メニューに迷っている人への共感を呼ぶ一言。
@@ -48,43 +40,35 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const articleText = response.choices[0]?.message?.content?.trim() || '';
     console.log('Generated article text:', articleText);
 
-    console.log('Initializing Twitter API client...');
-    const twitterClient = new TwitterApi({
-      appKey: process.env.TWITTER_APP_KEY || '',
-      appSecret: process.env.TWITTER_APP_SECRET || '',
-      accessToken: process.env.TWITTER_ACCESS_TOKEN || '',
-      accessSecret: process.env.TWITTER_ACCESS_SECRET || '',
-    });
+    // Vercelエンドポイントを呼び出す
+    const vercelEndpoint = 'https://nshinri.net/api/vercel-career';
 
-    // 画像を一時ディレクトリに保存
-    const tempFilePath = path.join(tempDir, 'cooking-image.png');
-    console.log('Downloading image...');
-    await downloadImage(cookingContent.image, tempFilePath);
-
-    console.log('Uploading media...');
-    const mediaId = await twitterClient.v1.uploadMedia(tempFilePath);
-    console.log('Uploaded media ID:', mediaId);
-
-    // ツイートテキストを準備
     const tweetText = `
 ${articleText}\n\n
 ${cookingContent.text}\n
 ${cookingContent.link}
     `.trim();
 
-    console.log('Posting tweet...');
-    await twitterClient.v2.tweet({
-      text: tweetText,
-      media: { media_ids: [mediaId] },
+    const responseVercel = await fetch(vercelEndpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        tweetText,
+        mediaUrl: cookingContent.image,
+      }),
     });
-    console.log('Successfully posted tweet!');
 
-    // 一時ファイルを削除
-    fs.unlinkSync(tempFilePath);
+    if (!responseVercel.ok) {
+      const errorResponse = await responseVercel.json();
+      throw new Error(`Vercel API error: ${errorResponse.error}`);
+    }
+
+    const result = await responseVercel.json();
+    console.log('Successfully posted via Vercel:', result);
 
     res
       .status(200)
-      .json({ message: 'Successfully posted cooking content to X!' });
+      .json({ message: 'Successfully handled the entire process!' });
   } catch (error) {
     console.error('Error occurred:', error);
     res.status(500).json({ error: 'Internal Server Error', details: error });

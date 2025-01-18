@@ -39,6 +39,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   try {
+    console.log('Starting OpenAI API request...');
     const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY || '' });
 
     const response = await openai.chat.completions.create({
@@ -49,40 +50,39 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     });
 
     const articleText = response.choices[0]?.message?.content?.trim() || '';
+    console.log('Generated article text:', articleText);
 
-    const twitterClient = new TwitterApi({
-      appKey: process.env.TWITTER_APP_KEY || '',
-      appSecret: process.env.TWITTER_APP_SECRET || '',
-      accessToken: process.env.TWITTER_ACCESS_TOKEN || '',
-      accessSecret: process.env.TWITTER_ACCESS_SECRET || '',
-    });
+    // Vercelエンドポイントを呼び出す
+    const vercelEndpoint = 'https://nshinri.net/api/vercel-career';
 
-    // 画像を一時保存
-    const tempImagePath = path.join('/tmp', 'counseling-image.jpg');
-    await downloadImage(counselingContent.image, tempImagePath);
-
-    // 画像をアップロード
-    const mediaId = await twitterClient.v1.uploadMedia(tempImagePath);
     const tweetText = `
 ${articleText}\n\n
 ${counselingContent.text}\n
 ${counselingContent.link}
     `.trim();
 
-    // ツイートを投稿
-    await twitterClient.v2.tweet({
-      text: tweetText,
-      media: { media_ids: [mediaId] },
+    const responseVercel = await fetch(vercelEndpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        tweetText,
+        mediaUrl: counselingContent.image,
+      }),
     });
 
-    // 一時ファイルを削除
-    fs.unlinkSync(tempImagePath);
+    if (!responseVercel.ok) {
+      const errorResponse = await responseVercel.json();
+      throw new Error(`Vercel API error: ${errorResponse.error}`);
+    }
+
+    const result = await responseVercel.json();
+    console.log('Successfully posted via Vercel:', result);
 
     res
       .status(200)
-      .json({ message: 'Successfully posted counseling content to X!' });
+      .json({ message: 'Successfully handled the entire process!' });
   } catch (error) {
-    console.error('Error:', error);
+    console.error('Error occurred:', error);
     res.status(500).json({ error: 'Internal Server Error', details: error });
   }
 };
