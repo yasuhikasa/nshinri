@@ -19,10 +19,12 @@ const careerChangeContent = {
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== 'POST') {
+    console.log('Invalid request method:', req.method);
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
   try {
+    console.log('Starting OpenAI API request...');
     const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY || '' });
 
     const response = await openai.chat.completions.create({
@@ -31,7 +33,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     });
 
     const articleText = response.choices[0]?.message?.content?.trim() || '';
+    console.log('Generated article text:', articleText);
 
+    console.log('Initializing Twitter API client...');
     const twitterClient = new TwitterApi({
       appKey: process.env.TWITTER_API_KEY || '',
       appSecret: process.env.TWITTER_API_SECRET || '',
@@ -39,22 +43,28 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       accessSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET || '',
     });
 
+    console.log('Uploading media...');
     const mediaId = await twitterClient.v1.uploadMedia(
       careerChangeContent.image
     );
+    console.log('Uploaded media ID:', mediaId);
+
     const tweetText = `
 ${articleText}\n\n
 ${careerChangeContent.text}\n
 ${careerChangeContent.link}
     `;
+    console.log('Prepared tweet text:', tweetText);
+    console.log('Tweet text length:', tweetText.length);
 
     await twitterClient.v1.tweet(tweetText, { media_ids: mediaId });
+    console.log('Successfully posted tweet!');
 
     res
       .status(200)
       .json({ message: 'Successfully posted career change content to X!' });
   } catch (error) {
-    console.error('Error:', error);
+    console.error('Error occurred:', error);
     res.status(500).json({ error: 'Internal Server Error', details: error });
   }
 };
