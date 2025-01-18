@@ -25,7 +25,9 @@ const counselingContent = {
 const downloadImage = async (url: string, filepath: string): Promise<void> => {
   const response = await fetch(url);
   if (!response.ok) {
-    throw new Error(`Failed to download image from ${url}: ${response.statusText}`);
+    throw new Error(
+      `Failed to download image from ${url}: ${response.statusText}`
+    );
   }
   const buffer = await response.buffer();
   fs.writeFileSync(filepath, buffer);
