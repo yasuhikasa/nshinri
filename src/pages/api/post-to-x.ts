@@ -17,6 +17,7 @@ const postsFilePath = path.join(process.cwd(), 'src/data/posts.json');
 interface Post {
   title: string;
   content: string;
+  link: string;
   hashtags: string;
 }
 
