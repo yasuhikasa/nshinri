@@ -49,18 +49,24 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     );
     console.log('Uploaded media ID:', mediaId);
 
+    // ツイートテキストを準備
     const tweetText = `
 ${articleText}\n\n
 ${careerChangeContent.text}\n
 ${careerChangeContent.link}
-    `;
+    `.trim();
+
     console.log('Prepared tweet text:', tweetText);
     console.log('Tweet text length:', tweetText.length);
 
-    // `media` オブジェクトに `media_ids` を含めてツイート
-    const tweet = await twitterClient.v2.tweet({
-      text: tweetText,
-      media: { media_ids: [mediaId] },
+    // 文字数制限チェック
+    if (tweetText.length > 280) {
+      throw new Error('ツイートの文字数が280文字を超えています。');
+    }
+
+    // ツイートを投稿 (v1.1)
+    const tweet = await twitterClient.v1.tweet(tweetText, {
+      media_ids: [mediaId],
     });
     console.log('Successfully posted tweet:', tweet);
 
