@@ -1,15 +1,30 @@
 name: Post to X
 
-# 定期実行のスケジュール
 on:
   schedule:
-    - cron: '0 9 */2 * *' # 2日おき午前9時（UTC基準）
-  workflow_dispatch: # 手動トリガーを追加
+    - cron: "0 7 * * *" # JST 16時
+    - cron: "0 8 * * *" # JST 17時
+    - cron: "0 9 * * *" # JST 18時
+    - cron: "0 10 * * *" # JST 19時
+  workflow_dispatch:
 
 jobs:
   post-to-x:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Call Vercel API
-        run: curl -X POST https://nshinri.net/api/post-to-x
+      - name: Post caregiving content
+        if: startsWith(github.event.schedule, '7')
+        run: curl -X POST https://nshinri-56d2c5892705.herokuapp.com/api/post-caregiving
+
+      - name: Post cooking content
+        if: startsWith(github.event.schedule, '8')
+        run: curl -X POST https://nshinri-56d2c5892705.herokuapp.com/api/post-cooking
+
+      - name: Post counseling content
+        if: startsWith(github.event.schedule, '9')
+        run: curl -X POST https://nshinri-56d2c5892705.herokuapp.com/api/post-counseling
+
+      - name: Post career change content
+        if: startsWith(github.event.schedule, '10')
+        run: curl -X POST https://nshinri-56d2c5892705.herokuapp.com/api/post-careerchange
