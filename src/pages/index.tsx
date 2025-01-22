@@ -256,7 +256,7 @@ const Home = ({ notifications }: { notifications: Notification[] }) => {
           </ul>
         </div>
 
-        {/* カウンセリング */}
+        {/* カウンセリング
         <h3 className={styles.subheading}>
           カウンセリング、キャリアコーチング
         </h3>
@@ -279,10 +279,10 @@ const Home = ({ notifications }: { notifications: Notification[] }) => {
             <li>・心の病や社会を離脱してからのリスタートのお悩み相談</li>
             <li>・未経験からのIT転職相談</li>
           </ul>
-        </div>
+        </div> */}
 
         {/* Kindle出版 */}
-        <h3 className={styles.subheading}>電子書籍出版</h3>
+        <h3 className={styles.subheading}>40歳未経験でITエンジニアの軌跡</h3>
         <div className={styles.section}>
           <div className={styles.introduction}>
             <Link href="https://x.gd/igk0F" legacyBehavior>
