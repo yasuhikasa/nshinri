@@ -68,19 +68,18 @@ const Aboutme = () => {
       {/* NextSeoを使ったSEO設定 */}
       <NextSeo
         title="Nくん私について"
-        description="心理カウンセリング、ライフコーチング、Kindle出版などの情報を発信しています。"
+        description="ITエンジニア業、Kindle出版などの情報を発信しています。"
         canonical="https://nshinri.net/aboutme"
         openGraph={{
           title: 'Nくん私について',
-          description:
-            '心理カウンセリング、ライフコーチング、Kindle出版などの情報を発信しています。',
+          description: 'ITエンジニア業、Kindle出版などの情報を発信しています。',
           url: 'https://nshinri.net/aboutme',
           images: [
             {
               url: 'https://nshinri.net/me.png',
               width: 1200,
               height: 630,
-              alt: '心理カウンセリングとライフコーチングのOGP画像',
+              alt: 'ITエンジニアのOGP画像',
             },
           ],
           site_name: 'Nくん私について',
