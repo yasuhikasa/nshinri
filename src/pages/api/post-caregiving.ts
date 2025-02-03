@@ -14,8 +14,8 @@ const caregivingPrompt = `介護に関する短い共感的で心に響く投稿
 
 const caregivingContent = {
   text: '👇自宅で簡単、在宅介護記録スマホアプリ',
-  link: 'https://nshinri.net/kaigokiroku',
-  image: 'https://nshinri.net/10.png',
+  link: 'https://apps.apple.com/jp/app/%E8%87%AA%E5%AE%85%E3%81%A7%E7%B0%A1%E5%8D%98-%E5%9C%A8%E5%AE%85%E4%BB%8B%E8%AD%B7%E3%83%BC%E4%BB%8B%E8%AD%B7%E8%A8%98%E9%8C%B2%E3%82%A2%E3%83%97%E3%83%AA/id6738299675',
+  // image: 'https://nshinri.net/10.png',
 };
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -51,7 +51,7 @@ ${caregivingContent.link}
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         tweetText,
-        mediaUrl: caregivingContent.image,
+        // mediaUrl: caregivingContent.image,
       }),
     });
 

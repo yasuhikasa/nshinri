@@ -13,8 +13,8 @@ const cookingPrompt = `料理を楽しく感じさせる短い投稿を作成し
 
 const cookingContent = {
   text: '👇AIで作るこだわりのレシピアプリ',
-  link: 'https://nshinri.net/newrecipe',
-  image: 'https://nshinri.net/7.png',
+  link: 'https://apps.apple.com/jp/app/%E3%81%93%E3%81%A0%E3%82%8F%E3%82%8A%E3%81%AE%E5%89%B5%E4%BD%9C%E6%96%99%E7%90%86%E3%83%AC%E3%82%B7%E3%83%94-%E7%B0%A1%E5%8D%98%E3%81%AB%E3%81%93%E3%81%A0%E3%82%8F%E3%82%8A%E3%81%8C%E6%AF%8E%E6%97%A5%E3%81%AE%E9%A3%9F%E5%8D%93%E3%81%AB/id6739532255',
+  // image: 'https://nshinri.net/7.png',
 };
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -50,7 +50,7 @@ ${cookingContent.link}
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         tweetText,
-        mediaUrl: cookingContent.image,
+        // mediaUrl: cookingContent.image,
       }),
     });
 
