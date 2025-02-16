@@ -279,7 +279,7 @@ const Home = ({ notifications }: { notifications: Notification[] }) => {
             <li>・未経験からのIT転職・フリーランス移行支援</li>
             <li>・仕事のストレスや将来の不安に関する相談</li>
             <li>・自己肯定感を高め、行動を起こすためのサポート</li>
-            <li>・副業・独立のスタートアップ相談</li>
+            {/* <li>・副業・独立のスタートアップ相談</li> */}
           </ul>
         </div>
 
