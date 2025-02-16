@@ -13,7 +13,7 @@ const counselingPrompt = `心の健康に関する短い感動的で励ましの
 - 140文字以内に収めてください。`;
 
 const counselingContent = {
-  text: '👇介護の悩み、心理カウンセリング、IT・未経験転職の相談はこちら',
+  text: '👇人生のリスタート、心理カウンセリング、IT・未経験転職の相談はこちら',
   link: 'https://nshinri.net/counseling',
   // image: 'https://nshinri.net/4.jpg',
 };
