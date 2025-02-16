@@ -11,11 +11,11 @@ const Header = () => {
               トップページ
             </Link>
           </li>
-          <li className={styles.navItem}>
+          {/* <li className={styles.navItem}>
             <Link href="/posts/counseling-column" className={styles.navLink}>
               カウンセリングの重要さ
             </Link>
-          </li>
+          </li> */}
           <li className={styles.navItem}>
             <Link href="/contact" className={styles.navLink}>
               お問い合わせ
