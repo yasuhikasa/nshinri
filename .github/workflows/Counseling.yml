@@ -1,8 +1,8 @@
 name: Post Counseling to X
 
 on:
-  # schedule:
-  #   - cron: '0 10 * * *' # JST 19時
+  schedule:
+    - cron: '0 10 */3 * *' # JST 19時 3日に1回
   workflow_dispatch: # 手動トリガー
 
 jobs:

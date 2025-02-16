@@ -256,9 +256,9 @@ const Home = ({ notifications }: { notifications: Notification[] }) => {
           </ul>
         </div>
 
-        {/* カウンセリング
+        {/* カウンセリング */}
         <h3 className={styles.subheading}>
-          カウンセリング、キャリアコーチング
+          キャリアカウンセリング、ライフコーチング相談
         </h3>
         <div className={styles.section}>
           <div className={styles.introduction}>
@@ -266,20 +266,22 @@ const Home = ({ notifications }: { notifications: Notification[] }) => {
               <a>
                 <Image
                   src="/4.jpg"
-                  alt="介護の悩み、社会復帰のカウンセリング"
+                  alt="キャリア相談・人生のリスタート"
                   width={200}
                   height={200}
                 />
-                <p>→介護の悩み、社会復帰、ライフコーチング</p>
+                <p>→キャリア転職、社会復帰、人生のリスタート相談</p>
               </a>
             </Link>
           </div>
           <ul className={styles.list}>
-            <li>・介護のお悩み相談</li>
-            <li>・心の病や社会を離脱してからのリスタートのお悩み相談</li>
-            <li>・未経験からのIT転職相談</li>
+            <li>・30代・40代のキャリアリスタート相談</li>
+            <li>・未経験からのIT転職・フリーランス移行支援</li>
+            <li>・仕事のストレスや将来の不安に関する相談</li>
+            <li>・自己肯定感を高め、行動を起こすためのサポート</li>
+            <li>・副業・独立のスタートアップ相談</li>
           </ul>
-        </div> */}
+        </div>
 
         {/* Kindle出版 */}
         <h3 className={styles.subheading}>40歳未経験でITエンジニアの軌跡</h3>
