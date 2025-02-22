@@ -2,7 +2,7 @@ name: Post Career Change to X
 
 on:
   schedule:
-    - cron: '0 7 */3 * *' # JST 16時、3日に1回
+    - cron: '0 7 */2 * *' # JST 16時、3日に1回
   workflow_dispatch: # 手動トリガー
 
 jobs:
