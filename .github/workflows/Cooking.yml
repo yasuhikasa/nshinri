@@ -2,7 +2,7 @@ name: Post Cooking to X
 
 on:
   schedule:
-    - cron: '0 9 */3 * *' # JST 18時 3日に1回
+    - cron: '0 9 */2 * *' # JST 18時 3日に1回
   workflow_dispatch: # 手動トリガー
 
 jobs:
