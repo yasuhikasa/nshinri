@@ -1,8 +1,8 @@
 name: Post Caregiving to X
 
 on:
-  schedule:
-    - cron: '0 8 */3 * *' # JST 17時 3日に1回
+  # schedule:
+  #   - cron: '0 8 */3 * *' # JST 17時 3日に1回
   workflow_dispatch: # 手動トリガー
 
 jobs:
