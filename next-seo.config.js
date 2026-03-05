@@ -1,7 +1,7 @@
 const config = {
   title: '日笠泰彰 | フルスタックエンジニア',
   description:
-    '心のサポートやカウンセリングを通じて、生活の質を向上させるためのアドバイスや支援を行います。',
+    'エンジニア日笠泰彰のポートフォリオサイトです。Next.jsやAIを活用した開発実績を公開しています。',
   openGraph: {
     type: 'website',
     locale: 'ja_JP',
