@@ -113,7 +113,7 @@ const Aboutme = () => {
       <div className={styles.container}>
         <Breadcrumb />
         {/* トップ部分 */}
-        <h1 className={styles.heading}>Nくんについて</h1>
+        <h1 className={styles.heading}>日笠泰彰について</h1>
 
         {/* 画像とプロフィールを横並びに配置 */}
         <div className={styles.profileContainer}>
