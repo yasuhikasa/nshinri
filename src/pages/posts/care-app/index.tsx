@@ -86,7 +86,7 @@ const PostPage = () => {
               url: 'https://nshinri.net/me.png',
               width: 1200,
               height: 630,
-              alt: 'Nくんのロゴ',
+              alt: '日笠泰彰によるNくんのロゴ',
             },
           ],
         }}

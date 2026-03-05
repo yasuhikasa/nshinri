@@ -43,7 +43,7 @@ const PrivacyPolicy = () => {
               url: 'https://nshinri.net/me.png',
               width: 1200,
               height: 630,
-              alt: "N's WorkRoomのロゴ",
+              alt: "日笠泰彰によるN's WorkRoomのロゴ",
             },
           ],
           site_name: "N's WorkRoom",

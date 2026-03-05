@@ -109,7 +109,7 @@ const Booking = () => {
           >
             <img
               src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png"
-              alt="友だち追加"
+              alt="日笠泰彰による友だち追加"
               className={styles.lineaddbutton}
             />
           </a>

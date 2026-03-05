@@ -12,7 +12,7 @@ const config = {
         url: 'https://nshinri.net/me.png',
         width: 1200,
         height: 630,
-        alt: '心理カウンセリングとライフコーチングのOGP画像',
+        alt: '日笠泰彰による心理カウンセリングとライフコーチングのOGP画像',
       },
     ],
   },

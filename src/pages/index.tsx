@@ -113,7 +113,7 @@ const Home = ({ notifications }: { notifications: Notification[] }) => {
               url: 'https://nshinri.net/me.png',
               width: 1200,
               height: 630,
-              alt: "N's WorkRoomのOGP画像",
+              alt: "日笠泰彰によるN's WorkRoomのOGP画像",
             },
           ],
           site_name: "N's WorkRoom",
@@ -137,7 +137,7 @@ const Home = ({ notifications }: { notifications: Notification[] }) => {
         <div className={styles.bannerWrapper}>
           <Image
             src="/top.jpg" // 画像のパス
-            alt="N's WorkRoomバナー"
+            alt="日笠泰彰によるN's WorkRoomバナー"
             width={800} // 最大幅
             height={300} // 適切なアスペクト比（例: 1000px:300px）
             layout="intrinsic" // アスペクト比を維持
@@ -208,7 +208,7 @@ const Home = ({ notifications }: { notifications: Notification[] }) => {
               <a>
                 <Image
                   src="/3.png"
-                  alt="在宅介護記録アプリ"
+                  alt="日笠泰彰による在宅介護記録アプリ"
                   width={200}
                   height={200}
                 />
@@ -235,7 +235,7 @@ const Home = ({ notifications }: { notifications: Notification[] }) => {
               <a>
                 <Image
                   src="/8.png"
-                  alt="こだわりレシピ作成アプリ"
+                  alt="日笠泰彰によるこだわりレシピ作成アプリ"
                   width={200}
                   height={200}
                 />
@@ -266,7 +266,7 @@ const Home = ({ notifications }: { notifications: Notification[] }) => {
               <a>
                 <Image
                   src="/4.jpg"
-                  alt="キャリア相談・人生のリスタート"
+                  alt="日笠泰彰によるキャリア相談・人生のリスタート"
                   width={200}
                   height={200}
                 />
@@ -291,7 +291,7 @@ const Home = ({ notifications }: { notifications: Notification[] }) => {
               <a>
                 <Image
                   src="/5.jpeg"
-                  alt="Kindle出版"
+                  alt="日笠泰彰によるKindle出版"
                   width={200}
                   height={200}
                 />

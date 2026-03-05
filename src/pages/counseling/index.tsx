@@ -101,7 +101,7 @@ const Counseling = () => {
               url: 'https://nshinri.net/4.jpg',
               width: 1200,
               height: 630,
-              alt: 'ライフカウンセリング・キャリア相談のOGP画像',
+              alt: '日笠泰彰によるライフカウンセリング・キャリア相談のOGP画像',
             },
           ],
           site_name: 'ライフカウンセリング・キャリア相談 - Nくん',

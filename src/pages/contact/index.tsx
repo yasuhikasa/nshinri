@@ -91,7 +91,7 @@ const Contact: React.FC = () => {
               url: 'https://nshinri.net/me.png',
               width: 1200,
               height: 630,
-              alt: '心理カウンセリングとライフコーチング - Nくん',
+              alt: '日笠泰彰による心理カウンセリングとライフコーチング - Nくん',
             },
           ],
           site_name: '心理カウンセリングとライフコーチング - Nくん',

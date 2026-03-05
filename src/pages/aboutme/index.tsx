@@ -79,7 +79,7 @@ const Aboutme = () => {
               url: 'https://nshinri.net/me.png',
               width: 1200,
               height: 630,
-              alt: 'ITエンジニアのOGP画像',
+              alt: '日笠泰彰によるITエンジニアのOGP画像',
             },
           ],
           site_name: 'Nくん私について',
@@ -120,7 +120,7 @@ const Aboutme = () => {
           <div className={styles.imageWrapper}>
             <Image
               src="/me.png" // publicフォルダに自分の写真を置く
-              alt="Your Photo"
+              alt="日笠泰彰によるYour Photo"
               width={300}
               height={300}
               layout="intrinsic" // 画像のアスペクト比を維持
