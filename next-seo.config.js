@@ -6,7 +6,7 @@ const config = {
     type: 'website',
     locale: 'ja_JP',
     url: 'https://nshinri.net',
-    site_name: '心理カウンセリングとライフコーチング-Nくん',
+    site_name: '日笠泰彰 | フルスタックエンジニア',
     images: [
       {
         url: 'https://nshinri.net/me.png',
