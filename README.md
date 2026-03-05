@@ -3,6 +3,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ## Getting Started
 
 [日笠泰彰のHP](https://nshinri.net/)
+[モダンE2Eテストの決定版：Playwrightが従来のテスト自動化をどう変えたのか](https://zenn.dev/yasuhikasa/articles/27d7fdb1fa7ee0)
 
 First, run the development server:
 
