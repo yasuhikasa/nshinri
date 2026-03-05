@@ -10,7 +10,7 @@ import { useRouter } from 'next/router';
 const jsonLdWebSite = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
-  name: 'ライフカウンセリング・キャリア相談 - Nくん',
+  name: 'ライフカウンセリング・キャリア相談 - 日笠泰彰',
   url: 'https://nshinri.net/counseling',
   about: {
     '@type': 'Thing',
@@ -27,7 +27,7 @@ const jsonLdWebSite = {
       '30代・40代のキャリアリスタート、人生の悩み、メンタルケアをサポートします。',
     provider: {
       '@type': 'Person',
-      name: 'Nくん',
+      name: '日笠泰彰',
     },
   },
 };
