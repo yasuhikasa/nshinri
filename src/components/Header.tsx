@@ -18,7 +18,7 @@ const Header = () => {
           </li>
           <li className={styles.navItem}>
             <Link href="/aboutme" className={styles.navLink}>
-              「日笠泰彰」について
+              「Nくん」について
             </Link>
           </li>
           <li className={styles.navItem}>
