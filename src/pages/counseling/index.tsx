@@ -18,7 +18,7 @@ const jsonLdWebSite = {
   },
   publisher: {
     '@type': 'Person',
-    name: 'Nくん',
+    name: '日笠泰彰',
   },
   mainEntity: {
     '@type': 'Service',
@@ -40,7 +40,7 @@ const jsonLdService = {
     'IT転職・フリーランス移行・キャリアリスタートに関する相談を提供するオンラインサービス。',
   provider: {
     '@type': 'Person',
-    name: 'Nくん',
+    name: '日笠泰彰',
   },
   areaServed: {
     '@type': 'AdministrativeArea',
@@ -88,11 +88,11 @@ const Counseling = () => {
     <>
       {/* NextSeoを使ったSEO設定 */}
       <NextSeo
-        title="ライフカウンセリング・キャリア相談 - Nくん"
+        title="ライフカウンセリング・キャリア相談 - 日笠泰彰"
         description="30代・40代のキャリアリスタート、人生の悩み、メンタルケアをサポートします。"
         canonical="https://nshinri.net/counseling"
         openGraph={{
-          title: 'ライフカウンセリング・キャリア相談 - Nくん',
+          title: 'ライフカウンセリング・キャリア相談 - 日笠泰彰',
           description:
             'キャリアリスタート・人生の方向性・メンタルケアに関する相談サービス。',
           url: 'https://nshinri.net/counseling',
@@ -104,7 +104,7 @@ const Counseling = () => {
               alt: '日笠泰彰によるライフカウンセリング・キャリア相談のOGP画像',
             },
           ],
-          site_name: 'ライフカウンセリング・キャリア相談 - Nくん',
+          site_name: 'ライフカウンセリング・キャリア相談 - 日笠泰彰',
         }}
         twitter={{
           handle: '@6209316426525',
@@ -157,7 +157,7 @@ const Counseling = () => {
             />
             <div className={styles.profileText}>
               <div>
-                Nくん|ITエンジニア　兼　ＪＡＤＰ認定メンタル心理カウンセラー
+                日笠泰彰|ITエンジニア　兼　ＪＡＤＰ認定メンタル心理カウンセラー
               </div>
             </div>
           </div>

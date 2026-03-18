@@ -101,12 +101,12 @@ const Home = ({ notifications }: { notifications: Notification[] }) => {
       {/* NextSeoを使ったSEO設定 */}
       <NextSeo
         title="N's WorkRoom"
-        description="Nくんの個人活動ページです。アプリの個人開発、心理カウンセリング、ライフコーチング、Kindle出版などの情報を発信しています。"
+        description="日笠泰彰の個人活動ページです。アプリの個人開発、心理カウンセリング、ライフコーチング、Kindle出版などの情報を発信しています。"
         canonical="https://nshinri.net"
         openGraph={{
           title: "N's WorkRoom",
           description:
-            'Nくんの個人活動ページです。アプリの個人開発、心理カウンセリング、ライフコーチング、Kindle出版などの情報を発信しています。',
+            '日笠泰彰の個人活動ページです。アプリの個人開発、心理カウンセリング、ライフコーチング、Kindle出版などの情報を発信しています。',
           url: 'https://nshinri.net',
           images: [
             {
@@ -147,14 +147,14 @@ const Home = ({ notifications }: { notifications: Notification[] }) => {
         </div>
         <h1 className={styles.heading}>N&apos;s WorkRoomとは</h1>
         <p className={styles.subtext}>
-          普段はITエンジニアとして会社員として働くかたわら、
+          普段はITエンジニアとしてフリーランスとして働くかたわら、
           <br />
-          「Nくん」として個人活動として行なっているページです。
+          個人活動として行なっているページです。
           <br />
         </p>
         {/* <div>
           <Link href="/aboutme"  legacyBehavior>
-            <a className={styles.link}>・Nくんについて</a>
+            <a className={styles.link}>・日笠泰彰について</a>
           </Link>
         </div> */}
 

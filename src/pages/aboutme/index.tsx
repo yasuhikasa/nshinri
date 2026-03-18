@@ -29,7 +29,7 @@ const serviceJsonLd = {
   name: '私について',
   provider: {
     '@type': 'Person',
-    name: 'Nくん',
+    name: '日笠泰彰',
   },
   areaServed: 'Japan',
   availableChannel: {
@@ -67,11 +67,11 @@ const Aboutme = () => {
     <>
       {/* NextSeoを使ったSEO設定 */}
       <NextSeo
-        title="Nくん私について"
+        title="日笠泰彰私について"
         description="ITエンジニア業、Kindle出版などの情報を発信しています。"
         canonical="https://nshinri.net/aboutme"
         openGraph={{
-          title: 'Nくん私について',
+          title: '日笠泰彰私について',
           description: 'ITエンジニア業、Kindle出版などの情報を発信しています。',
           url: 'https://nshinri.net/aboutme',
           images: [
@@ -82,7 +82,7 @@ const Aboutme = () => {
               alt: '日笠泰彰によるITエンジニアのOGP画像',
             },
           ],
-          site_name: 'Nくん私について',
+          site_name: '日笠泰彰私について',
         }}
         twitter={{
           handle: '@6209316426525',
@@ -113,7 +113,7 @@ const Aboutme = () => {
       <div className={styles.container}>
         <Breadcrumb />
         {/* トップ部分 */}
-        <h1 className={styles.heading}>日笠泰彰について</h1>
+        <h1 className={styles.heading}>私について</h1>
 
         {/* 画像とプロフィールを横並びに配置 */}
         <div className={styles.profileContainer}>
@@ -127,7 +127,7 @@ const Aboutme = () => {
               className={styles.photo}
             />
             <div className={styles.profileText}>
-              <div>Nくん</div>
+              <div>日笠泰彰</div>
             </div>
           </div>
           <div>

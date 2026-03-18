@@ -18,7 +18,7 @@ const sendContact = async (req: NextApiRequest, res: NextApiResponse) => {
       from: process.env.GMAIL_USER, // 送信元: あなたのGmailアドレス
       to: process.env.ADMIN_EMAIL, // 宛先: 管理者のメールアドレス (同じGmailでもOK)
       replyTo: email, // 返信先: 顧客の入力したメールアドレス
-      subject: `NくんのHPよりお問い合わせ: ${subject}`,
+      subject: `日笠泰彰のHPよりお問い合わせ: ${subject}`,
       text: `お名前: ${name}\nメールアドレス: ${email}\n\n${message}`,
     };
 

@@ -78,23 +78,23 @@ const Contact: React.FC = () => {
     <>
       {/* NextSeo による SEO 設定 */}
       <NextSeo
-        title="お問い合わせ - Nくん"
-        description="Nくんのスマホアプリや開発、心理カウンセリングとライフコーチングに関するお問い合わせページです。"
+        title="お問い合わせ - 日笠泰彰"
+        description="日笠泰彰のスマホアプリや開発、心理カウンセリングとライフコーチングに関するお問い合わせページです。"
         canonical="https://nshinri.net/contact"
         openGraph={{
           url: 'https://nshinri.net/contact',
-          title: 'お問い合わせ - Nくん',
+          title: 'お問い合わせ - 日笠泰彰',
           description:
-            'Nくんのスマホアプリや開発、心理カウンセリングとライフコーチングに関するお問い合わせページです。',
+            '日笠泰彰のスマホアプリや開発、心理カウンセリングとライフコーチングに関するお問い合わせページです。',
           images: [
             {
               url: 'https://nshinri.net/me.png',
               width: 1200,
               height: 630,
-              alt: '日笠泰彰による心理カウンセリングとライフコーチング - Nくん',
+              alt: '日笠泰彰による心理カウンセリングとライフコーチング - 日笠泰彰',
             },
           ],
-          site_name: '心理カウンセリングとライフコーチング - Nくん',
+          site_name: '心理カウンセリングとライフコーチング - 日笠泰彰',
         }}
         twitter={{
           handle: '@6209316426525',
@@ -128,9 +128,9 @@ const Contact: React.FC = () => {
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'ContactPage',
-              name: 'お問い合わせ - Nくん',
+              name: 'お問い合わせ - 日笠泰彰',
               description:
-                'Nくんの心理カウンセリングや開発に関するお問い合わせページ',
+                '日笠泰彰の心理カウンセリングや開発に関するお問い合わせページ',
               url: 'https://nshinri.net/contact',
               contactOption: {
                 '@type': 'ContactPoint',

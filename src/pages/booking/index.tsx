@@ -33,15 +33,15 @@ const Booking = () => {
   return (
     <>
       <NextSeo
-        title="心理カウンセリング予約 - Nくん"
+        title="心理カウンセリング予約 - 日笠泰彰"
         description="オンラインカウンセリングの予約方法をご案内します。Google MeetとLINEで簡単に予約できます。"
         canonical="https://nshinri.net/counseling/booking"
         openGraph={{
-          title: '心理カウンセリング予約 - Nくん',
+          title: '心理カウンセリング予約 - 日笠泰彰',
           description:
             'オンラインカウンセリングの予約方法をご案内します。Google MeetとLINEで簡単に予約できます。',
           url: 'https://nshinri.net/counseling/booking',
-          site_name: '心理カウンセリング - Nくん',
+          site_name: '心理カウンセリング - 日笠泰彰',
         }}
       />
       <Head>

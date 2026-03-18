@@ -54,7 +54,7 @@ const PostPage = () => {
     },
     publisher: {
       '@type': 'Organization',
-      name: '心理カウンセリングとライフコーチング-Nくん',
+      name: '心理カウンセリングとライフコーチング-日笠泰彰',
       logo: {
         '@type': 'ImageObject',
         url: 'https://nshinri.net/me.png',
@@ -86,7 +86,7 @@ const PostPage = () => {
               url: 'https://nshinri.net/me.png',
               width: 1200,
               height: 630,
-              alt: '日笠泰彰によるNくんのロゴ',
+              alt: '日笠泰彰による日笠泰彰のロゴ',
             },
           ],
         }}

@@ -65,7 +65,7 @@ const EnhancedAppRouterPost = () => {
       name: author,
       url: 'https://nshinri.net/aboutme',
     },
-    publisher: { '@type': 'Organization', name: 'Nくん' },
+    publisher: { '@type': 'Organization', name: '日笠泰彰' },
     articleBody: content.replace(/<[^>]*>?/gm, ''),
   };
 
