@@ -286,7 +286,7 @@ const Home = ({ notifications }: { notifications: Notification[] }) => {
         <h3 className={styles.subheading}>40歳未経験でITエンジニアの軌跡</h3>
         <div className={styles.section}>
           <div className={styles.introduction}>
-            <Link href="https://x.gd/igk0F" legacyBehavior>
+            <Link href="https://www.amazon.co.jp/dp/B0DNXPFD37/" legacyBehavior>
               <a>
                 <Image
                   src="/5.jpeg"
