@@ -159,7 +159,7 @@ const Home = ({ notifications }: { notifications: Notification[] }) => {
         </div> */}
 
         {/* SNSリンク */}
-        <div className={styles.sns}>
+        {/* <div className={styles.sns}>
           <a
             href="https://x.com/N6209316426525"
             target="_blank"
@@ -168,10 +168,9 @@ const Home = ({ notifications }: { notifications: Notification[] }) => {
             <Image src="/x.png" alt="x" width={60} height={60} />
             　⇦Xはこちらから
           </a>
-        </div>
+        </div> */}
 
         <div className={styles.container}>
-          {/* お知らせセクション */}
           {/* お知らせセクション */}
           <div className={styles.notifications}>
             <h2 className={styles.notificationsHeading}>記事更新</h2>
