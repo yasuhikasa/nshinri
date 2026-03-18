@@ -262,7 +262,7 @@ const Home = ({ notifications }: { notifications: Notification[] }) => {
         </h3>
         <div className={styles.section}>
           <div className={styles.introduction}>
-            <Link href="/counseling" legacyBehavior>
+            <Link href="https://secondpath.jp/" legacyBehavior>
               <a>
                 <Image
                   src="/4.jpg"
@@ -276,10 +276,10 @@ const Home = ({ notifications }: { notifications: Notification[] }) => {
           </div>
           <ul className={styles.list}>
             <li>・30代・40代のキャリアリスタート相談</li>
-            <li>・未経験からのIT転職・フリーランス移行支援</li>
+            <li>・心の問題や問題行動の克服</li>
             <li>・仕事のストレスや将来の不安に関する相談</li>
             <li>・自己肯定感を高め、行動を起こすためのサポート</li>
-            {/* <li>・副業・独立のスタートアップ相談</li> */}
+            <li>・介護の悩み</li>
           </ul>
         </div>
 
