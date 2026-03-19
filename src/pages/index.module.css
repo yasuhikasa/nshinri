@@ -119,6 +119,41 @@
   text-decoration: underline;
 }
 
+.externalBlogSection {
+  margin: -10px 0 36px;
+  padding: 18px 20px;
+  border-radius: 14px;
+  border: 1px solid #dce8dd;
+  background: #fff;
+}
+
+.externalBlogHeading {
+  margin: 0 0 8px;
+  font-size: 1.15rem;
+  color: #204c2a;
+}
+
+.externalBlogText {
+  margin: 0 0 10px;
+  color: #5d6962;
+  line-height: 1.65;
+}
+
+.externalBlogLinkWrap {
+  margin-top: 4px;
+}
+
+.externalBlogLink {
+  color: #2f8d4e;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.externalBlogLink:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .activities {
   margin-top: 10px;
 }
@@ -211,6 +246,11 @@
 
   .notificationDate {
     min-width: auto;
+  }
+
+  .externalBlogSection {
+    margin-top: -6px;
+    padding: 14px;
   }
 }
 

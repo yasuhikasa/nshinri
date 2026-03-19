@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Head from 'next/head';
-import styles from './index.module.css'; // CSSモジュールをインポート
+import styles from './index.module.css';
 import Header from '../components/Header';
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
@@ -231,6 +231,23 @@ const Home = ({ notifications }: { notifications: Notification[] }) => {
               <Link href="/posts">過去の記事一覧を見る</Link>
             </div>
           )}
+        </section>
+
+        <section
+          className={styles.externalBlogSection}
+          aria-labelledby="external-blog-heading"
+        >
+          <h2 id="external-blog-heading" className={styles.externalBlogHeading}>
+            外部技術ブログの更新
+          </h2>
+          <p className={styles.externalBlogText}>
+            このサイト内の記事更新とは別に、技術ブログサイトでの更新も行っています。
+          </p>
+          <div className={styles.externalBlogLinkWrap}>
+            <Link href="/zenn" className={styles.externalBlogLink}>
+              Zenn・Qiita・note の更新一覧を見る
+            </Link>
+          </div>
         </section>
 
         <section
