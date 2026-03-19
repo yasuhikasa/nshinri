@@ -1,6 +1,6 @@
 import path from 'path';
 import fs from 'fs';
-import { client } from '@/lib/microcms';
+import { client } from './src/lib/microcms.ts';
 
 /** @type {import('next-sitemap').IConfig} */
 const config = {
