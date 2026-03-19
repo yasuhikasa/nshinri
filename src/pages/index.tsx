@@ -14,16 +14,21 @@ interface Notification {
   description: string;
 }
 
+interface ActivityItem {
+  href: string;
+  imageSrc: string;
+  imageAlt: string;
+  title: string;
+  points: string[];
+}
+
 export async function getStaticProps() {
   const postsDirectory = path.join(process.cwd(), 'src', 'pages', 'posts');
-  console.log('postsDirectory:', postsDirectory); // ディレクトリパス確認
 
   const subdirectories = fs
     .readdirSync(postsDirectory, { withFileTypes: true })
     .filter((dirent) => dirent.isDirectory())
     .map((dirent) => dirent.name);
-
-  console.log('subdirectories:', subdirectories); // サブディレクトリ一覧を確認
 
   const notifications: Notification[] = (
     await Promise.all(
@@ -67,31 +72,98 @@ export async function getStaticProps() {
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 
-  console.log('notifications:', notifications); // 最終的な通知データを確認
-
   return {
     props: {
       notifications,
     },
   };
 }
-// 構造化データのJSON-LD形式
+
+const siteTitle = "日笠泰彰 公式サイト | N's WorkRoom";
+const siteDescription =
+  '日笠泰彰（ITエンジニア・心理カウンセラー）の公式サイト。個人開発アプリ、キャリアカウンセリング、ライフコーチング、執筆活動の最新情報を発信しています。';
+
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: "N's WorkRoom",
-  url: 'https://nshinri.net',
-  publisher: {
-    '@type': 'Organization',
-    name: "N's WorkRoom",
-    logo: {
-      '@type': 'ImageObject',
-      url: 'https://nshinri.net/me.png',
-      width: 300,
-      height: 300,
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      name: "N's WorkRoom",
+      alternateName: '日笠泰彰 公式サイト',
+      url: 'https://nshinri.net',
+      inLanguage: 'ja-JP',
+      publisher: {
+        '@type': 'Person',
+        name: '日笠泰彰',
+        url: 'https://nshinri.net/aboutme',
+      },
     },
-  },
+    {
+      '@type': 'Person',
+      name: '日笠泰彰',
+      url: 'https://nshinri.net/aboutme',
+      image: 'https://nshinri.net/me.png',
+      jobTitle: 'ITエンジニア・心理カウンセラー',
+      worksFor: {
+        '@type': 'Organization',
+        name: "N's WorkRoom",
+      },
+    },
+  ],
 };
+
+const activities: ActivityItem[] = [
+  {
+    href: '/kaigokiroku',
+    imageSrc: '/3.png',
+    imageAlt: '日笠泰彰による在宅介護記録アプリ',
+    title: '自宅で簡単！在宅介護記録アプリ（販売終了）',
+    points: [
+      '在宅で介護施設と同水準の介護記録をつけられます',
+      'アプリに不慣れでも使いやすいシンプルなUI設計',
+      '介護記録の共有で、家族の状況把握がスムーズ',
+      '介護福祉士経験のある現役ITエンジニアが制作',
+    ],
+  },
+  {
+    href: '/newrecipe',
+    imageSrc: '/8.png',
+    imageAlt: '日笠泰彰によるこだわりレシピ作成アプリ',
+    title: 'こだわりの創作料理レシピ（販売終了）',
+    points: [
+      'AIが好みや条件に合わせてレシピを提案',
+      'その日の気分やニーズに合わせて自動生成',
+      '毎日の献立に新しいアイデアを取り入れやすい設計',
+      '忙しい日でもこだわりのある料理を楽しめます',
+    ],
+  },
+  {
+    href: 'https://secondpath.jp/',
+    imageSrc: '/4.jpg',
+    imageAlt: '日笠泰彰によるキャリア相談・人生のリスタート',
+    title: 'キャリアカウンセリング・ライフコーチング',
+    points: [
+      '30代・40代のキャリアリスタート相談',
+      '心の課題や問題行動の克服サポート',
+      '仕事のストレスや将来不安の整理',
+      '自己肯定感を高めるための実践的な伴走支援',
+    ],
+  },
+  {
+    href: 'https://www.amazon.co.jp/dp/B0DNXPFD37/',
+    imageSrc: '/5.jpeg',
+    imageAlt: '日笠泰彰によるKindle出版',
+    title: '40歳未経験でITエンジニアの軌跡',
+    points: [
+      '未経験からのキャリア構築ノウハウ',
+      '40歳未経験からITエンジニアへの転職体験談',
+      '転職活動のコツや面接対策を具体的に解説',
+    ],
+  },
+];
+
+const isExternalLink = (href: string) =>
+  href.startsWith('http://') || href.startsWith('https://');
 
 const Home = ({ notifications }: { notifications: Notification[] }) => {
   const safeNotifications = notifications || [];
@@ -100,20 +172,19 @@ const Home = ({ notifications }: { notifications: Notification[] }) => {
     <>
       {/* NextSeoを使ったSEO設定 */}
       <NextSeo
-        title="N's WorkRoom"
-        description="日笠泰彰の個人活動ページです。アプリの個人開発、心理カウンセリング、ライフコーチング、Kindle出版などの情報を発信しています。"
+        title={siteTitle}
+        description={siteDescription}
         canonical="https://nshinri.net"
         openGraph={{
-          title: "N's WorkRoom",
-          description:
-            '日笠泰彰の個人活動ページです。アプリの個人開発、心理カウンセリング、ライフコーチング、Kindle出版などの情報を発信しています。',
+          title: siteTitle,
+          description: siteDescription,
           url: 'https://nshinri.net',
           images: [
             {
               url: 'https://nshinri.net/me.png',
               width: 1200,
               height: 630,
-              alt: "日笠泰彰によるN's WorkRoomのOGP画像",
+              alt: "日笠泰彰公式サイト N's WorkRoom のOGP画像",
             },
           ],
           site_name: "N's WorkRoom",
@@ -132,179 +203,115 @@ const Home = ({ notifications }: { notifications: Notification[] }) => {
         />
       </Head>
       <Header /> {/* ヘッダーを表示 */}
-      <div className={styles.container}>
-        {/* トップ部分 */}
-        <div className={styles.bannerWrapper}>
-          <Image
-            src="/top.jpg" // 画像のパス
-            alt="日笠泰彰によるN's WorkRoomバナー"
-            width={800} // 最大幅
-            height={300} // 適切なアスペクト比（例: 1000px:300px）
-            layout="intrinsic" // アスペクト比を維持
-            className={styles.bannerImage} // カスタムスタイル（必要に応じて）
-            priority={true} // 初回読み込み時に優先する場合
-          />
-        </div>
-        <h1 className={styles.heading}>N&apos;s WorkRoomとは</h1>
-        <p className={styles.subtext}>
-          普段はITエンジニアとしてフリーランスとして働くかたわら、
-          <br />
-          個人活動として行なっているページです。
-          <br />
-        </p>
-        {/* <div>
-          <Link href="/aboutme"  legacyBehavior>
-            <a className={styles.link}>・日笠泰彰について</a>
-          </Link>
-        </div> */}
+      <main className={styles.container}>
+        <section className={styles.hero}>
+          <div className={styles.bannerWrapper}>
+            <Image
+              src="/top.jpg"
+              alt="日笠泰彰によるN's WorkRoomバナー"
+              width={1200}
+              height={450}
+              className={styles.bannerImage}
+              priority={true}
+            />
+          </div>
+          <h1 className={styles.heading}>
+            日笠泰彰の活動拠点 N&apos;s WorkRoom
+          </h1>
+          <p className={styles.subtext}>
+            ITエンジニアです。民間カウンセラー資格あり。
+            <br />
+            個人開発・相談支援・発信活動を継続しています。
+          </p>
+        </section>
 
-        {/* SNSリンク */}
-        {/* <div className={styles.sns}>
-          <a
-            href="https://x.com/N6209316426525"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image src="/x.png" alt="x" width={60} height={60} />
-            　⇦Xはこちらから
-          </a>
-        </div> */}
-
-        <div className={styles.container}>
-          {/* お知らせセクション */}
-          <div className={styles.notifications}>
-            <h2 className={styles.notificationsHeading}>記事更新</h2>
-            <ul className={styles.notificationList}>
-              {safeNotifications.length > 0 ? (
-                safeNotifications.slice(0, 5).map((note, index) => (
-                  <li key={index} className={styles.notificationItem}>
-                    <span className={styles.notificationDate}>{note.date}</span>
-                    <Link href={`/posts/${note.slug}`} legacyBehavior>
-                      <a className={styles.notificationTitle}>{note.title}</a>
-                    </Link>
-                  </li>
-                ))
-              ) : (
-                <p>現在お知らせはありません。</p>
-              )}
-            </ul>
-            {safeNotifications.length > 0 && (
-              <div className={styles.notificationMore}>
-                <Link href="/posts" legacyBehavior>
-                  <a>過去の記事一覧はこちら &raquo;</a>
-                </Link>
-              </div>
+        <section
+          className={styles.notifications}
+          aria-labelledby="news-heading"
+        >
+          <h2 id="news-heading" className={styles.notificationsHeading}>
+            記事更新
+          </h2>
+          <ul className={styles.notificationList}>
+            {safeNotifications.length > 0 ? (
+              safeNotifications.slice(0, 5).map((note) => (
+                <li key={note.slug} className={styles.notificationItem}>
+                  <time className={styles.notificationDate}>{note.date}</time>
+                  <Link
+                    href={`/posts/${note.slug}`}
+                    className={styles.notificationTitle}
+                  >
+                    {note.title}
+                  </Link>
+                </li>
+              ))
+            ) : (
+              <li className={styles.notificationEmpty}>
+                現在お知らせはありません。
+              </li>
             )}
-          </div>
-        </div>
+          </ul>
+          {safeNotifications.length > 0 && (
+            <div className={styles.notificationMore}>
+              <Link href="/posts">過去の記事一覧を見る</Link>
+            </div>
+          )}
+        </section>
 
-        {/* 在宅介護アプリ */}
-        <h2 className={styles.heading}>N&apos;s WorkRoomの活動</h2>
-        <h3 className={styles.subheading}>WEB・スマホアプリの個人開発</h3>
-        <div className={styles.section}>
-          <div className={styles.introduction}>
-            <Link href="/kaigokiroku" legacyBehavior>
-              <a>
-                <Image
-                  src="/3.png"
-                  alt="日笠泰彰による在宅介護記録アプリ"
-                  width={200}
-                  height={200}
-                />
-                <p>→自宅で簡単！在宅介護記録アプリの詳細</p>
-              </a>
-            </Link>
-          </div>
-          <ul className={styles.list}>
-            <li>・在宅で介護施設と同水準の介護記録をつけることができます</li>
-            <li>・アプリに不慣れでも簡単操作のUI設計</li>
-            <li>
-              ・介護に不安な方でも簡単に介護記録を残して情報を共有できます
-            </li>
-            <li>・介護福祉士として働いてきた現役ITエンジニアが制作</li>
-            <li>
-              ・おじいさん、おばあさんの健康が心配な方も簡単に日々の状況を把握できます
-            </li>
-          </ul>
-        </div>
-        <hr />
-        <div className={styles.section}>
-          <div className={styles.introduction}>
-            <Link href="/newrecipe" legacyBehavior>
-              <a>
-                <Image
-                  src="/8.png"
-                  alt="日笠泰彰によるこだわりレシピ作成アプリ"
-                  width={200}
-                  height={200}
-                />
-                <p>→こだわりの創作料理レシピの詳細</p>
-              </a>
-            </Link>
-          </div>
-          <ul className={styles.list}>
-            <li>・最先端AIがあなたのいろんなこだわりを簡単にレシピ化します</li>
-            <li>・その時の気分やニーズに合わせて自動でレシピを作成</li>
-            <li>
-              ・AIによる提案で、いつもの料理に新しいアイデアを取り入れることができます
-            </li>
-            <li>・こだわりをそのまま毎日の料理に！</li>
-            <li>
-              ・時間がないときにも、簡単にこだわりのある料理を楽しむことができます
-            </li>
-          </ul>
-        </div>
+        <section
+          className={styles.activities}
+          aria-labelledby="activities-heading"
+        >
+          <h2 id="activities-heading" className={styles.activitiesHeading}>
+            日笠泰彰の主な活動
+          </h2>
+          <div className={styles.activityGrid}>
+            {activities.map((activity) => {
+              const linkContent = (
+                <>
+                  <Image
+                    src={activity.imageSrc}
+                    alt={activity.imageAlt}
+                    width={180}
+                    height={180}
+                    className={styles.activityImage}
+                  />
+                  <p className={styles.activityLinkText}>{activity.title}</p>
+                </>
+              );
 
-        {/* カウンセリング */}
-        <h3 className={styles.subheading}>
-          キャリアカウンセリング、ライフコーチング相談
-        </h3>
-        <div className={styles.section}>
-          <div className={styles.introduction}>
-            <Link href="https://secondpath.jp/" legacyBehavior>
-              <a>
-                <Image
-                  src="/4.jpg"
-                  alt="日笠泰彰によるキャリア相談・人生のリスタート"
-                  width={200}
-                  height={200}
-                />
-                <p>→キャリア転職、社会復帰、人生のリスタート相談</p>
-              </a>
-            </Link>
+              return (
+                <article key={activity.title} className={styles.card}>
+                  <div className={styles.introduction}>
+                    {isExternalLink(activity.href) ? (
+                      <a
+                        href={activity.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.activityLink}
+                      >
+                        {linkContent}
+                      </a>
+                    ) : (
+                      <Link
+                        href={activity.href}
+                        className={styles.activityLink}
+                      >
+                        {linkContent}
+                      </Link>
+                    )}
+                  </div>
+                  <ul className={styles.list}>
+                    {activity.points.map((point) => (
+                      <li key={point}>{point}</li>
+                    ))}
+                  </ul>
+                </article>
+              );
+            })}
           </div>
-          <ul className={styles.list}>
-            <li>・30代・40代のキャリアリスタート相談</li>
-            <li>・心の問題や問題行動の克服</li>
-            <li>・仕事のストレスや将来の不安に関する相談</li>
-            <li>・自己肯定感を高め、行動を起こすためのサポート</li>
-            <li>・介護の悩み</li>
-          </ul>
-        </div>
-
-        {/* Kindle出版 */}
-        <h3 className={styles.subheading}>40歳未経験でITエンジニアの軌跡</h3>
-        <div className={styles.section}>
-          <div className={styles.introduction}>
-            <Link href="https://www.amazon.co.jp/dp/B0DNXPFD37/" legacyBehavior>
-              <a>
-                <Image
-                  src="/5.jpeg"
-                  alt="日笠泰彰によるKindle出版"
-                  width={200}
-                  height={200}
-                />
-                <p>→40歳未経験からの転職活動ーITエンジニアになった私</p>
-              </a>
-            </Link>
-          </div>
-          <ul className={styles.list}>
-            <li>・未経験からのキャリア構築ノウハウ</li>
-            <li>・40歳未経験からのITエンジニアへの転職体験談</li>
-            <li>・転職活動のコツや面接対策</li>
-          </ul>
-        </div>
-      </div>
+        </section>
+      </main>
     </>
   );
 };

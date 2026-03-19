@@ -1,57 +1,61 @@
-/* コンテナ全体のスタイル */
 .container {
-  max-width: 1000px;
+  max-width: 1120px;
   margin: 0 auto;
-  padding: 20px;
-  text-align: center;
-  word-wrap: break-word;
+  padding: 24px 20px 56px;
 }
 
-/* トップ部分のスタイル */
+.hero {
+  margin-bottom: 28px;
+}
+
 .heading {
-  font-size: 2rem; /* PC用サイズ */
-  font-weight: 600; /* 太めに調整 */
-  color: #333; /* 濃い色で視認性を向上 */
-  margin-bottom: 20px;
+  margin: 24px 0 12px;
+  font-size: clamp(1.8rem, 4.2vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: #1a2d1f;
+  text-align: center;
 }
 
 .subtext {
-  font-size: 1.2rem; /* PC用サイズ */
-  font-weight: 500; /* 少し太めに設定 */
-  color: #444; /* 濃いグレーでコントラストを強化 */
-  margin: 10px 0 20px 0;
+  font-size: clamp(1rem, 2.2vw, 1.15rem);
+  color: #4b4f57;
+  margin: 0 auto;
+  max-width: 720px;
+  line-height: 1.8;
   text-align: center;
 }
 
 .bannerWrapper {
-  max-width: 70%; /* 親コンテナの幅に応じて調整 */
-  margin: 0 auto; /* 中央寄せ */
-  overflow: hidden; /* レイアウトを整える */
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 24px 45px rgba(36, 53, 43, 0.2);
 }
 
 .bannerImage {
   width: 100%;
-  height: auto; /* アスペクト比を維持 */
-  max-width: 800px; /* 横幅を最大800pxに制限 */
-  margin: 0 auto;
+  height: auto;
+  display: block;
 }
 
-/* 記事更新セクション */
 .notifications {
-  margin: 20px 0;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 20px 0 36px;
+  padding: 22px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #ffffff 0%, #f4fbf5 100%);
+  border: 1px solid #deecdf;
+  box-shadow: 0 12px 24px rgba(30, 53, 40, 0.1);
 }
 
 .notificationsHeading {
-  font-size: 1.5rem; /* 見出しサイズ */
-  font-weight: bold;
-  color: #0056b3; /* 視認性の高い青色 */
-  margin-bottom: 15px;
-  border-bottom: 2px solid #0056b3;
-  padding-bottom: 5px;
+  margin: 0 0 14px;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #204c2a;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #cfe1d1;
 }
 
 .notificationList {
@@ -62,10 +66,10 @@
 
 .notificationItem {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 0;
-  border-bottom: 1px solid #e0e0e0;
+  align-items: baseline;
+  gap: 14px;
+  padding: 12px 2px;
+  border-bottom: 1px solid #e6efe7;
 }
 
 .notificationItem:last-child {
@@ -73,35 +77,41 @@
 }
 
 .notificationDate {
-  font-size: 1rem; /* サイズを1remに増加 */
-  font-weight: 500; /* 太さを追加 */
-  color: #555; /* 色を濃く変更 */
-  flex-basis: 30%;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #62716b;
+  min-width: 92px;
   text-align: left;
 }
 
 .notificationTitle {
-  font-size: 1.1rem; /* サイズを微増 */
-  font-weight: 500; /* 太めに設定 */
-  color: #0056b3; /* 青色で統一 */
+  font-size: 1rem;
+  font-weight: 600;
+  color: #224d2e;
   text-decoration: none;
-  flex-basis: 70%;
+  line-height: 1.6;
   text-align: left;
 }
 
 .notificationTitle:hover {
+  color: #2f8d4e;
   text-decoration: underline;
 }
 
+.notificationEmpty {
+  color: #57635d;
+  padding: 8px 0;
+}
+
 .notificationMore {
-  margin-top: 10px;
+  margin-top: 14px;
   text-align: right;
 }
 
 .notificationMore a {
-  font-size: 1rem; /* サイズを統一 */
-  font-weight: 500; /* 太さを追加 */
-  color: #0056b3;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #2f8d4e;
   text-decoration: none;
 }
 
@@ -109,37 +119,58 @@
   text-decoration: underline;
 }
 
-/* h3を帯状にするデザイン */
-.subheading {
-  background-color: #4caf50; /* 緑色の背景 */
-  color: white;
-  font-weight: 600; /* 太めに変更 */
-  padding: 10px 15px;
-  font-size: 1.8rem;
-  border-radius: 8px;
-  margin: 20px 0;
-  text-align: center;
+.activities {
+  margin-top: 10px;
 }
 
-/* セクション全体のスタイル */
-.section {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  margin: 20px 0;
+.activitiesHeading {
+  margin: 0 0 16px;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  color: #1a2d1f;
+  text-align: left;
+  letter-spacing: 0.01em;
+}
+
+.activityGrid {
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 20px;
 }
 
-/* 左側: 画像とリンク */
+.card {
+  border-radius: 18px;
+  border: 1px solid #dce8dd;
+  background: #fff;
+  padding: 18px;
+  box-shadow: 0 10px 18px rgba(22, 36, 29, 0.08);
+}
+
 .introduction {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.activityLink {
+  text-decoration: none;
+  color: inherit;
   text-align: center;
 }
 
-/* リスト部分: 右側 */
+.activityImage {
+  border-radius: 14px;
+  box-shadow: 0 6px 12px rgba(31, 43, 36, 0.12);
+}
+
+.activityLinkText {
+  margin: 12px 0 0;
+  color: #224d2e;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
 .list {
-  flex: 2;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -149,87 +180,46 @@
 }
 
 .list li {
-  background-color: #f9f9f9;
-  padding: 15px; /* 余白を増加 */
+  background-color: #f7faf8;
+  padding: 12px 14px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2ece4;
   text-align: left;
-  font-size: 1.1rem;
-  font-weight: 500; /* 太めに設定 */
-  color: #333; /* 濃い色を指定 */
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: #2f3633;
 }
 
-/* SNSアイコンとリンク */
-.sns {
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.link {
-  color: #1da1f2;
-  text-decoration: none;
-  font-size: 1.2rem;
-  font-weight: 500; /* 太さを追加 */
-}
-
-.sns a {
-  color: #1da1f2;
-  text-decoration: none;
-  font-size: 1.2rem;
-  font-weight: 500; /* 太さを追加 */
-}
-
-.sns a:hover {
-  text-decoration: underline;
-}
-
-/* レスポンシブ対応 */
 @media (max-width: 768px) {
-  .heading {
-    font-size: 1.8rem; /* スマホでも大きめに設定 */
-    font-weight: 600; /* 太めに調整 */
+  .container {
+    padding: 18px 14px 44px;
   }
 
-  .subtext,
-  .list li,
-  .notificationTitle,
-  .notificationDate {
-    font-size: 1rem; /* スマホでも読みやすいサイズに */
-    font-weight: 500; /* 太さを追加 */
-    color: #333; /* 濃い色を指定 */
+  .bannerWrapper {
+    max-width: 100%;
+  }
+
+  .heading {
+    margin-top: 16px;
   }
 
   .notificationItem {
     flex-direction: column;
     align-items: flex-start;
+    gap: 2px;
   }
 
   .notificationDate {
-    margin-bottom: 5px;
-  }
-
-  .link {
-    font-size: 1rem;
-  }
-
-  .sns a {
-    font-size: 1rem;
+    min-width: auto;
   }
 }
 
 @media (min-width: 1024px) {
-  .section {
-    flex-direction: row;
-    align-items: center;
+  .activityGrid {
+    grid-template-columns: 1fr 1fr;
   }
 
-  .introduction {
-    flex-basis: 40%;
-  }
-
-  .list {
-    flex-basis: 60%;
+  .card {
+    padding: 20px 20px 18px;
   }
 }
