@@ -27,6 +27,7 @@ const ARTICLE_URLS = [
   'https://qiita.com/hikasayasu/items/4abad2d33024a58f0faf',
   'https://note.com/jazzy_gecko3968/n/nfc3bfdab439a',
   'https://note.com/jazzy_gecko3968/n/n681470342d50',
+  'https://note.com/jazzy_gecko3968/n/n8047e5f8f34f',
   'https://note.com/jazzy_gecko3968/n/nc5de150b8391',
 ];
 
