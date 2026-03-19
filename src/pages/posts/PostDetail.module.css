@@ -125,14 +125,8 @@
 }
 
 .content code {
-  font-family:
-    'SFMono-Regular',
-    Menlo,
-    Monaco,
-    Consolas,
-    'Liberation Mono',
-    'Courier New',
-    monospace;
+  font-family: 'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace;
 }
 
 .content img {
@@ -185,4 +179,3 @@
     padding: 12px;
   }
 }
-
