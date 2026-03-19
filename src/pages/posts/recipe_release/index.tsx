@@ -1,4 +1,5 @@
 import Header from '../../../components/Header';
+import AuthorProfile from '../../../components/AuthorProfile';
 import { NextSeo } from 'next-seo';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -126,6 +127,7 @@ const PostPage = () => {
           className={styles.content}
           dangerouslySetInnerHTML={{ __html: content }}
         />
+        <AuthorProfile />
       </div>
     </>
   );
