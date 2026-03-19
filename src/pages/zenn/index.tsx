@@ -32,7 +32,7 @@ const ARTICLE_URLS = [
 
 export default function ZennCardsPage() {
   const [items, setItems] = useState<OgpItem[]>([]);
-  const [, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const fetchCards = async () => {
     setLoading(true);
@@ -95,6 +95,13 @@ export default function ZennCardsPage() {
         <p className={styles.intro}>
           Zenn・Qiita・note の記事URLを表示しています。
         </p>
+
+        {loading && (
+          <div className={styles.loadingWrap} role="status" aria-live="polite">
+            <div className={styles.spinner} />
+            <p className={styles.loadingText}>記事カードを取得中です...</p>
+          </div>
+        )}
 
         <section className={styles.grid}>
           {items.map((item) => (
