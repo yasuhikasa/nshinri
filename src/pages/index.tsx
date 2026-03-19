@@ -4,8 +4,7 @@ import styles from './index.module.css'; // CSSモジュールをインポート
 import Header from '../components/Header';
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
-import fs from 'fs';
-import path from 'path';
+import { getList } from '../lib/microcms';
 
 interface Notification {
   slug: string;
@@ -23,54 +22,30 @@ interface ActivityItem {
 }
 
 export async function getStaticProps() {
-  const postsDirectory = path.join(process.cwd(), 'src', 'pages', 'posts');
+  const { contents } = await getList({
+    orders: '-publishedAt',
+    fields: 'id,title,publishedAt,createdAt,description,content',
+    limit: 5,
+  });
 
-  const subdirectories = fs
-    .readdirSync(postsDirectory, { withFileTypes: true })
-    .filter((dirent) => dirent.isDirectory())
-    .map((dirent) => dirent.name);
+  const notifications: Notification[] = (contents || []).map((post: any) => {
+    const rawContent =
+      typeof post.content === 'string'
+        ? post.content.replace(/<[^>]*>/g, '')
+        : '';
+    const fallbackDescription = rawContent
+      ? rawContent.slice(0, 80) + (rawContent.length > 80 ? '…' : '')
+      : '説明未設定';
 
-  const notifications: Notification[] = (
-    await Promise.all(
-      subdirectories.map(async (subdir) => {
-        const postPath = path.join(postsDirectory, subdir, 'index.tsx');
-
-        if (!fs.existsSync(postPath)) {
-          console.warn(`index.tsx ファイルが見つかりません: ${postPath}`);
-          return null;
-        }
-
-        try {
-          // `import` を使って動的に読み込む
-          const { title, date, description } = await import(
-            `../pages/posts/${subdir}/index`
-          );
-
-          if (!title || !date || !description) {
-            console.warn(`記事データが不完全です: ${subdir}`);
-            return null;
-          }
-
-          return {
-            slug: subdir,
-            title,
-            date,
-            description,
-          };
-        } catch (error) {
-          console.error(`記事データの取得に失敗しました: ${subdir}`, error);
-          return null;
-        }
-      })
-    )
-  ).filter(
-    (notification): notification is Notification => notification !== null
-  );
-
-  // 日付順でソート
-  notifications.sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
+    return {
+      slug: post.id,
+      title: post.title ?? 'タイトル未設定',
+      date: new Date(post.publishedAt || post.createdAt)
+        .toISOString()
+        .slice(0, 10),
+      description: post.description || fallbackDescription,
+    };
+  });
 
   return {
     props: {
