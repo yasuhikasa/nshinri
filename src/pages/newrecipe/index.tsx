@@ -16,24 +16,25 @@ export default function NewRecipe() {
     <>
       {/* SEO 設定 */}
       <NextSeo
-        title="こだわり料理レシピを簡単に！AIを使ったレシピ作成アプリ"
-        description="材料や調理時間を指定すると、AIがあなたにぴったりのレシピを提案！簡単にレシピが見つかり、毎日の料理が楽しくなります。ポイントを消費してレシピを生成できます！"
+        title="AIレシピ作成アプリ | 日笠泰彰のこだわりレシピ生成アプリ"
+        description="日笠泰彰が開発したAIレシピ作成アプリ。材料・時間・こだわり条件を入力するだけで、毎日の料理に合うレシピを簡単に提案します。"
         canonical="https://nshinri.net/newrecipe"
         openGraph={{
           type: 'website',
           locale: 'ja_JP',
           url: 'https://nshinri.net/newrecipe',
-          title: 'こだわりレシピを作るアプリ',
+          title: 'AIレシピ作成アプリ | 日笠泰彰',
           description:
-            'AIを使ってあなたのこだわりにぴったりなレシピを提案するアプリ。材料、調理時間を指定して、簡単にレシピを見つけよう。ポイントを消費してレシピを生成！',
+            '日笠泰彰が開発した、こだわり条件に合わせてAIが提案するレシピ作成アプリです。',
           images: [
             {
               url: 'https://nshinri.net/8.png',
               width: 1200,
               height: 630,
-              alt: 'レシピ作成アプリのOGP画像',
+              alt: '日笠泰彰が開発したAIレシピ作成アプリのOGP画像',
             },
           ],
+          site_name: "N's WorkRoom",
         }}
         twitter={{
           handle: '@N6209316426525',
@@ -55,6 +56,16 @@ export default function NewRecipe() {
                 'AIであなたのこだわりにぴったりなレシピを作成して提案します。レシピを生成するためには、ポイントを消費します。',
               applicationCategory: 'HealthApplication',
               operatingSystem: 'iOS, Android',
+              author: {
+                '@type': 'Person',
+                name: '日笠泰彰',
+                url: 'https://nshinri.net/aboutme',
+              },
+              creator: {
+                '@type': 'Person',
+                name: '日笠泰彰',
+                url: 'https://nshinri.net/aboutme',
+              },
               aggregateRating: {
                 '@type': 'AggregateRating',
                 ratingValue: '4.9',

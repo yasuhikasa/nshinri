@@ -23,24 +23,25 @@ export default function Kaigokiroku() {
     <>
       {/* SEO 設定 */}
       <NextSeo
-        title="自宅で簡単！在宅介護を支援する介護記録スマホアプリ"
-        description="在宅介護の記録管理を簡単にできるスマホアプリ。家族や施設関係者とスムーズに情報共有が可能です。介護現場と同レベルの詳細な記録と多機能サポートを提供します。"
+        title="在宅介護記録アプリ | 日笠泰彰が開発した在宅介護支援アプリ"
+        description="日笠泰彰が開発した在宅介護記録アプリ。食事・排泄・睡眠などの記録を簡単に管理し、家族や介護関係者との情報共有をスムーズにします。"
         canonical="https://nshinri.net/kaigokiroku"
         openGraph={{
           type: 'website',
           locale: 'ja_JP',
           url: 'https://nshinri.net/kaigokiroku',
-          title: '在宅介護を支援するスマホアプリ',
+          title: '在宅介護記録アプリ | 日笠泰彰',
           description:
-            '在宅介護の記録管理を簡単にできるスマホアプリ。家族や施設関係者とスムーズに情報共有が可能です。',
+            '日笠泰彰が開発した在宅介護支援アプリ。介護記録を簡単に残し、関係者と共有できます。',
           images: [
             {
               url: 'https://nshinri.net/caregiving_app_icon.png',
               width: 1200,
               height: 630,
-              alt: '在宅介護アプリのOGP画像',
+              alt: '日笠泰彰が開発した在宅介護記録アプリのOGP画像',
             },
           ],
+          site_name: "N's WorkRoom",
         }}
         twitter={{
           handle: '@N6209316426525',
@@ -62,6 +63,16 @@ export default function Kaigokiroku() {
                 '在宅介護の記録管理を簡単にできるスマホアプリ。家族や施設関係者とスムーズに情報共有が可能です。',
               applicationCategory: 'HealthApplication',
               operatingSystem: 'iOS, Android',
+              author: {
+                '@type': 'Person',
+                name: '日笠泰彰',
+                url: 'https://nshinri.net/aboutme',
+              },
+              creator: {
+                '@type': 'Person',
+                name: '日笠泰彰',
+                url: 'https://nshinri.net/aboutme',
+              },
               aggregateRating: {
                 '@type': 'AggregateRating',
                 ratingValue: '4.8',
@@ -112,6 +123,11 @@ export default function Kaigokiroku() {
               brand: {
                 '@type': 'Brand',
                 name: 'Nshinri Apps',
+              },
+              manufacturer: {
+                '@type': 'Person',
+                name: '日笠泰彰',
+                url: 'https://nshinri.net/aboutme',
               },
               aggregateRating: {
                 '@type': 'AggregateRating',

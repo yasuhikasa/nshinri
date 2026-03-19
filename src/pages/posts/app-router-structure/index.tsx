@@ -58,49 +58,22 @@ const EnhancedAppRouterPost = () => {
 
       <Header />
 
-      <main
-        className={styles.container}
-        style={{ margin: '0 auto', padding: '20px' }}
-      >
-        <nav
-          className={styles.breadcrumb}
-          style={{ marginBottom: '20px', fontSize: '0.9rem' }}
-        >
+      <main className={`${styles.container} ${styles.postMain}`}>
+        <nav className={`${styles.breadcrumb} ${styles.breadcrumbNav}`}>
           <Link href="/">トップ</Link> ＞ <Link href="/posts">記事一覧</Link> ＞
           現在の記事
         </nav>
 
         <article>
-          <header
-            style={{
-              borderBottom: '2px solid #eee',
-              marginBottom: '30px',
-              paddingBottom: '20px',
-            }}
-          >
-            <h1
-              className={styles.title}
-              style={{ fontSize: '2rem', lineHeight: '1.4' }}
-            >
-              {title}
-            </h1>
-            <div
-              style={{
-                display: 'flex',
-                gap: '15px',
-                color: '#666',
-                marginTop: '10px',
-              }}
-            >
+          <header className={styles.articleHeader}>
+            <h1 className={styles.title}>{title}</h1>
+            <div className={styles.metaRow}>
               <span>📅 {date}</span>
               <span>👤 著者: {author}</span>
             </div>
           </header>
 
-          <div
-            className={styles.content}
-            style={{ lineHeight: '1.8', fontSize: '1.1rem' }}
-          >
+          <div className={styles.content}>
             <h2>はじめに：なぜApp Routerの構造設計が重要なのか</h2>
             <p>
               Next.js13以降、AppRouterの導入によってフロントエンド開発の自由度は飛躍的に向上しました。

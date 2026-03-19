@@ -8,6 +8,29 @@
   border-radius: 20px;
 }
 
+.postMain {
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.breadcrumbNav {
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+}
+
+.articleHeader {
+  border-bottom: 2px solid #eee;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+}
+
+.metaRow {
+  display: flex;
+  gap: 15px;
+  color: #666;
+  margin-top: 10px;
+}
+
 .title {
   font-size: clamp(1.7rem, 3.8vw, 2.2rem);
   font-weight: 700;
@@ -173,6 +196,11 @@
   .breadcrumb {
     font-size: 0.85rem;
     margin-bottom: 8px;
+  }
+
+  .metaRow {
+    flex-wrap: wrap;
+    gap: 8px;
   }
 
   .title {
