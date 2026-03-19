@@ -16,7 +16,11 @@ const breadcrumbMap: { [key: string]: string } = {
   '/booking': 'カウンセリングの予約のご案内',
 };
 
-const Breadcrumb: React.FC = () => {
+interface BreadcrumbProps {
+  currentLabel?: string;
+}
+
+const Breadcrumb: React.FC<BreadcrumbProps> = ({ currentLabel }) => {
   const router = useRouter();
   const pathArray = router.asPath.split('/').filter((path) => path);
 
@@ -31,6 +35,9 @@ const Breadcrumb: React.FC = () => {
       label = breadcrumbMap[href];
     }
     const isLast = index === pathArray.length - 1;
+    if (isLast && currentLabel) {
+      label = currentLabel;
+    }
 
     return (
       <li key={index}>

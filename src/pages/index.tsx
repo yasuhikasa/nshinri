@@ -79,9 +79,9 @@ export async function getStaticProps() {
   };
 }
 
-const siteTitle = "日笠泰彰 公式サイト | N's WorkRoom";
+const siteTitle = "日笠泰彰 | N's WorkRoom";
 const siteDescription =
-  '日笠泰彰（ITエンジニア・心理カウンセラー）の公式サイト。個人開発アプリ、キャリアカウンセリング、ライフコーチング、執筆活動の最新情報を発信しています。';
+  '日笠泰彰（ITエンジニア）の公式サイト。個人開発アプリ、キャリアカウンセリング、ライフコーチング、執筆活動の最新情報を発信しています。';
 
 const jsonLd = {
   '@context': 'https://schema.org',

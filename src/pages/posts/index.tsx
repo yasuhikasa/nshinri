@@ -1,10 +1,10 @@
-import fs from 'fs';
-import path from 'path';
-import Link from 'next/link';
-import Header from '../../components/Header';
 import Head from 'next/head';
+import Link from 'next/link';
 import styles from './PostList.module.css';
+import Header from '../../components/Header';
 import Breadcrumb from '../../components/Breadcrumb';
+import { NextSeo } from 'next-seo';
+import { getList } from '../../lib/microcms';
 
 interface Post {
   slug: string;
@@ -18,7 +18,6 @@ interface PostListProps {
 }
 
 const PostList = ({ posts }: PostListProps) => {
-  // JSON-LD パンくずリストの構造化データ
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -40,9 +39,21 @@ const PostList = ({ posts }: PostListProps) => {
 
   return (
     <>
+      <NextSeo
+        title="記事一覧 | 日笠泰彰"
+        description="日笠泰彰による開発・カウンセリング関連の記事を新しい順に掲載しています。"
+        canonical="https://nshinri.net/posts"
+        openGraph={{
+          title: '記事一覧 | 日笠泰彰',
+          description:
+            '日笠泰彰による開発・カウンセリング関連の記事を新しい順に掲載しています。',
+          url: 'https://nshinri.net/posts',
+          type: 'website',
+          images: [{ url: 'https://nshinri.net/me.png' }],
+          site_name: "N's WorkRoom",
+        }}
+      />
       <Head>
-        <title>記事一覧</title>
-        {/* JSON-LD 構造化データをスクリプトとして挿入 */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
@@ -58,6 +69,11 @@ const PostList = ({ posts }: PostListProps) => {
         <p className={styles.intro}>
           日笠泰彰による開発・カウンセリング関連の記事を新しい順に掲載しています。
         </p>
+
+        {(!posts || posts.length === 0) && (
+          <p className={styles.empty}>記事がありません。</p>
+        )}
+
         <ul className={styles.list}>
           {posts.map((post) => (
             <li key={post.slug} className={styles.listItem}>
@@ -75,43 +91,32 @@ const PostList = ({ posts }: PostListProps) => {
 };
 
 export async function getStaticProps() {
-  const postsDirectory = path.join(process.cwd(), 'src', 'pages', 'posts'); // postsディレクトリへのパス
-  const subdirectories = fs
-    .readdirSync(postsDirectory, { withFileTypes: true })
-    .filter((dirent) => dirent.isDirectory()) // ディレクトリのみ取得
-    .map((dirent) => dirent.name);
+  const data = await getList({
+    orders: '-publishedAt',
+    fields: 'id,title,publishedAt,createdAt,description,content',
+    limit: 100,
+  });
+  const contents = data.contents || [];
+  console.log(data.totalCount);
 
-  // 動的インポートで記事データを取得
-  const posts: Post[] = (
-    await Promise.all(
-      subdirectories.map(async (subdir) => {
-        try {
-          const { title, date, description } = await import(
-            `../../pages/posts/${subdir}/index`
-          );
+  const posts: Post[] = (contents || []).map((post: any) => {
+    const rawContent =
+      typeof post.content === 'string'
+        ? post.content.replace(/<[^>]*>/g, '')
+        : '';
+    const fallbackDescription = rawContent
+      ? rawContent.slice(0, 80) + (rawContent.length > 80 ? '…' : '')
+      : '説明未設定';
 
-          // 未定義の場合にデフォルト値を設定
-          if (!title || !date || !description) {
-            console.warn(`記事データが不完全です: ${subdir}`);
-            return null; // 不完全なデータは除外
-          }
-
-          return {
-            slug: subdir,
-            title: title || 'タイトル未設定',
-            date: date || '日付未設定',
-            description: description || '説明未設定',
-          };
-        } catch (error) {
-          console.warn(`記事データの取得に失敗しました: ${subdir}`, error);
-          return null; // エラーの場合は null を返す
-        }
-      })
-    )
-  ).filter((post): post is Post => post !== null); // null を除外
-
-  // 日付順でソート
-  posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    return {
+      slug: post.id,
+      title: post.title ?? 'タイトル未設定',
+      date: new Date(post.publishedAt || post.createdAt)
+        .toISOString()
+        .slice(0, 10),
+      description: post.description || fallbackDescription,
+    };
+  });
 
   return {
     props: {

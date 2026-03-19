@@ -1,226 +1,63 @@
 .container {
-  max-width: 900px;
+  max-width: 800px;
   margin: 0 auto;
-  padding: 26px 22px 34px;
-  background: linear-gradient(135deg, #ffffff 0%, #f7fbf8 100%);
-  border: 1px solid #dce8dd;
-  box-shadow: 0 14px 28px rgba(31, 52, 40, 0.1);
-  border-radius: 20px;
+  padding: 2rem 1rem;
 }
 
-.postMain {
-  margin: 0 auto;
-  padding: 20px;
+.heading {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 1.5rem 0 1rem;
+  color: #333;
 }
 
-.breadcrumbNav {
-  margin-bottom: 20px;
-  font-size: 0.9rem;
-}
-
-.articleHeader {
-  border-bottom: 2px solid #eee;
-  margin-bottom: 30px;
-  padding-bottom: 20px;
-}
-
-.metaRow {
-  display: flex;
-  gap: 15px;
+.intro {
   color: #666;
-  margin-top: 10px;
+  margin-bottom: 2rem;
+  line-height: 1.6;
 }
 
-.title {
-  font-size: clamp(1.7rem, 3.8vw, 2.2rem);
-  font-weight: 700;
-  color: #1a2d1f;
-  margin-bottom: 12px;
-  padding: 0;
-  text-align: left;
-  line-height: 1.45;
-  letter-spacing: 0.01em;
-  border-bottom: 2px solid #d8e9db;
-  padding-bottom: 12px;
-}
-
-.date {
-  font-size: 0.92rem;
-  color: #62706a;
-  margin-bottom: 18px;
-}
-
-.breadcrumb {
-  font-size: 0.85rem;
-  color: #66706a;
-  margin-bottom: 14px;
-  display: flex;
-  gap: 0.45em;
-  flex-wrap: wrap;
-}
-
-.breadcrumb a {
-  color: #4a5a52;
-  text-decoration: none;
-}
-
-.breadcrumb a:hover {
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  color: #2f8d4e;
-}
-
-.breadcrumb li {
-  display: inline-flex;
-  align-items: center;
-}
-
-.breadcrumb li::after {
-  content: '›';
-  color: #9ba7a0;
-  margin: 0 6px;
-}
-
-.breadcrumb li:last-child::after {
-  content: '';
-}
-
-.content {
-  line-height: 1.8;
-  font-size: 1.1rem;
-  color: #2f3934;
-}
-
-.content h2 {
-  margin-top: 34px;
-  margin-bottom: 16px;
-  font-size: clamp(1.35rem, 3vw, 1.75rem);
-  color: #1f3425;
-  background-color: #f3f9f4;
-  padding: 10px 12px;
-  border-left: 4px solid #5fa874;
-  border-radius: 8px;
-}
-
-.content p {
-  margin-bottom: 16px;
-}
-
-.content ul {
-  padding-left: 20px;
-  margin: 0 0 16px;
-}
-
-.content li {
-  margin-bottom: 8px;
-}
-
-.content pre {
-  margin: 14px 0 18px;
-  border: 1px solid #dbe8de;
-  border-radius: 10px;
-  padding: 14px;
-  overflow-x: auto;
-  background: #f8fbf9;
-  font-size: 0.95rem;
-  line-height: 1.65;
-}
-
-.content code {
-  font-family: 'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono',
-    'Courier New', monospace;
-}
-
-.content img {
-  max-width: 100%;
-  border-radius: 12px;
-  margin: 14px 0;
-  border: 1px solid #e1ece3;
-  box-shadow: 0 8px 16px rgba(25, 45, 33, 0.1);
-}
-
-.content a {
-  color: #2f8d4e;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  font-weight: 600;
-}
-
-.content a:hover {
-  color: #267341;
-}
-
-.relatedPosts {
-  margin-top: 2.2rem;
-  padding: 1rem;
-  border-top: 1px solid #dbe6de;
-}
-
-.relatedPosts h2 {
-  font-size: 1.35rem;
-  margin-bottom: 1rem;
-  color: #1f3425;
-}
-
-.relatedPosts ul {
+.list {
   list-style: none;
   padding: 0;
 }
 
-.relatedPosts li {
-  margin-bottom: 0.7rem;
+.listItem {
+  border-bottom: 1px solid #eee;
+  padding: 1.5rem 0;
 }
 
-.relatedPosts li a {
-  font-size: 1rem;
-  color: #2f8d4e;
+.link {
   text-decoration: none;
-  font-weight: 600;
+  display: block;
 }
 
-.relatedPosts li a:hover {
+.link:hover .title {
+  color: #0070f3;
   text-decoration: underline;
-  text-underline-offset: 3px;
 }
 
-@media (max-width: 768px) {
-  .container {
-    padding: 16px 14px 26px;
-    border-radius: 14px;
-  }
+.title {
+  font-size: 1.4rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+  transition: color 0.2s;
+}
 
-  .date {
-    margin-bottom: 14px;
-  }
+.date {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 0.5rem;
+}
 
-  .breadcrumb {
-    font-size: 0.85rem;
-    margin-bottom: 8px;
-  }
+.description {
+  color: #444;
+  font-size: 1rem;
+  line-height: 1.5;
+}
 
-  .metaRow {
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .title {
-    font-size: 1.6rem;
-    padding-bottom: 10px;
-  }
-
-  .content h2 {
-    font-size: 1.35rem;
-    margin-top: 24px;
-    margin-bottom: 12px;
-  }
-
-  .content p {
-    font-size: 1rem;
-    margin-bottom: 14px;
-  }
-
-  .content pre {
-    font-size: 0.9rem;
-    padding: 12px;
-  }
+.empty {
+  text-align: center;
+  color: #999;
+  padding: 3rem 0;
 }

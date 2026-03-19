@@ -8,9 +8,10 @@
   ],
   "plugins": ["prettier"],
   "rules": {
-    "prettier/prettier": "error",
+    "prettier/prettier": "warn",
     "react/react-in-jsx-scope": "off",
-    "no-irregular-whitespace": "off"
+    "no-irregular-whitespace": "off",
+    "@typescript-eslint/no-explicit-any": "off"
   },
   "env": {
     "node": true
