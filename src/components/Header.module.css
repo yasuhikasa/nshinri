@@ -1,20 +1,35 @@
 .header {
-  background-color: #f7a8a8; /* ヘッダーの背景色 */
-  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: 14px 0;
   text-align: center;
+  background: rgba(248, 246, 239, 0.94);
+  border-bottom: 1px solid #e4dfd1;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 20px rgba(24, 45, 31, 0.08);
 }
 
 .nav {
   display: flex;
   justify-content: center;
+  width: min(1200px, calc(100% - 24px));
+  margin: 0 auto;
+  padding: 0 4px;
 }
 
 .navList {
   list-style: none;
-  padding: 0;
+  padding: 8px;
   margin: 0;
   display: flex;
-  gap: 40px; /* 各リンクの間により広いスペースを追加 */
+  gap: 8px;
+  width: 100%;
+  background: #e6f3e9;
+  border: 1px solid #d8e8db;
+  border-radius: 999px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .navItem {
@@ -23,43 +38,41 @@
 
 .navLink {
   text-decoration: none;
-  color: white;
-  font-weight: bold;
-  font-size: 1.2rem;
-  position: relative; /* アイコンや装飾を追加するためにrelativeに設定 */
-  transition: color 0.3s;
-  padding-left: 25px; /* アイコン用のスペースを確保 */
-}
-
-/* リンク前にフラグアイコンを追加 */
-.navLink::before {
-  content: '🔗'; /* フラグまたはリンクを示すアイコン */
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 1.2rem; /* アイコンのサイズ */
-  color: white; /* アイコンの色 */
+  color: #2c3b33;
+  font-weight: 700;
+  font-size: 1.05rem;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.2s ease;
+  padding: 12px 18px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .navLink:hover {
-  color: #fff3f3; /* ホバー時のリンク色を変更 */
-  text-decoration: underline; /* ホバー時に下線を追加 */
+  color: #1f6d3c;
+  background: #e9f6ec;
+  text-decoration: none;
+  transform: translateY(-1px);
 }
 
-/* 小さな画面向けのレスポンシブ対応 */
 @media (max-width: 768px) {
+  .header {
+    padding: 12px 0;
+  }
+
   .navList {
-    flex-direction: column;
-    gap: 15px; /* リンクの間に少しスペースを追加 */
+    border-radius: 14px;
+    gap: 4px;
+    padding: 6px;
   }
 
   .navLink {
-    font-size: 1rem; /* 小さい画面ではフォントサイズを少し小さく */
-    padding-left: 20px; /* アイコン用のスペースも小さく */
-  }
-
-  .navLink::before {
-    font-size: 1rem; /* 小さい画面ではアイコンサイズも小さく */
+    width: 100%;
+    justify-content: center;
+    padding: 12px 14px;
+    font-size: 1rem;
   }
 }

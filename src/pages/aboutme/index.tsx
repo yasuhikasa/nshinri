@@ -8,18 +8,15 @@ import Breadcrumb from '../../components/Breadcrumb';
 // 構造化データのJSON-LD形式
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: '私について',
+  '@type': 'ProfilePage',
+  name: '日笠泰彰について',
   url: 'https://nshinri.net/aboutme',
-  publisher: {
-    '@type': 'Organization',
-    name: '私について',
-    logo: {
-      '@type': 'ImageObject',
-      url: 'https://nshinri.net/me.png',
-      width: 300,
-      height: 300,
-    },
+  mainEntity: {
+    '@type': 'Person',
+    name: '日笠泰彰',
+    url: 'https://nshinri.net/aboutme',
+    image: 'https://nshinri.net/me.png',
+    jobTitle: 'ITエンジニア・心理カウンセラー',
   },
 };
 
@@ -67,22 +64,23 @@ const Aboutme = () => {
     <>
       {/* NextSeoを使ったSEO設定 */}
       <NextSeo
-        title="日笠泰彰私について"
-        description="ITエンジニア業、Kindle出版などの情報を発信しています。"
+        title="日笠泰彰について | ITエンジニア・心理カウンセラー"
+        description="日笠泰彰のプロフィールページ。40歳未経験からITエンジニアへ転職した経歴や、個人開発、キャリア相談・ライフコーチングの活動内容を紹介しています。"
         canonical="https://nshinri.net/aboutme"
         openGraph={{
-          title: '日笠泰彰私について',
-          description: 'ITエンジニア業、Kindle出版などの情報を発信しています。',
+          title: '日笠泰彰について | ITエンジニア・心理カウンセラー',
+          description:
+            '日笠泰彰のプロフィールページ。経歴、活動領域、発信内容をわかりやすく紹介します。',
           url: 'https://nshinri.net/aboutme',
           images: [
             {
               url: 'https://nshinri.net/me.png',
               width: 1200,
               height: 630,
-              alt: '日笠泰彰によるITエンジニアのOGP画像',
+              alt: '日笠泰彰のプロフィール画像',
             },
           ],
-          site_name: '日笠泰彰私について',
+          site_name: "N's WorkRoom",
         }}
         twitter={{
           handle: '@6209316426525',
@@ -100,14 +98,12 @@ const Aboutme = () => {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
         />
-        <Head>
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify(breadcrumbJsonLd),
-            }}
-          />
-        </Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(breadcrumbJsonLd),
+          }}
+        />
       </Head>
       <Header /> {/* ヘッダーを表示 */}
       <div className={styles.container}>
@@ -120,23 +116,22 @@ const Aboutme = () => {
           <div className={styles.imageWrapper}>
             <Image
               src="/me.png" // publicフォルダに自分の写真を置く
-              alt="日笠泰彰によるYour Photo"
+              alt="日笠泰彰のプロフィール写真"
               width={300}
               height={300}
-              layout="intrinsic" // 画像のアスペクト比を維持
               className={styles.photo}
             />
             <div className={styles.profileText}>
-              <div>日笠泰彰</div>
+              <div className={styles.name}>日笠泰彰</div>
+              <p className={styles.role}>ITエンジニア・心理カウンセラー</p>
             </div>
           </div>
-          <div>
+          <div className={styles.profileRight}>
             <div className={styles.profileText}>
               <ul>
                 <li>・40代 男</li>
                 <li>・好きなこと・・・音楽、グルメ、温泉、バスケ</li>
               </ul>
-              <br />
             </div>
             <div className={styles.actionBlock}>
               20代弁護士を志すも、あと一歩のところで挫折。その後、30代は音楽クリエイターとして活動、その後介護職に従事する。
@@ -144,7 +139,7 @@ const Aboutme = () => {
               {/* ITエンジニアとして働きながら、過去の苦い経験や社会復帰の経験を活かし、カウンセリング、ライフコーチングなどの活動を行っている。 */}
             </div>
             {/* SNSリンク */}
-            <div className={styles.sns}>
+            {/* <div className={styles.sns}>
               <a
                 href="https://x.com/N6209316426525"
                 target="_blank"
@@ -153,7 +148,7 @@ const Aboutme = () => {
                 <Image src="/x.png" alt="x" width={60} height={60} />
                 　⇦Xはこちらから
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

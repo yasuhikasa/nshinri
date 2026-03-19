@@ -155,96 +155,99 @@ const Contact: React.FC = () => {
           </ol>
         </nav>
 
-        <h1 className={styles.heading}>お問い合わせ</h1>
-        <p className={styles.intro}>
-          ご質問やご相談がある場合は、以下のフォームからお気軽にお問い合わせください。
-        </p>
-
-        <form onSubmit={handleSubmit} className={styles.form}>
-          <div className={styles.formGroup}>
-            <label htmlFor="name" className={styles.label}>
-              お名前（仮名で可）
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              className={styles.input}
-              required
-            />
-          </div>
-          <div className={styles.formGroup}>
-            <label htmlFor="email" className={styles.label}>
-              メールアドレス
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className={styles.input}
-              required
-            />
-          </div>
-          <div className={styles.formGroup}>
-            <label htmlFor="confirmEmail" className={styles.label}>
-              メールアドレス（確認用）
-            </label>
-            <input
-              type="email"
-              id="confirmEmail"
-              name="confirmEmail"
-              value={formData.confirmEmail}
-              onChange={handleChange}
-              className={styles.input}
-              required
-            />
-          </div>
-          {error && <p className={styles.error}>{error}</p>}{' '}
-          {/* エラーメッセージの表示 */}
-          <div className={styles.formGroup}>
-            <label htmlFor="subject" className={styles.label}>
-              お問い合わせ件名（50文字以内）
-            </label>
-            <input
-              type="text"
-              id="subject"
-              name="subject"
-              value={formData.subject}
-              onChange={handleChange}
-              className={styles.input}
-              maxLength={50}
-              required
-            />
-          </div>
-          <div className={styles.formGroup}>
-            <label htmlFor="message" className={styles.label}>
-              お問い合わせ内容（1000文字以内）
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              rows={5}
-              className={styles.textarea}
-              maxLength={1000}
-              required
-            ></textarea>
-          </div>
-          <button type="submit" className={styles.submitButton}>
-            送信
-          </button>
-        </form>
-
-        {isSubmitted && (
-          <p className={styles.successMessage}>
-            お問い合わせ内容が送信されました。ありがとうございます！
+        <section className={styles.formCard}>
+          <h1 className={styles.heading}>お問い合わせ</h1>
+          <p className={styles.intro}>
+            ご質問やご相談がある場合は、以下のフォームからお気軽にお問い合わせください。
           </p>
-        )}
+
+          <form onSubmit={handleSubmit} className={styles.form}>
+            <div className={styles.formGroup}>
+              <label htmlFor="name" className={styles.label}>
+                お名前（仮名で可）
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                className={styles.input}
+                required
+              />
+            </div>
+            <div className={styles.formGroup}>
+              <label htmlFor="email" className={styles.label}>
+                メールアドレス
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className={styles.input}
+                required
+              />
+            </div>
+            <div className={styles.formGroup}>
+              <label htmlFor="confirmEmail" className={styles.label}>
+                メールアドレス（確認用）
+              </label>
+              <input
+                type="email"
+                id="confirmEmail"
+                name="confirmEmail"
+                value={formData.confirmEmail}
+                onChange={handleChange}
+                className={styles.input}
+                required
+              />
+            </div>
+            {error && <p className={styles.error}>{error}</p>}
+            <div className={styles.formGroup}>
+              <label htmlFor="subject" className={styles.label}>
+                お問い合わせ件名（50文字以内）
+              </label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                value={formData.subject}
+                onChange={handleChange}
+                className={styles.input}
+                maxLength={50}
+                required
+              />
+            </div>
+            <div className={styles.formGroup}>
+              <label htmlFor="message" className={styles.label}>
+                お問い合わせ内容（1000文字以内）
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                rows={6}
+                className={styles.textarea}
+                maxLength={1000}
+                required
+              ></textarea>
+            </div>
+            <div className={styles.submitArea}>
+              <button type="submit" className={styles.submitButton}>
+                送信する
+              </button>
+            </div>
+          </form>
+
+          {isSubmitted && (
+            <p className={styles.successMessage}>
+              お問い合わせ内容が送信されました。ありがとうございます！
+            </p>
+          )}
+        </section>
       </div>
     </>
   );

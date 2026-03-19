@@ -1,12 +1,24 @@
 :root {
-  --background: #fffafa;
-  --foreground: #1a1a1a;
+  --background: #f5faf6;
+  --surface: #ffffff;
+  --foreground: #1f2b24;
+  --muted-foreground: #58645d;
+  --border: #dbe8de;
+  --primary: #2f8d4e;
+  --primary-hover: #267341;
+  --link: #2a7750;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ffffff;
+    --background: #0f1712;
+    --surface: #18221b;
+    --foreground: #ecf5ee;
+    --muted-foreground: #a8b5ac;
+    --border: #2a3a30;
+    --primary: #59b978;
+    --primary-hover: #66c886;
+    --link: #7ed79a;
   }
 }
 
@@ -19,64 +31,76 @@ body {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: 'Roboto', Arial, Helvetica, sans-serif;
-  font-weight: 500;
+  font-family:
+    'Noto Sans JP',
+    'Hiragino Kaku Gothic ProN',
+    'Yu Gothic',
+    'Meiryo',
+    'Segoe UI',
+    Roboto,
+    Arial,
+    sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  margin: 0;
 }
 
-header {
-  font-weight: 600;
-  font-size: 1.2rem;
-  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 a {
-  color: #0056b3;
-  text-decoration: underline;
-  font-weight: 500;
+  color: var(--link);
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 a:hover {
-  color: #003d80;
+  color: var(--primary-hover);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
-.top-page {
-  font-weight: 500;
-  line-height: 1.6;
-}
-
-.top-page h1 {
-  font-size: 2rem;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
   font-weight: 700;
-  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+}
+
+p,
+ul,
+ol {
+  margin-top: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+::selection {
+  background: rgba(47, 141, 78, 0.2);
 }
 
 @media (max-width: 768px) {
-  :root {
-    --background: #ffffff;
-    --foreground: #222222;
-  }
-
   body {
-    font-weight: 600;
-  }
-
-  header {
-    font-weight: 700;
-    font-size: 1.5rem;
-    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
-  }
-
-  .top-page {
-    font-weight: 600;
-    line-height: 1.8;
-  }
-
-  .top-page h1 {
-    font-size: 2.2rem;
-  }
-
-  .top-page p {
-    font-size: 1.1rem;
+    line-height: 1.75;
   }
 }
