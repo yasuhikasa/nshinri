@@ -70,9 +70,9 @@ export default function PostDetail({ post }: { post: Post }) {
           <header className={styles.articleHeader}>
             <h1 className={styles.title}>{post.title}</h1>
             <div className={styles.metaRow}>
-              <span>
+              {/* <span>
                 📅 {new Date(post.publishedAt).toLocaleDateString('ja-JP')}
-              </span>
+              </span> */}
               <span>👤 著者: 日笠泰彰</span>
             </div>
           </header>
