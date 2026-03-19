@@ -1,6 +1,6 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
 import { getList, getDetail } from '../../../lib/microcms';
-import styles from '../Post.module.css';
+import styles from '../PostDetail.module.css';
 import Header from '../../../components/Header';
 import Breadcrumb from '../../../components/Breadcrumb';
 import AuthorProfile from '../../../components/AuthorProfile';

@@ -3,7 +3,7 @@ import AuthorProfile from '../../../components/AuthorProfile';
 import { NextSeo } from 'next-seo';
 import Head from 'next/head';
 import Link from 'next/link';
-import styles from '../Post.module.css';
+import styles from '../PostDetail.module.css';
 
 export const title = '在宅用の介護記録アプリを販売開始しました';
 export const description =

@@ -3,7 +3,7 @@ import AuthorProfile from '../../../components/AuthorProfile';
 import { NextSeo } from 'next-seo';
 import Head from 'next/head';
 import Link from 'next/link';
-import styles from '../Post.module.css';
+import styles from '../PostDetail.module.css';
 
 export const title = 'こだわりの創作料理レシピ作成アプリ、販売開始しました！';
 export const description =

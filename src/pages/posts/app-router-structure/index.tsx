@@ -3,7 +3,7 @@ import AuthorProfile from '../../../components/AuthorProfile';
 import { NextSeo } from 'next-seo';
 import Head from 'next/head';
 import Link from 'next/link';
-import styles from '../Post.module.css';
+import styles from '../PostDetail.module.css';
 
 export const title =
   'Next.js App Routerのディレクトリ構造と設計指針｜日笠泰彰の実践的ガイド';

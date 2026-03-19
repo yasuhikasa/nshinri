@@ -6,6 +6,7 @@ const AuthorProfile = () => {
         padding: '20px',
         backgroundColor: '#f9f9f9',
         borderRadius: '10px',
+        border: '1px solid #bdbdbd',
       }}
     >
       <h3>著者プロフィール</h3>
