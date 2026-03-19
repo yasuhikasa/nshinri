@@ -95,7 +95,7 @@ const config = {
     try {
       const SERVICE_ID = '0dkqldcw4i'; // microCMSのサブドメイン
       const API_KEY = 'N3HU4yperZoYTES7jjxVDqSnyIx06udCcY6t'; // X-MICROCMS-API-KEY
-      const ENDPOINT = 'blogs'; // エンドポイント名
+      const ENDPOINT = 'blog'; // エンドポイント名
 
       const response = await fetch(
         `https://${SERVICE_ID}.microcms.io/api/v1/${ENDPOINT}?fields=slug,updatedAt&limit=100`,
