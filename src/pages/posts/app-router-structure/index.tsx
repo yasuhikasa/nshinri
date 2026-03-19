@@ -60,7 +60,7 @@ const EnhancedAppRouterPost = () => {
 
       <main
         className={styles.container}
-        style={{ maxWidth: '800px', margin: '0 auto', padding: '20px' }}
+        style={{ margin: '0 auto', padding: '20px' }}
       >
         <nav
           className={styles.breadcrumb}

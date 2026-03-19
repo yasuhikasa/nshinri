@@ -1,5 +1,5 @@
 .container {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 26px 22px 34px;
   background: linear-gradient(135deg, #ffffff 0%, #f7fbf8 100%);
@@ -104,14 +104,8 @@
 }
 
 .content code {
-  font-family:
-    'SFMono-Regular',
-    Menlo,
-    Monaco,
-    Consolas,
-    'Liberation Mono',
-    'Courier New',
-    monospace;
+  font-family: 'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace;
 }
 
 .content img {

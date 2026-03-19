@@ -27,7 +27,7 @@ const PrivacyPolicy = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <>
       {/* NextSeoによるSEO設定 */}
       <NextSeo
         title="プライバシーポリシー | N's WorkRoom"
@@ -64,9 +64,9 @@ const PrivacyPolicy = () => {
 
       {/* ヘッダー */}
       <Header />
-      <Breadcrumb />
       {/* メインコンテンツ */}
       <main className={styles.main}>
+        <Breadcrumb />
         <h1 className={styles.heading}>プライバシーポリシー</h1>
         <p>当サイトでは、以下の通り個人情報を取り扱います。</p>
 
@@ -125,7 +125,7 @@ const PrivacyPolicy = () => {
           </p>
         </section>
       </main>
-    </div>
+    </>
   );
 };
 

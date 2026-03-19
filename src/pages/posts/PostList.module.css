@@ -1,110 +1,140 @@
 .container {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 20px;
-  font-family: Arial, sans-serif;
+  padding: 24px 20px 52px;
+}
+
+.intro {
+  font-size: 1rem;
+  color: #5a6660;
+  margin: 0 0 18px;
+  line-height: 1.75;
 }
 
 .heading {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 20px;
-  text-align: center;
-  color: #333;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 700;
+  margin: 0 0 10px;
+  text-align: left;
+  color: #1a2d1f;
+  letter-spacing: 0.01em;
 }
 
-/* パンくずリストのスタイル */
 .breadcrumb {
   font-size: 0.85rem;
-  color: #666;
-  margin-bottom: 0px;
+  color: #66706a;
+  margin-bottom: 14px;
   display: flex;
-  gap: 0.3em;
+  gap: 0.45em;
+  flex-wrap: wrap;
 }
 
 .breadcrumb a {
-  color: #333;
+  color: #4a5a52;
   text-decoration: none;
 }
 
 .breadcrumb a:hover {
   text-decoration: underline;
+  text-underline-offset: 3px;
+  color: #2f8d4e;
 }
 
 .breadcrumb li {
-  display: inline;
+  display: inline-flex;
+  align-items: center;
 }
 
 .breadcrumb li::after {
   content: '›';
-  color: #888;
-  margin: 0 5px;
+  color: #9ba7a0;
+  margin: 0 6px;
 }
 
 .breadcrumb li:last-child::after {
-  content: ''; /* 最後の要素には矢印を表示しない */
+  content: '';
 }
 
 .list {
   list-style: none;
   padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 14px;
 }
 
 .listItem {
-  margin-bottom: 20px;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 10px;
+  border: 1px solid #dce8dd;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #ffffff 0%, #f6fbf7 100%);
+  box-shadow: 0 10px 18px rgba(30, 53, 40, 0.08);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.listItem:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 24px rgba(30, 53, 40, 0.12);
 }
 
 .link {
   text-decoration: none;
-  color: #0070f3;
-}
-
-.link:hover {
-  text-decoration: underline;
+  color: inherit;
+  display: block;
+  padding: 16px 16px 14px;
 }
 
 .title {
-  font-size: 1.8rem;
-  margin: 0;
-  color: #333;
+  font-size: clamp(1.2rem, 2.8vw, 1.45rem);
+  margin: 0 0 6px;
+  color: #1f3425;
+  line-height: 1.5;
 }
 
 .date {
   font-size: 0.9rem;
-  color: #888;
-  margin-top: 5px;
+  color: #63716a;
+  margin: 0 0 8px;
 }
 
-/* レスポンシブ対応 */
+.description {
+  margin: 0;
+  color: #3d4641;
+  line-height: 1.65;
+  font-size: 0.95rem;
+}
+
 @media (max-width: 768px) {
   .container {
-    padding: 15px;
+    padding: 16px 14px 38px;
   }
 
   .breadcrumb {
-    font-size: 0.85rem;
-    color: #666;
-    margin-bottom: 5px;
-    display: flex;
-    gap: 0.3em;
+    margin-bottom: 10px;
   }
 
   .heading {
-    font-size: 2rem;
+    font-size: 1.8rem;
+  }
+
+  .intro {
+    margin-bottom: 14px;
   }
 
   .listItem {
-    margin-bottom: 15px;
-    padding-bottom: 8px;
+    border-radius: 12px;
   }
 
   .title {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 
   .date {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .description {
+    font-size: 0.92rem;
   }
 }

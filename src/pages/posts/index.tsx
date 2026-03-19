@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Header from '../../components/Header';
 import Head from 'next/head';
 import styles from './PostList.module.css';
+import Breadcrumb from '../../components/Breadcrumb';
 
 interface Post {
   slug: string;
@@ -50,24 +51,20 @@ const PostList = ({ posts }: PostListProps) => {
 
       <Header />
 
-      {/* パンくずリストの表示 */}
-      <nav aria-label="パンくずリスト" className={styles.breadcrumb}>
-        <ol>
-          <li>
-            <Link href="/">トップページ</Link>
-          </li>
-          <li aria-current="page">記事一覧</li>
-        </ol>
-      </nav>
-
       <div className={styles.container}>
+        <Breadcrumb />
+
         <h1 className={styles.heading}>記事一覧</h1>
+        <p className={styles.intro}>
+          日笠泰彰による開発・カウンセリング関連の記事を新しい順に掲載しています。
+        </p>
         <ul className={styles.list}>
           {posts.map((post) => (
             <li key={post.slug} className={styles.listItem}>
               <Link href={`/posts/${post.slug}`} className={styles.link}>
                 <h2 className={styles.title}>{post.title}</h2>
                 <p className={styles.date}>{post.date}</p>
+                <p className={styles.description}>{post.description}</p>
               </Link>
             </li>
           ))}
