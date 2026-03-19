@@ -1,6 +1,6 @@
 import path from 'path';
 import fs from 'fs';
-import { client } from './src/lib/microcms.ts';
+// import { client } from './src/lib/microcms.ts';
 
 /** @type {import('next-sitemap').IConfig} */
 const config = {
@@ -93,21 +93,40 @@ const config = {
 
     // 5. microCMS から動的記事を取得して追加
     try {
-      const posts = await client.get({
-        endpoint: 'posts', // あなたのエンドポイント名
-        queries: { fields: 'slug,updatedAt', limit: 100 },
-      });
+      const SERVICE_ID = '0dkqldcw4i'; // microCMSのサブドメイン
+      const API_KEY = 'N3HU4yperZoYTES7jjxVDqSnyIx06udCcY6t'; // X-MICROCMS-API-KEY
+      const ENDPOINT = 'blogss'; // エンドポイント名
 
-      posts.contents.forEach((post) => {
+      const response = await fetch(
+        `https://${SERVICE_ID}.microcms.io/api/v1/${ENDPOINT}?fields=slug,updatedAt&limit=100`,
+        {
+          headers: { 'X-MICROCMS-API-KEY': API_KEY },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`microCMS fetch error: ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      data.contents.forEach((post) => {
+        // slugがAPI側で「slug」というフィールド名であることを確認してください
+        // もしIDをそのまま使っているなら post.id になります
+        const identifier = post.slug || post.id;
+
         result.push({
-          loc: `/posts/${post.slug}`,
+          loc: `/posts/${identifier}`,
           lastmod: post.updatedAt || new Date().toISOString(),
           changefreq: 'daily',
           priority: 0.9,
         });
       });
+      console.log(
+        `✅ microCMSから ${data.contents.length} 件の記事をサイトマップに追加しました`
+      );
     } catch (error) {
-      console.error('microCMSの取得に失敗しました:', error);
+      console.error('❌ microCMSの取得に失敗しました:', error);
     }
 
     return result;
