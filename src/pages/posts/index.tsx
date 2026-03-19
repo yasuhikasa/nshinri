@@ -79,7 +79,7 @@ const PostList = ({ posts }: PostListProps) => {
             <li key={post.slug} className={styles.listItem}>
               <Link href={`/posts/${post.slug}`} className={styles.link}>
                 <h2 className={styles.title}>{post.title}</h2>
-                <p className={styles.date}>{post.date}</p>
+                {/* <p className={styles.date}>{post.date}</p> */}
                 <p className={styles.description}>{post.description}</p>
               </Link>
             </li>
