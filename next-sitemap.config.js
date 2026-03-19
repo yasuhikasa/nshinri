@@ -46,6 +46,8 @@ const config = {
         const stats = fs.statSync(fullPath);
 
         if (stats.isDirectory()) {
+          // 動的ルートディレクトリ([slug])は除外
+          if (item.startsWith('[')) return;
           // ディレクトリの場合: 中に index.tsx があればそのディレクトリ名をURLにする
           if (fs.existsSync(path.join(fullPath, 'index.tsx'))) {
             result.push({
@@ -57,6 +59,7 @@ const config = {
           }
         } else if (item.endsWith('.tsx') && item !== 'index.tsx') {
           // ファイルの場合: app-router-structure.tsx のような形式
+          if (item.startsWith('[')) return;
           result.push({
             loc: `/posts/${item.replace('.tsx', '')}`,
             lastmod: new Date().toISOString(),
@@ -93,12 +96,16 @@ const config = {
 
     // 5. microCMS から動的記事を取得して追加
     try {
-      const SERVICE_ID = '0dkqldcw4i'; // microCMSのサブドメイン
-      const API_KEY = 'N3HU4yperZoYTES7jjxVDqSnyIx06udCcY6t'; // X-MICROCMS-API-KEY
+      const SERVICE_ID = process.env.MICROCMS_SERVICE_DOMAIN;
+      const API_KEY = process.env.MICROCMS_API_KEY;
       const ENDPOINT = 'blog'; // エンドポイント名
 
+      if (!SERVICE_ID || !API_KEY) {
+        throw new Error('microCMS環境変数が未設定です');
+      }
+
       const response = await fetch(
-        `https://${SERVICE_ID}.microcms.io/api/v1/${ENDPOINT}?fields=slug,updatedAt&limit=100`,
+        `https://${SERVICE_ID}.microcms.io/api/v1/${ENDPOINT}?fields=id,slug,updatedAt&limit=100`,
         {
           headers: { 'X-MICROCMS-API-KEY': API_KEY },
         }
@@ -111,9 +118,8 @@ const config = {
       const data = await response.json();
 
       data.contents.forEach((post) => {
-        // slugがAPI側で「slug」というフィールド名であることを確認してください
-        // もしIDをそのまま使っているなら post.id になります
         const identifier = post.slug || post.id;
+        if (!identifier) return;
 
         result.push({
           loc: `/posts/${identifier}`,
