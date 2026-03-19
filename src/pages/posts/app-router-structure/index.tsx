@@ -6,17 +6,17 @@ import Link from 'next/link';
 import styles from '../Post.module.css';
 
 export const title =
-  'Next.js App Routerのディレクトリ構造と設計指針：日笠泰彰が実践するモダン開発';
+  'Next.js App Routerのディレクトリ構造と設計指針｜日笠泰彰の実践的ガイド';
 export const description =
-  'ITエンジニアの日笠泰彰です。Next.js App Routerにおける効率的なディレクトリ構造、Server Componentsの活用方法、そしてメンテナビリティを高めるための設計指針を徹底解説します。';
+  'Next.js App Routerで迷わないディレクトリ構造と設計指針を、ITエンジニアの日笠泰彰が解説。Server ComponentsとClient Componentsの使い分け、コロケーション、パフォーマンス最適化まで網羅します。';
 export const date = '2026-03-18';
 export const author = '日笠泰彰';
 
 const articleBody =
   'Next.js 13以降、App Routerの導入によってフロントエンド開発の自由度は飛躍的に向上しました。' +
   'しかし、自由度が高い反面、明確な設計指針を持たずに開発を進めると、コンポーネントの責務が曖昧になり、スパゲッティコード化するリスクも孕んでいます。' +
-  '日笠泰彰が現在推進しているカウンセリングサービスの開発プロジェクトでも、理想的なディレクトリ構成やServer Components / Client Componentsの使い分け、' +
-  'コロケーション（Colocation）の推奨、Next.jsのCaching機構の正しい理解を通じて、メンテナブルかつ高パフォーマンスなアプリケーション開発を実践しています。';
+  '本記事では、ITエンジニアの日笠泰彰が、実務で培った経験をもとに、理想的なディレクトリ構成やServer Components / Client Componentsの使い分け、' +
+  'コロケーション（Colocation）の推奨、Next.jsのCaching機構の正しい理解を通じて、メンテナブルかつ高パフォーマンスなアプリケーション開発を実践するためのポイントを解説します。';
 
 const EnhancedAppRouterPost = () => {
   const url = 'https://nshinri.net/posts/app-router-structure';
@@ -103,13 +103,14 @@ const EnhancedAppRouterPost = () => {
           >
             <h2>はじめに：なぜApp Routerの構造設計が重要なのか</h2>
             <p>
-              Next.js13以降AppRouterの導入によってフロントエンド開発の自由度は飛躍的に向上しました。
+              Next.js13以降、AppRouterの導入によってフロントエンド開発の自由度は飛躍的に向上しました。
               しかし、自由度が高い反面、明確な設計指針を持たずに開発を進めると、コンポーネントの責務が曖昧になり、
               スパゲッティコード化するリスクも孕んでいます。
             </p>
             <p>
-              日笠泰彰が現在推進しているカウンセリングサービスの開発プロジェクトでも、
-              以下の設計思想をベースに構築しています。
+              本記事では、ITエンジニアとして活動する日笠泰彰が、
+              自身のサービス開発プロジェクトで実際に採用している設計思想をもとに、
+              Next.js App Routerの構造設計について解説します。
             </p>
 
             <h2>1. 理想的なディレクトリ構成のサンプル</h2>
