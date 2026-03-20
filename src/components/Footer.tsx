@@ -16,6 +16,9 @@ const Footer = () => {
           <Link href="/privacy-policy" legacyBehavior>
             <a>Privacy Policy</a>
           </Link>
+          <Link href="https://lit.link/litA07" legacyBehavior>
+            <a>SNSリンク集</a>
+          </Link>
         </div>
         <div className={styles.copyright}>
           <p>
