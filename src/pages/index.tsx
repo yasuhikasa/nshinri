@@ -191,7 +191,7 @@ const Home = ({ notifications }: { notifications: Notification[] }) => {
             />
           </div>
           <h1 className={styles.heading}>
-            日笠泰彰の活動拠点 N&apos;s WorkRoom
+            N&apos;s WorkRoom
           </h1>
           <p className={styles.subtext}>
             ITエンジニアです。民間カウンセラー資格あり。
