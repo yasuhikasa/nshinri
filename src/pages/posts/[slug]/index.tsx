@@ -73,7 +73,7 @@ export default function PostDetail({ post }: { post: Post }) {
               {/* <span>
                 📅 {new Date(post.publishedAt).toLocaleDateString('ja-JP')}
               </span> */}
-              <span>👤 著者: 日笠泰彰</span>
+              {/* <span>👤 著者: 日笠泰彰</span> */}
             </div>
           </header>
           <div
