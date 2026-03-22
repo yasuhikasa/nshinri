@@ -113,7 +113,7 @@ const activities: ActivityItem[] = [
     ],
   },
   {
-    href: '/',
+    href: 'https://secondpath.jp/',
     imageSrc: '/4.jpg',
     imageAlt: '日笠泰彰によるキャリア相談・人生のリスタート',
     title: 'キャリアカウンセリング・ライフコーチング',
