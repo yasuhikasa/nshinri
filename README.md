@@ -2,10 +2,6 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-[日笠泰彰のHP](https://nshinri.net/)
-[モダンE2Eテストの決定版：Playwrightが従来のテスト自動化をどう変えたのか](https://zenn.dev/yasuhikasa/articles/27d7fdb1fa7ee0)
-[Next.js (App Router) × Playwright で実現する、堅牢なE2Eテスト環境構築ガイド](https://zenn.dev/yasuhikasa/articles/11e741c8b8b869)
-
 First, run the development server:
 
 ```bash
@@ -42,3 +38,16 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+[公式サイト（nshinri.net）](https://nshinri.net/)<br>
+[カウンセリングサイト（SecondPath）](https://secondpath.jp/)<br>
+[LinkedIn（ビジネス・職歴）](https://www.linkedin.com/in/%E6%B3%B0%E5%BD%B0-%E6%97%A5%E7%AC%A0-2123a2319/)<br>
+[Wantedly（キャリア・ストーリー）](https://www.wantedly.com/id/yasushi_hikasa_c)<br>
+[Note（エッセイ・想い）](https://note.com/jazzy_gecko3968)<br>
+[Zenn（技術記事）](https://zenn.dev/yasuhikasa)<br>
+[Qiita（技術ナレッジ）](https://qiita.com/hikasayasu)<br>
+[GitHub（開発リポジトリ）](https://github.com/yasuhikasa)<br>
+[はてなブログ（技術メモ・日記）](https://whuhuhu.hatenablog.com/)<br>
+[SNSまとめ（Lit.link）](https://lit.link/litA07)<br>
+[X（旧Twitter）](https://x.com/pino70543059055)<br>
+[Kindle著書（Amazon）](https://www.amazon.co.jp/dp/B0DNXPFD37/)
