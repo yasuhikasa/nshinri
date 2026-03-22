@@ -19,9 +19,6 @@ const Footer = () => {
           <Link href="https://lit.link/litA07" legacyBehavior>
             <a>SNSリンク集</a>
           </Link>
-          <Link href="https://www.youtube.com/@hikachu-t3e" legacyBehavior>
-            <a>youtube</a>
-          </Link>
           <Link href="https://www.youtube.com/@yao7783" legacyBehavior>
             <a>youtubeラジオ</a>
           </Link>
