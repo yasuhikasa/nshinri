@@ -122,7 +122,7 @@ const Aboutme = () => {
               className={styles.photo}
             />
             <div className={styles.profileText}>
-              <div className={styles.name}>Nくん</div>
+              <div className={styles.name}>日笠泰彰</div>
               <p className={styles.role}>ITエンジニア・心理カウンセラー</p>
             </div>
           </div>

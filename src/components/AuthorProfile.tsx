@@ -11,7 +11,7 @@ const AuthorProfile = () => {
     >
       <h3>著者プロフィール</h3>
       <p>
-        <strong>Nくん</strong>
+        <strong>日笠泰彰</strong>
         <br />
         ITエンジニアとして活動し、RailsやNext.jsを中心としたモダンなWeb開発を得意とする。
       </p>
