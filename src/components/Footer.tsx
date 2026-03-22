@@ -22,6 +22,12 @@ const Footer = () => {
           <Link href="https://www.youtube.com/@yao7783" legacyBehavior>
             <a>youtubeラジオ</a>
           </Link>
+          <Link href="https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q13326521473" legacyBehavior>
+            <a>知恵袋</a>
+          </Link>
+          <Link href="https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q11326522851" legacyBehavior>
+            <a>知恵袋</a>
+          </Link>
         </div>
         <div className={styles.copyright}>
           <p>
