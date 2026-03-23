@@ -31,6 +31,9 @@ const Footer = () => {
           <Link href="https://x.com/EzBZAUTPzZ36316" rel="me">
             <a>X</a>
           </Link>
+          <Link href="https://secondpath.jp/" rel="me">
+            <a>カウンセリング</a>
+          </Link>
         </div>
         <div className={styles.copyright}>
           <p>
