@@ -34,6 +34,9 @@ const Footer = () => {
           <Link href="https://secondpath.jp/" rel="me">
             <a>カウンセリング</a>
           </Link>
+          <Link href="https://gakki-app.vercel.app/" rel="me">
+            <a>wiki</a>
+          </Link>
         </div>
         <div className={styles.copyright}>
           <p>
