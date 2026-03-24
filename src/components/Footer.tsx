@@ -28,7 +28,7 @@ const Footer = () => {
           <Link href="https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q11326522851">
             <a>知恵袋</a>
           </Link>
-          <Link href="https://x.com/EzBZAUTPzZ36316" rel="me">
+          <Link href="https://x.com/nakayama157798" rel="me">
             <a>X</a>
           </Link>
           <Link href="https://secondpath.jp/" rel="me">
