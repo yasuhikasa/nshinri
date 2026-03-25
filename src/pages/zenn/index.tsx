@@ -23,6 +23,7 @@ const ARTICLE_URLS = [
   'https://zenn.dev/yasuhikasa/articles/18688606e6f6d5',
   'https://zenn.dev/yasuhikasa/articles/284b425bb55a0a',
   'https://zenn.dev/yasuhikasa/articles/8df3eb981d7d42',
+  'https://zenn.dev/yasuhikasa/articles/4064f80757e1dc',
   'https://qiita.com/hikasayasu/items/bacd4bf8e31c0294f305',
   'https://qiita.com/hikasayasu/items/4abad2d33024a58f0faf',
   'https://qiita.com/hikasayasu/items/c06ba9166c1242c33d0f',
