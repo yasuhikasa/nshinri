@@ -31,6 +31,9 @@ const Footer = () => {
           <Link href="https://x.com/nakayama157798" rel="me">
             <a>X</a>
           </Link>
+          <Link href="https://www.tiktok.com/@huu98761" rel="me">
+            <a>TikTok</a>
+          </Link>
           <Link href="https://secondpath.jp/" rel="me">
             <a>カウンセリング</a>
           </Link>
