@@ -25,6 +25,7 @@ const ARTICLE_URLS = [
   'https://zenn.dev/yasuhikasa/articles/8df3eb981d7d42',
   'https://qiita.com/hikasayasu/items/bacd4bf8e31c0294f305',
   'https://qiita.com/hikasayasu/items/4abad2d33024a58f0faf',
+  'https://qiita.com/hikasayasu/items/c06ba9166c1242c33d0f',
   'https://note.com/jazzy_gecko3968/n/nfc3bfdab439a',
   'https://note.com/jazzy_gecko3968/n/n681470342d50',
   'https://note.com/jazzy_gecko3968/n/n8047e5f8f34f',
