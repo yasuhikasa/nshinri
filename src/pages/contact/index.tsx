@@ -164,7 +164,7 @@ const Contact: React.FC = () => {
           <form onSubmit={handleSubmit} className={styles.form}>
             <div className={styles.formGroup}>
               <label htmlFor="name" className={styles.label}>
-                お名前（仮名で可）
+                お名前
               </label>
               <input
                 type="text"

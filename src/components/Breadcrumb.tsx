@@ -15,6 +15,7 @@ const breadcrumbMap: { [key: string]: string } = {
   '/newrecipe': 'こだわりレシピ作成アプリ',
   '/booking': 'カウンセリングの予約のご案内',
   '/tech-stack': '開発でできること',
+  '/care-dx': '介護・福祉のDX相談',
 };
 
 interface BreadcrumbProps {

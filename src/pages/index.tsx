@@ -104,8 +104,8 @@ const serviceOffers: ServiceOffer[] = [
     title: '介護・福祉領域のDX相談',
     summary:
       '現場・制度・システムのすれ違いを整理し、記録や運用の課題に対して、ITと現場の両面から伴走します。',
-    href: '/contact',
-    cta: '相談する',
+    href: '/care-dx',
+    cta: 'DXの内容を見る',
     imageSrc: '/yasuaki-hikasa-3.png',
     imageAlt: '日笠泰彰介護・福祉とITをイメージしたビジュアル',
   },

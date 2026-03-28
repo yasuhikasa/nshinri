@@ -168,22 +168,29 @@
   font-weight: 800;
   color: #fff;
   text-decoration: none;
-  background: linear-gradient(135deg, #2f8d4e 0%, #247a3f 100%);
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
   border-radius: 999px;
-  box-shadow: 0 4px 14px rgba(47, 141, 78, 0.38);
+  border: 2px solid rgba(255, 255, 255, 0.22);
+  box-shadow:
+    0 4px 16px rgba(37, 99, 235, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
   transition:
     filter 0.15s ease,
-    transform 0.15s ease;
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
 .ctaLink:hover {
   filter: brightness(1.06);
   transform: translateY(-2px);
   text-decoration: none;
+  box-shadow:
+    0 8px 22px rgba(29, 78, 216, 0.48),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
 .ctaLink:focus-visible {
-  outline: 3px solid #1a5c2e;
+  outline: 3px solid #1e40af;
   outline-offset: 3px;
 }
 
