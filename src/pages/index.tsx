@@ -126,7 +126,7 @@ const serviceOffers: ServiceOffer[] = [
     href: 'https://www.amazon.co.jp/dp/B0DNXPFD37/',
     cta: '書籍情報（Amazon）',
     external: true,
-    imageSrc: '/5.jpeg',
+    imageSrc: '/yasuaki-hikasa-4.png',
     imageAlt: '執筆・出版（Kindle書籍）のイメージ',
   },
 ];
