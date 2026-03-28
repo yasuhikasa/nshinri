@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Head from 'next/head';
 import styles from './index.module.css';
 import Header from '../components/Header';
+import RevealOnScroll from '../components/RevealOnScroll';
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import { getList } from '../lib/microcms';
@@ -267,35 +268,41 @@ const Home = ({ notifications }: { notifications: Notification[] }) => {
             開発の受託から介護・福祉ドメインのDX、キャリア支援まで。内容のすり合わせからお気軽にどうぞ。
           </p>
           <div className={styles.serviceGrid}>
-            {serviceOffers.map((offer) => (
-              <article key={offer.title} className={styles.serviceCard}>
-                <div className={styles.serviceImageWrap}>
-                  <Image
-                    src={offer.imageSrc}
-                    alt={offer.imageAlt}
-                    fill
-                    sizes="(max-width: 1023px) 100vw, 50vw"
-                    className={styles.serviceImage}
-                  />
-                </div>
-                <div className={styles.serviceCardBody}>
-                  <h3 className={styles.serviceTitle}>{offer.title}</h3>
-                  <p className={styles.serviceSummary}>{offer.summary}</p>
-                  <div className={styles.serviceCta}>
-                    {offer.external ? (
-                      <a
-                        href={offer.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {offer.cta}
-                      </a>
-                    ) : (
-                      <Link href={offer.href}>{offer.cta}</Link>
-                    )}
+            {serviceOffers.map((offer, index) => (
+              <RevealOnScroll
+                key={offer.title}
+                className={styles.serviceRevealShell}
+                delayMs={index * 60}
+              >
+                <article className={styles.serviceCard}>
+                  <div className={styles.serviceImageWrap}>
+                    <Image
+                      src={offer.imageSrc}
+                      alt={offer.imageAlt}
+                      fill
+                      sizes="(max-width: 1023px) 100vw, 50vw"
+                      className={styles.serviceImage}
+                    />
                   </div>
-                </div>
-              </article>
+                  <div className={styles.serviceCardBody}>
+                    <h3 className={styles.serviceTitle}>{offer.title}</h3>
+                    <p className={styles.serviceSummary}>{offer.summary}</p>
+                    <div className={styles.serviceCta}>
+                      {offer.external ? (
+                        <a
+                          href={offer.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {offer.cta}
+                        </a>
+                      ) : (
+                        <Link href={offer.href}>{offer.cta}</Link>
+                      )}
+                    </div>
+                  </div>
+                </article>
+              </RevealOnScroll>
             ))}
           </div>
         </section>

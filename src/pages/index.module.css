@@ -230,6 +230,15 @@
   gap: 22px;
 }
 
+.serviceRevealShell {
+  height: 100%;
+  min-height: 0;
+}
+
+.serviceRevealShell .serviceCard {
+  height: 100%;
+}
+
 .serviceCard {
   border-radius: 18px;
   border: 1px solid #c5dcc4;
