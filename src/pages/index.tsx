@@ -6,19 +6,21 @@ import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import { getList } from '../lib/microcms';
 
+interface ServiceOffer {
+  title: string;
+  summary: string;
+  href: string;
+  cta: string;
+  imageSrc: string;
+  imageAlt: string;
+  external?: boolean;
+}
+
 interface Notification {
   slug: string;
   title: string;
   date: string;
   description: string;
-}
-
-interface ActivityItem {
-  href: string;
-  imageSrc: string;
-  imageAlt: string;
-  title: string;
-  points: string[];
 }
 
 export async function getStaticProps() {
@@ -56,7 +58,7 @@ export async function getStaticProps() {
 
 const siteTitle = "日笠泰彰 | N's WorkRoom";
 const siteDescription =
-  '日笠泰彰（ITエンジニア）の公式サイト。個人開発アプリ、キャリアカウンセリング、ライフコーチング、執筆活動の最新情報を発信しています。';
+  '日笠泰彰（ITエンジニア）の公式サイト。開発受託・介護領域のDX相談、キャリアカウンセリング、ライフコーチング、執筆・発信の情報をまとめています。';
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -87,58 +89,46 @@ const jsonLd = {
   ],
 };
 
-const activities: ActivityItem[] = [
+const serviceOffers: ServiceOffer[] = [
   {
-    href: '/kaigokiroku',
-    imageSrc: '/3.png',
-    imageAlt: '日笠泰彰による在宅介護記録アプリ',
-    title: '自宅で簡単！在宅介護記録アプリ（販売終了）',
-    points: [
-      '在宅で介護施設と同水準の介護記録をつけられます',
-      'アプリに不慣れでも使いやすいシンプルなUI設計',
-      '介護記録の共有で、家族の状況把握がスムーズ',
-      '介護福祉士経験のある現役ITエンジニアが制作',
-    ],
+    title: 'Web・アプリ開発（受託・技術支援）',
+    summary:
+      '要件の整理から実装・改善まで。個人・小規模事業者向けに、スピード感のある開発と継続的な技術支援に対応します。',
+    href: '/contact',
+    cta: 'お問い合わせ',
+    imageSrc: '/yasuaki-hikasa-1.png',
+    imageAlt: "開発・Web制作のイメージ（N's WorkRoom バナー）",
   },
   {
-    href: '/newrecipe',
-    imageSrc: '/8.png',
-    imageAlt: '日笠泰彰によるこだわりレシピ作成アプリ',
-    title: 'こだわりの創作料理レシピ（販売終了）',
-    points: [
-      'AIが好みや条件に合わせてレシピを提案',
-      'その日の気分やニーズに合わせて自動生成',
-      '毎日の献立に新しいアイデアを取り入れやすい設計',
-      '忙しい日でもこだわりのある料理を楽しめます',
-    ],
+    title: '介護・福祉領域のDX相談',
+    summary:
+      '現場・制度・システムのすれ違いを整理し、記録や運用の課題に対して、ITと現場の両面から伴走します。',
+    href: '/contact',
+    cta: '相談する',
+    imageSrc: '/yasuaki-hikasa-3.png',
+    imageAlt: '介護・福祉とITをイメージしたビジュアル',
   },
   {
-    href: 'https://secondpath.jp/',
-    imageSrc: '/4.jpg',
-    imageAlt: '日笠泰彰によるキャリア相談・人生のリスタート',
     title: 'キャリアカウンセリング・ライフコーチング',
-    points: [
-      '30代・40代のキャリアリスタート相談',
-      '心の課題や問題行動の克服サポート',
-      '仕事のストレスや将来不安の整理',
-      '自己肯定感を高めるための実践的な伴走支援',
-    ],
+    summary:
+      '30代・40代のキャリア再設計やストレス整理など、対面・オンラインでの伴走支援（別サイトで詳細）。',
+    href: 'https://secondpath.jp/',
+    cta: 'サービス詳細を見る',
+    external: true,
+    imageSrc: '/yasuaki-hikasa-2.png',
+    imageAlt: 'キャリアカウンセリング・ライフコーチングのイメージ',
   },
   {
+    title: '執筆・メディア',
+    summary:
+      'キャリアや未経験からのエンジニア転職をテーマにした書籍・発信。技術記事はトップの Zenn・Qiita・note リンクから。',
     href: 'https://www.amazon.co.jp/dp/B0DNXPFD37/',
+    cta: '書籍情報（Amazon）',
+    external: true,
     imageSrc: '/5.jpeg',
-    imageAlt: '日笠泰彰によるKindle出版',
-    title: '40歳未経験でITエンジニアの軌跡',
-    points: [
-      '未経験からのキャリア構築ノウハウ',
-      '40歳未経験からITエンジニアへの転職体験談',
-      '転職活動のコツや面接対策を具体的に解説',
-    ],
+    imageAlt: '執筆・出版（Kindle書籍）のイメージ',
   },
 ];
-
-const isExternalLink = (href: string) =>
-  href.startsWith('http://') || href.startsWith('https://');
 
 const Home = ({ notifications }: { notifications: Notification[] }) => {
   const safeNotifications = notifications || [];
@@ -190,13 +180,11 @@ const Home = ({ notifications }: { notifications: Notification[] }) => {
               priority={true}
             />
           </div>
-          <h1 className={styles.heading}>
-            N&apos;s WorkRoom
-          </h1>
+          <h1 className={styles.heading}>N&apos;s WorkRoom</h1>
           <p className={styles.subtext}>
             ITエンジニアです。民間カウンセラー資格あり。
             <br />
-            個人開発・相談支援・発信活動を継続しています。
+            開発の受託・介護・福祉ドメインのDX相談、カウンセリング伴走・発信を行っています。
           </p>
         </section>
 
@@ -241,66 +229,74 @@ const Home = ({ notifications }: { notifications: Notification[] }) => {
             外部技術ブログの更新
           </h2>
           <p className={styles.externalBlogText}>
-            このサイト内の記事更新とは別に、技術ブログサイトでの更新も行っています。
+            このサイト内の記事更新とは別に、各サービス上の記事一覧ページでも発信しています。
           </p>
-          <div className={styles.externalBlogLinkWrap}>
-            <Link href="/zenn" className={styles.externalBlogLink}>
-              Zenn・Qiita・note の更新一覧を見る
-            </Link>
+          <div className={styles.externalBlogLinks}>
+            <a
+              href="https://zenn.dev/yasuhikasa"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.externalBlogLink}
+            >
+              Zenn
+            </a>
+            <a
+              href="https://qiita.com/hikasayasu"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.externalBlogLink}
+            >
+              Qiita
+            </a>
+            <a
+              href="https://note.com/jazzy_gecko3968"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.externalBlogLink}
+            >
+              note
+            </a>
           </div>
         </section>
 
-        <section
-          className={styles.activities}
-          aria-labelledby="activities-heading"
-        >
-          <h2 id="activities-heading" className={styles.activitiesHeading}>
-            日笠泰彰の主な活動
+        <section className={styles.services} aria-labelledby="services-heading">
+          <h2 id="services-heading" className={styles.servicesHeading}>
+            事業・ご相談
           </h2>
-          <div className={styles.activityGrid}>
-            {activities.map((activity) => {
-              const linkContent = (
-                <>
+          <p className={styles.servicesLead}>
+            開発の受託から介護・福祉ドメインのDX、キャリア支援まで。内容のすり合わせからお気軽にどうぞ。
+          </p>
+          <div className={styles.serviceGrid}>
+            {serviceOffers.map((offer) => (
+              <article key={offer.title} className={styles.serviceCard}>
+                <div className={styles.serviceImageWrap}>
                   <Image
-                    src={activity.imageSrc}
-                    alt={activity.imageAlt}
-                    width={180}
-                    height={180}
-                    className={styles.activityImage}
+                    src={offer.imageSrc}
+                    alt={offer.imageAlt}
+                    fill
+                    sizes="(max-width: 1023px) 100vw, 50vw"
+                    className={styles.serviceImage}
                   />
-                  <p className={styles.activityLinkText}>{activity.title}</p>
-                </>
-              );
-
-              return (
-                <article key={activity.title} className={styles.card}>
-                  <div className={styles.introduction}>
-                    {isExternalLink(activity.href) ? (
+                </div>
+                <div className={styles.serviceCardBody}>
+                  <h3 className={styles.serviceTitle}>{offer.title}</h3>
+                  <p className={styles.serviceSummary}>{offer.summary}</p>
+                  <div className={styles.serviceCta}>
+                    {offer.external ? (
                       <a
-                        href={activity.href}
+                        href={offer.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={styles.activityLink}
                       >
-                        {linkContent}
+                        {offer.cta}
                       </a>
                     ) : (
-                      <Link
-                        href={activity.href}
-                        className={styles.activityLink}
-                      >
-                        {linkContent}
-                      </Link>
+                      <Link href={offer.href}>{offer.cta}</Link>
                     )}
                   </div>
-                  <ul className={styles.list}>
-                    {activity.points.map((point) => (
-                      <li key={point}>{point}</li>
-                    ))}
-                  </ul>
-                </article>
-              );
-            })}
+                </div>
+              </article>
+            ))}
           </div>
         </section>
       </main>
