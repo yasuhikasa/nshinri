@@ -1,6 +1,12 @@
 'use client';
 
-import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
+import {
+  useEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+  type ReactNode,
+} from 'react';
 import styles from './RevealOnScroll.module.css';
 
 type RevealOnScrollProps = {

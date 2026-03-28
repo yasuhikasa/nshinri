@@ -1,0 +1,214 @@
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px 20px 56px;
+}
+
+.heading {
+  font-size: clamp(1.75rem, 3.6vw, 2.35rem);
+  color: #14351c;
+  text-align: center;
+  margin: 10px 0 12px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.lead {
+  margin: 0 auto 28px;
+  max-width: 40em;
+  text-align: center;
+  color: #4b4f57;
+  line-height: 1.75;
+  font-size: 1.02rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  margin-bottom: 36px;
+}
+
+.card {
+  border-radius: 16px;
+  border: 1px solid #c5dcc4;
+  background: #fff;
+  padding: 20px 22px;
+  box-shadow: 0 10px 22px rgba(22, 48, 32, 0.08);
+}
+
+.cardTitle {
+  margin: 0 0 10px;
+  font-size: clamp(1.02rem, 2.4vw, 1.15rem);
+  font-weight: 800;
+  color: #204c2a;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+}
+
+.cardBody {
+  margin: 0;
+  color: #3d4540;
+  line-height: 1.75;
+  font-size: 0.98rem;
+}
+
+.techStackSection {
+  margin: 0 0 32px;
+  padding: 26px 22px 28px;
+  border-radius: 18px;
+  border: 1px solid #b8d4be;
+  background: linear-gradient(175deg, #f4fbf6 0%, #ffffff 45%);
+  box-shadow: 0 10px 26px rgba(30, 53, 40, 0.08);
+}
+
+.techStackHeading {
+  margin: 0 0 12px;
+  font-size: clamp(1.25rem, 2.8vw, 1.5rem);
+  font-weight: 800;
+  color: #14351c;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+.techStackLead {
+  margin: 0 auto 22px;
+  max-width: 40em;
+  text-align: center;
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: #4b4f57;
+}
+
+.techStackColumns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+}
+
+.techStackColumn {
+  padding: 18px 18px 20px;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid #d4e8d6;
+}
+
+.techStackSubheading {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #204c2a;
+}
+
+.techStackColumnIntro {
+  margin: 0 0 14px;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: #5d6962;
+}
+
+.techStackList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.techStackItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #e8f0ea;
+}
+
+.techStackItem:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.techStackName {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #1a5c2e;
+}
+
+.techStackDesc {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: #3d4540;
+}
+
+.ctaBlock {
+  margin-top: 0;
+  padding: 26px 22px;
+  border-radius: 18px;
+  border: 1px solid #b8d4be;
+  background: linear-gradient(165deg, #f0faf2 0%, #ffffff 50%);
+  text-align: center;
+  box-shadow: 0 12px 28px rgba(30, 53, 40, 0.1);
+}
+
+.ctaText {
+  margin: 0 0 16px;
+  color: #3d4a42;
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+.ctaLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #fff;
+  text-decoration: none;
+  background: linear-gradient(135deg, #2f8d4e 0%, #247a3f 100%);
+  border-radius: 999px;
+  box-shadow: 0 4px 14px rgba(47, 141, 78, 0.38);
+  transition:
+    filter 0.15s ease,
+    transform 0.15s ease;
+}
+
+.ctaLink:hover {
+  filter: brightness(1.06);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.ctaLink:focus-visible {
+  outline: 3px solid #1a5c2e;
+  outline-offset: 3px;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .techStackColumns {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 18px 14px 44px;
+  }
+
+  .card {
+    padding: 18px 16px;
+  }
+
+  .techStackSection {
+    padding: 20px 16px 22px;
+  }
+}

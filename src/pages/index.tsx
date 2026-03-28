@@ -95,8 +95,8 @@ const serviceOffers: ServiceOffer[] = [
     title: 'Web・アプリ開発（受託・技術支援）',
     summary:
       '要件の整理から実装・改善まで。個人・小規模事業者向けに、スピード感のある開発と継続的な技術支援に対応します。',
-    href: '/contact',
-    cta: 'お問い合わせ',
+    href: '/tech-stack',
+    cta: 'できることを見る',
     imageSrc: '/yasuaki-hikasa-1.png',
     imageAlt: '日笠泰彰開発・Web制作のイメージ',
   },

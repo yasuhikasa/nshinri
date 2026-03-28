@@ -14,6 +14,7 @@ const breadcrumbMap: { [key: string]: string } = {
   '/kindle': 'Kindle出版',
   '/newrecipe': 'こだわりレシピ作成アプリ',
   '/booking': 'カウンセリングの予約のご案内',
+  '/tech-stack': '開発でできること',
 };
 
 interface BreadcrumbProps {
