@@ -92,6 +92,34 @@ const config = {
           });
         }
       });
+
+      // 4b. 直下の各ディレクトリ（index.tsx があるルート）— tech-stack / care-dx など
+      const skipDirs = new Set(['api', 'posts', 'fonts']);
+      const seenLocs = new Set(result.map((r) => r.loc));
+      fs.readdirSync(staticPagesDir, { withFileTypes: true }).forEach(
+        (dirent) => {
+          if (!dirent.isDirectory()) return;
+          const name = dirent.name;
+          if (
+            name.startsWith('_') ||
+            name.startsWith('[') ||
+            skipDirs.has(name)
+          ) {
+            return;
+          }
+          const indexTsx = path.join(staticPagesDir, name, 'index.tsx');
+          if (!fs.existsSync(indexTsx)) return;
+          const loc = `/${name}`;
+          if (seenLocs.has(loc)) return;
+          seenLocs.add(loc);
+          result.push({
+            loc,
+            lastmod: new Date().toISOString(),
+            changefreq: 'weekly',
+            priority: 0.85,
+          });
+        }
+      );
     }
 
     // 5. microCMS から動的記事を取得して追加
