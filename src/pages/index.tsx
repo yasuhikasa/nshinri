@@ -112,7 +112,7 @@ const serviceOffers: ServiceOffer[] = [
   {
     title: 'キャリアカウンセリング・ライフコーチング',
     summary:
-      '30代・40代のキャリア再設計やストレス整理など、対面・オンラインでの伴走支援（別サイトで詳細）。',
+      'キャリア再設計やストレス整理、各種深刻な悩みなど、オンラインでの伴走支援（別サイトで詳細）。',
     href: 'https://secondpath.jp/',
     cta: 'サービス詳細を見る',
     external: true,
