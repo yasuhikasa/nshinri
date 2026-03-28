@@ -98,7 +98,7 @@ const serviceOffers: ServiceOffer[] = [
     href: '/contact',
     cta: 'お問い合わせ',
     imageSrc: '/yasuaki-hikasa-1.png',
-    imageAlt: "開発・Web制作のイメージ（N's WorkRoom バナー）",
+    imageAlt: '日笠泰彰開発・Web制作のイメージ',
   },
   {
     title: '介護・福祉領域のDX相談',
@@ -107,7 +107,7 @@ const serviceOffers: ServiceOffer[] = [
     href: '/contact',
     cta: '相談する',
     imageSrc: '/yasuaki-hikasa-3.png',
-    imageAlt: '介護・福祉とITをイメージしたビジュアル',
+    imageAlt: '日笠泰彰介護・福祉とITをイメージしたビジュアル',
   },
   {
     title: 'キャリアカウンセリング・ライフコーチング',
@@ -117,7 +117,7 @@ const serviceOffers: ServiceOffer[] = [
     cta: 'サービス詳細を見る',
     external: true,
     imageSrc: '/yasuaki-hikasa-2.png',
-    imageAlt: 'キャリアカウンセリング・ライフコーチングのイメージ',
+    imageAlt: '日笠泰彰キャリアカウンセリング・ライフコーチングのイメージ',
   },
   {
     title: '執筆・メディア',
@@ -127,7 +127,7 @@ const serviceOffers: ServiceOffer[] = [
     cta: '書籍情報（Amazon）',
     external: true,
     imageSrc: '/yasuaki-hikasa-4.png',
-    imageAlt: '執筆・出版（Kindle書籍）のイメージ',
+    imageAlt: '日笠泰彰執筆・出版（Kindle書籍）のイメージ',
   },
 ];
 
