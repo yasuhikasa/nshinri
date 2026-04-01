@@ -11,6 +11,21 @@ const config = {
   priority: 0.7,
   exclude: ['/posts/[slug]'],
 
+  transform: async (config, urlPath) => {
+    // care-bridge の記事は数字スラッグのみをサイトマップに載せる
+    if (urlPath.startsWith('/care-bridge/posts/')) {
+      const slug = urlPath.replace('/care-bridge/posts/', '');
+      if (!/^\d+$/.test(slug)) return null;
+    }
+
+    return {
+      loc: urlPath,
+      changefreq: config.changefreq,
+      priority: config.priority,
+      lastmod: new Date().toISOString(),
+    };
+  },
+
   additionalPaths: async () => {
     const result = [];
 
@@ -79,25 +94,37 @@ const config = {
       'posts'
     );
     if (fs.existsSync(careBridgePostsDir)) {
-      const items = fs.readdirSync(careBridgePostsDir);
-      items.forEach((item) => {
-        if (item.startsWith('[') || item.startsWith('_')) return;
-        if (item.endsWith('.tsx') && item !== 'index.tsx') {
-          result.push({
-            loc: `/care-bridge/posts/${item.replace('.tsx', '')}`,
-            lastmod: new Date().toISOString(),
-            changefreq: 'weekly',
-            priority: 0.8,
-          });
-        }
-      });
-      // 一覧ページも追加
+      // 一覧ページ
       result.push({
         loc: '/care-bridge/posts',
         lastmod: new Date().toISOString(),
         changefreq: 'weekly',
         priority: 0.85,
       });
+
+      // 記事詳細ページ（src/content/care-bridge/articles.ts の slug を抽出）
+      const careBridgeArticlesPath = path.join(
+        process.cwd(),
+        'src',
+        'content',
+        'care-bridge',
+        'articles.ts'
+      );
+      if (fs.existsSync(careBridgeArticlesPath)) {
+        const src = fs.readFileSync(careBridgeArticlesPath, 'utf8');
+        const slugs = Array.from(
+          src.matchAll(/slug:\s*'(\d+)'/g),
+          (m) => m[1]
+        );
+        slugs.forEach((slug) => {
+          result.push({
+            loc: `/care-bridge/posts/${slug}`,
+            lastmod: new Date().toISOString(),
+            changefreq: 'weekly',
+            priority: 0.8,
+          });
+        });
+      }
     }
 
     // 4. src/pages 直下の静的ページ (index, posts, _app 等を除外)

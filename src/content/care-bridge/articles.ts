@@ -23,7 +23,7 @@ export type CareBridgeArticleData = {
 
 const careBridgeArticles: CareBridgeArticleData[] = [
   {
-    slug: 'why-pdf-sharing',
+    slug: '1',
     label: '設計思想',
     title: '介護記録は「残す」だけでなく「共有」までが本番 | CareBridge',
     description:
@@ -68,7 +68,7 @@ const careBridgeArticles: CareBridgeArticleData[] = [
     ],
   },
   {
-    slug: 'handover-template',
+    slug: '2',
     label: '運用',
     title: '申し送りがラクになる「共有テンプレ」の考え方 | CareBridge',
     description:
