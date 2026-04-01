@@ -20,3 +20,15 @@ export const getList = async (queries?: any) => {
 export const getDetail = async (contentId: string, queries?: any) => {
   return await client.getListDetail({ endpoint: 'blog', contentId, queries });
 };
+
+export const getListByEndpoint = async (endpoint: string, queries?: any) => {
+  return await client.getList({ endpoint, queries });
+};
+
+export const getDetailByEndpoint = async (
+  endpoint: string,
+  contentId: string,
+  queries?: any
+) => {
+  return await client.getListDetail({ endpoint, contentId, queries });
+};

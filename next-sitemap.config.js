@@ -70,6 +70,36 @@ const config = {
       });
     }
 
+    // 3b. src/pages/care-bridge/posts 内のディレクトリをスキャン（[slug]は除外）
+    const careBridgePostsDir = path.join(
+      process.cwd(),
+      'src',
+      'pages',
+      'care-bridge',
+      'posts'
+    );
+    if (fs.existsSync(careBridgePostsDir)) {
+      const items = fs.readdirSync(careBridgePostsDir);
+      items.forEach((item) => {
+        if (item.startsWith('[') || item.startsWith('_')) return;
+        if (item.endsWith('.tsx') && item !== 'index.tsx') {
+          result.push({
+            loc: `/care-bridge/posts/${item.replace('.tsx', '')}`,
+            lastmod: new Date().toISOString(),
+            changefreq: 'weekly',
+            priority: 0.8,
+          });
+        }
+      });
+      // 一覧ページも追加
+      result.push({
+        loc: '/care-bridge/posts',
+        lastmod: new Date().toISOString(),
+        changefreq: 'weekly',
+        priority: 0.85,
+      });
+    }
+
     // 4. src/pages 直下の静的ページ (index, posts, _app 等を除外)
     const staticPagesDir = path.join(process.cwd(), 'src', 'pages');
     if (fs.existsSync(staticPagesDir)) {

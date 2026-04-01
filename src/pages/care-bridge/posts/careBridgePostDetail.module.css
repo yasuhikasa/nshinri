@@ -1,0 +1,224 @@
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px 20px 56px;
+}
+
+.topNav {
+  margin: 8px 0 12px;
+  font-size: 0.95rem;
+  color: #64748b;
+}
+
+.topNav a {
+  color: #2563eb;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.topNav a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.sep {
+  margin: 0 10px;
+  color: #94a3b8;
+}
+
+.header {
+  border-radius: 18px;
+  border: 1px solid #dce8dd;
+  background: linear-gradient(145deg, #ffffff 0%, #f3fbf4 40%, #ffffff 100%);
+  padding: 22px 20px;
+  box-shadow: 0 14px 28px rgba(22, 48, 32, 0.08);
+  margin-bottom: 18px;
+}
+
+.title {
+  margin: 0 0 10px;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 900;
+  color: #14351c;
+  line-height: 1.25;
+}
+
+.meta {
+  margin: 0 0 10px;
+  color: #64748b;
+  font-weight: 800;
+  font-size: 0.92rem;
+}
+
+.description {
+  margin: 0;
+  color: #4b4f57;
+  line-height: 1.8;
+}
+
+.content {
+  border-radius: 18px;
+  border: 1px solid #e2ece4;
+  background: #fff;
+  padding: 20px 18px;
+  box-shadow: 0 12px 26px rgba(22, 48, 32, 0.06);
+  line-height: 1.9;
+  color: #1f2b24;
+}
+
+.h2 {
+  margin: 28px 0 12px;
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: #1a365d;
+}
+
+.p {
+  margin: 0 0 16px;
+  color: #1f2b24;
+}
+
+.cta {
+  margin-top: 26px;
+  border-radius: 22px;
+  border: 1px solid #bee3f8;
+  background: linear-gradient(165deg, #ebf4ff 0%, #f7fafc 55%, #fff 100%);
+  box-shadow: 0 18px 40px rgba(44, 82, 130, 0.12);
+  padding: 22px 20px;
+}
+
+.ctaTitle {
+  margin: 0 0 10px;
+  color: #1a365d;
+  font-weight: 900;
+  font-size: clamp(1.2rem, 2.8vw, 1.45rem);
+}
+
+.ctaText {
+  margin: 0 0 16px;
+  color: #4a5568;
+  line-height: 1.75;
+}
+
+.ctaButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.bigCtaCard {
+  display: block;
+  text-decoration: none;
+  border-radius: 22px;
+  padding: 22px 20px;
+  border: 1px solid rgba(37, 99, 235, 0.28);
+  background: linear-gradient(165deg, #ebf4ff 0%, #f7fafc 55%, #fff 100%);
+  box-shadow: 0 18px 40px rgba(44, 82, 130, 0.12);
+  transition:
+    transform 0.18s ease,
+    filter 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.bigCtaCard:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.02);
+  box-shadow: 0 24px 54px rgba(44, 82, 130, 0.16);
+}
+
+.bigCtaCard:focus-visible {
+  outline: 3px solid #1e40af;
+  outline-offset: 4px;
+}
+
+.bigCtaEyebrow {
+  display: inline-block;
+  font-weight: 900;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1d4ed8;
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+
+.bigCtaMain {
+  display: block;
+  margin-top: 12px;
+  font-size: clamp(1.15rem, 2.8vw, 1.5rem);
+  font-weight: 900;
+  line-height: 1.35;
+  color: #0b1220;
+}
+
+.bigCtaSub {
+  display: block;
+  margin-top: 10px;
+  color: #475569;
+  line-height: 1.7;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.bigCtaButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 16px;
+  min-height: 48px;
+  padding: 12px 22px;
+  font-weight: 900;
+  color: #fff;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  border: 2px solid rgba(255, 255, 255, 0.22);
+  box-shadow:
+    0 4px 16px rgba(37, 99, 235, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  width: fit-content;
+}
+
+.primaryCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 22px;
+  font-weight: 900;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #2f8d4e 0%, #247a3f 100%);
+  box-shadow: 0 8px 18px rgba(47, 141, 78, 0.28);
+  border: 2px solid rgba(255, 255, 255, 0.22);
+}
+
+.blueCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 22px;
+  font-weight: 900;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  border: 2px solid rgba(255, 255, 255, 0.22);
+  box-shadow:
+    0 4px 16px rgba(37, 99, 235, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.ctaButtons {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 18px 14px 44px;
+  }
+}
+

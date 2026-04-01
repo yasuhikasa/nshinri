@@ -16,6 +16,8 @@ const breadcrumbMap: { [key: string]: string } = {
   '/booking': 'カウンセリングの予約のご案内',
   '/tech-stack': '開発でできること',
   '/care-dx': '介護・福祉のDX相談',
+  '/care-bridge': 'CareBridge',
+  '/care-bridge/posts': 'CareBridge 記事一覧',
 };
 
 interface BreadcrumbProps {
