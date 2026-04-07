@@ -8,7 +8,7 @@ import Breadcrumb from '../../components/Breadcrumb';
 import styles from './careBridge.module.css';
 
 const canonical = 'https://nshinri.net/care-bridge';
-const pageTitle = 'CareBridge | 介護のバトンタッチをスムーズにする記録・共有アプリ';
+const pageTitle = 'CareBridge | 介護のバトンタッチをスムーズにする介護記録・共有アプリ';
 const pageDescription =
   'CareBridge は、自宅での介護記録をつけてPDFで共有し、家族・施設・ケアマネとの連携をスムーズにするiOSアプリです。記録を「溜める」だけでなく「伝わる形」にして、より良いケアにつなげます。';
 

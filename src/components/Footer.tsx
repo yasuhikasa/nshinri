@@ -30,6 +30,9 @@ const Footer = () => {
           <Link href="https://gakki-app.vercel.app/" rel="me">
             wiki
           </Link>
+          <Link href="https://second-youth.jp" rel="me">
+            SNSサービス
+          </Link>
         </div>
         <div className={styles.copyright}>
           <p>
