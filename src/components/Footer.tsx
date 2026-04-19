@@ -31,7 +31,7 @@ const Footer = () => {
             wiki
           </Link>
           <Link href="https://second-youth.jp" rel="me">
-            SNSサービス
+            在宅介護記録の共有CareBridge
           </Link>
         </div>
         <div className={styles.copyright}>
