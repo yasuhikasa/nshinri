@@ -33,6 +33,9 @@ const Footer = () => {
           <Link href="https://second-youth.jp" rel="me">
             在宅介護記録の共有CareBridge
           </Link>
+          <Link href ="https://www.instagram.com/yuu3.3321/" rel="me">
+            Instagram
+          </Link>
         </div>
         <div className={styles.copyright}>
           <p>
